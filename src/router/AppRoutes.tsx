@@ -13,7 +13,7 @@ const AppRoutes = ({isAuth = false}) => {
                     <Route
                         key={path}
                         path={path}
-                        element={<AuthRoute isAuth={isAuth} Component={Component}/>}
+                        element={<AuthRoute Component={Component}/>}
                     />
                 ))
             }
@@ -22,7 +22,7 @@ const AppRoutes = ({isAuth = false}) => {
                     <Route
                         key={path}
                         path={path}
-                        element={<NonAuthRoute isAuth={isAuth} Component={Component}/>}
+                        element={<NonAuthRoute Component={Component}/>}
                     />
                 ))
             }
@@ -31,7 +31,7 @@ const AppRoutes = ({isAuth = false}) => {
                     <Route
                         key={path}
                         path={path}
-                        element={<PublicRoute isAuth={isAuth} Component={Component}/>}
+                        element={<PublicRoute Component={Component}/>}
                     />
                 ))
             }

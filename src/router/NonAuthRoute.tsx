@@ -1,13 +1,15 @@
-import React, {FC} from 'react';
-import {Navigate, useNavigate} from "react-router-dom";
-import {RouteProps} from "../types/router.types";
+import React, { FC } from 'react';
+import { Navigate, useNavigate } from "react-router-dom";
+import { RouteProps } from '../types/router.types';
+
 
 const REDIRECT_PATH = "/profile"
-const NonAuthRoute: FC<RouteProps> = ({isAuth, Component}) => {
-    const navigate = useNavigate()
 
+const NonAuthRoute: FC<RouteProps> = ({ Component }) => {
+    const navigate = useNavigate()
+    const isAuth = true
     return (
-        isAuth ? <Navigate to={REDIRECT_PATH}/> : <Component/>
+        isAuth ? <Navigate to={REDIRECT_PATH} /> : <Component />
     )
 };
 

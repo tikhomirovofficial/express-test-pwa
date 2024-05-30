@@ -1,0 +1,30 @@
+.container {
+    .image {
+        min-height: 55vh;
+        border-bottom-left-radius: 3.5rem;
+        overflow: hidden;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-shadow: 0px 10px 20px 0px rgba(0, 64, 128, 0.1);
+        background-position-y: bottom;
+        .content {
+            z-index: 1;
+            padding: 4rem 3rem;
+            h2 {
+                max-width: 80%;
+                font-size: 2rem;
+            }
+        }
+        .gradient {
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(200deg, rgba(255, 255, 255, 0) 20.43%, #ffffff 90.57%);
+        }
+    }
+    .textItem {
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+}

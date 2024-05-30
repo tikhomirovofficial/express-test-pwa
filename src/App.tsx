@@ -1,15 +1,15 @@
 import React from 'react';
 import AppRoutes from "./router/AppRoutes";
-import Header from "./components/Header";
-
+import { MobileContainer } from './containers/MobileContainer';
 
 function App() {
-
     return (
-        <div className="App">
-            <Header/>
-            <AppRoutes isAuth={false}/>
-        </div>
+        <MobileContainer>
+            <div className="App">
+                <AppRoutes />
+            </div>
+        </MobileContainer>
+
     );
 }
 

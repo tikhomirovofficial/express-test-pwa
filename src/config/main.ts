@@ -1,0 +1,1 @@
+export const MIN_MOBILE_SCREEN_WIDTH = 450
