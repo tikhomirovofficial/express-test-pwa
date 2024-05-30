@@ -5,6 +5,10 @@ import { RoutesList } from "../types/router.types";
 import { WelcomePatients } from "../pages/Welcome/WelcomePatients";
 import { WelcomeConditions } from "../pages/Welcome/WelcomeConditions";
 import { WelcomeFinish } from "../pages/Welcome/WelcomeFinish";
+import { PatientPinned } from "../pages/Informational/PatientPinned";
+import { PatientInvited } from "../pages/Informational/PatientInvited";
+import { OrderSent } from "../pages/Informational/OrderSent";
+import { HowGetResults } from "../pages/Informational/HowGetResults";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -17,7 +21,7 @@ export const routes: RoutesCollection = {
     public: [
         {
             Component: Main,
-            path: "/"
+            path: "/s"
         },
         {
             Component: WelcomePatients,
@@ -30,6 +34,22 @@ export const routes: RoutesCollection = {
         {
             Component: WelcomeFinish,
             path: "/welcome-finish"
+        },
+        {
+            Component: PatientPinned,
+            path: "/patient-pinned"
+        },
+        {
+            Component: PatientInvited,
+            path: "/patient-invited"
+        },
+        {
+            Component: OrderSent,
+            path: "/order-sent"
+        },
+        {
+            Component: HowGetResults,
+            path: "/how-get-results"
         }
     ],
     auth: [
