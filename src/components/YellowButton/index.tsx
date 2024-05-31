@@ -4,6 +4,6 @@ import styles from './yellowButton.module.scss'
 
 export const YellowButton: FC<HasNodeChildren & HasClassName> = ({children, className}) => {
   return (
-    <button className={`w-100p pd-15 f-c-col ${styles.button} ${className || ""}`}>{children}</button>
+    <button className={`w-100p f-c-col ${styles.button} ${className || ""}`}>{children}</button>
   )
 }

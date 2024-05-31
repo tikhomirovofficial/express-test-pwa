@@ -5,11 +5,16 @@ html {
     padding: 3rem;
 }
 .wrapper {
-    padding: 3rem;
+    padding: 0 3rem;
     width: 100%;
+}
+#root {
+    min-height: 100vh;
+    flex: 1;
 }
 body {
     background: #f4fafa;
+    min-height: 100vh;
 }
 .textButton {
     font-size: 1.4rem;
@@ -47,4 +52,19 @@ body {
     font-size: 1.4rem;
     font-weight: 600;
     color: rgba(18, 178, 179, 1)
+}
+.fz-xs {
+    font-size: 1.2rem;
+}
+.fz-s {
+    font-size: 1.2rem;
+}
+.fz-m {
+    font-size: 1.4rem;
+}
+.fz-l {
+    font-size: 1.6rem;
+}
+.fz-xl {
+    font-size: 2rem;
 }

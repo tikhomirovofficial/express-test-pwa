@@ -9,6 +9,8 @@ import { PatientPinned } from "../pages/Informational/PatientPinned";
 import { PatientInvited } from "../pages/Informational/PatientInvited";
 import { OrderSent } from "../pages/Informational/OrderSent";
 import { HowGetResults } from "../pages/Informational/HowGetResults";
+import { PhoneLogin } from "../pages/PhoneLogin";
+import { SmsLogin } from "../pages/SmsLogin";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -25,7 +27,7 @@ export const routes: RoutesCollection = {
         },
         {
             Component: WelcomePatients,
-            path: "/welcome-patients"
+            path: "/"
         },
         {
             Component: WelcomeConditions,
@@ -50,6 +52,14 @@ export const routes: RoutesCollection = {
         {
             Component: HowGetResults,
             path: "/how-get-results"
+        },
+        {
+            Component: PhoneLogin,
+            path: "/login/phone"
+        },
+        {
+            Component: SmsLogin,
+            path: "/login/sms"
         }
     ],
     auth: [

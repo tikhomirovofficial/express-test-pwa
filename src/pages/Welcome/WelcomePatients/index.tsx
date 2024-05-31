@@ -9,7 +9,7 @@ export const WelcomePatients = () => {
         title={"Работа с пациентами"}
         image={'images/welcome/1.jpg'}
         topContent={<Link to={'/'} className={`textButton`}>Пропустить</Link>}
-        content={<div className="f-1 f-column wrapper f-column-betw gap-10">
+        content={<div className="f-1 f-column AppContainer f-column-betw gap-10">
             <div className="list f-column gap-15">
                 <div className={`info-text-item d-f gap-10`}>
                     <TickBlueIcon />

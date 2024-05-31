@@ -5,7 +5,7 @@ import { MobileContainer } from './containers/MobileContainer';
 function App() {
     return (
         <MobileContainer>
-            <div className="App">
+            <div className="App m-100v">
                 <AppRoutes />
             </div>
         </MobileContainer>
