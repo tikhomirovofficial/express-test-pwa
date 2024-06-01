@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import './styles/tikstyles.css';
 import './styles/index.css';
 import './styles/animations.css';
+import './styles/light.css';
 
 
 const root = ReactDOM.createRoot(

@@ -39,7 +39,11 @@ body {
     font-weight: 500;
 }
 .c-yellow {
-    color: #FFCF00
+    color: #ffcf00;
+}
+.text {
+    font-size: 1.4rem;
+    line-height: 1.4;
 }
 .transparent-btn {
     color: #d7d7d7;
@@ -51,7 +55,7 @@ body {
 .c-blue {
     font-size: 1.4rem;
     font-weight: 600;
-    color: rgba(18, 178, 179, 1)
+    color: rgba(18, 178, 179, 1);
 }
 .fz-xs {
     font-size: 1.2rem;
@@ -67,4 +71,28 @@ body {
 }
 .fz-xl {
     font-size: 2rem;
+}
+.pin-item {
+    height: 1.3rem;
+    width: 1.3rem;
+    border-radius: 50%;
+    background: #c7eded;
+}
+.pin-item-filled {
+    background: #ffcf00;
+}
+.pin-btn {
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.113);
+    height: 4.8rem;
+    border-radius: 50%;
+    width: 4.8rem;
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+.pin-incorrect > .pin-item {
+    background: rgb(242, 59, 59);
+}
+.c-error {
+    color: rgb(242, 59, 59);
 }

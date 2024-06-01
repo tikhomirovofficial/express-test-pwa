@@ -11,6 +11,10 @@ import { OrderSent } from "../pages/Informational/OrderSent";
 import { HowGetResults } from "../pages/Informational/HowGetResults";
 import { PhoneLogin } from "../pages/PhoneLogin";
 import { SmsLogin } from "../pages/SmsLogin";
+import { PinCreate } from "../pages/Pin/PinCreate";
+import { PinLogin } from "../pages/Pin/PinLogin";
+import { ProfileCreate } from "../pages/ProfileCreate";
+import { DocumentAccept } from "../pages/DocumentAccept";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -60,6 +64,22 @@ export const routes: RoutesCollection = {
         {
             Component: SmsLogin,
             path: "/login/sms"
+        },
+        {
+            Component: PinCreate,
+            path: "/login/pin/create"
+        },
+        {
+            Component: PinLogin,
+            path: "/login/pin/login"
+        },
+        {
+            Component: ProfileCreate,
+            path: "/register/profile"
+        },
+        {
+            Component: DocumentAccept,
+            path: "/register/docs"
         }
     ],
     auth: [

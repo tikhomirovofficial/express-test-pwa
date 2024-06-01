@@ -3,16 +3,17 @@ import styles from './inputField.module.scss'
 import { HasClassName } from '../../types/common.types'
 
 type InputField = {
-    label?: string
+    label?: string,
+    placeholder?: string
 }
-export const InputField: FC<InputField & HasClassName> = ({ label, className }) => {
+export const InputField: FC<InputField & HasClassName> = ({ label, className, placeholder }) => {
     return (
         <div className={`f-column gap-10`}>
             {
-                label ? <label htmlFor="" className='fz-m fw-5'>Введите номер телефона, чтобы войти</label> : null
+                label ? <label htmlFor="" className='fz-m fw-5'>{label}</label> : null
             }
             <div className={`pd-20 ${styles.block}`}>
-                <input className={`w-100p ${className || ""}`} type="text" placeholder='+7' />
+                <input className={`w-100p fz-l ${className || ""}`} type="text" placeholder={placeholder} />
             </div>
         </div>
     )

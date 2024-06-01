@@ -1,8 +1,15 @@
 .button {
     border-radius: 6px;
-    color: #4D4D4D;
-    background: linear-gradient(45deg, #fb0 0%, #ffcb3d 52.6%, #ffda75 100%);
     font-weight: 600;
     font-size: 1.6rem;
     padding: 1.8rem 1.5rem;
+}
+.buttonYellow {
+    background: linear-gradient(45deg, #fb0 0%, #ffcb3d 52.6%, #ffda75 100%);
+    color: #4d4d4d;
+    border: 1px solid transparent;
+}
+.buttonUnfilled {
+    background: transparent;
+    border: 1px solid #fb0;
 }
