@@ -11,7 +11,7 @@ export const PhoneLogin = () => {
             top={
                 <div className='f-row-betw'>
                     <div></div>
-                    <h2 className="title">Вход</h2>
+                    <h2 className="title fw-6">Вход</h2>
                     <div></div>
                 </div>
             }>

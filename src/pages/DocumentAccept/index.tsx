@@ -9,7 +9,7 @@ export const DocumentAccept = () => {
         <BorderedPageLayout
             contentClassName={"f-column-betw"}>
             <div className="f-column gap-40">
-                <h2 className="title">Подпишите договор</h2>
+                <h2 className="title fw-6">Подпишите договор</h2>
                 <p className='fz-m c-lg text'>
                     Нажмите кнопку <span className={"c-dg fw-6"}>Подписать</span>, чтобы подписать договор. Нажмите <span className={"c-dg fw-6"}>Скачать</span>, чтобы сохранить документ на ваше устройство.
                 </p>
@@ -24,9 +24,7 @@ export const DocumentAccept = () => {
                             <a href="" className='c-yellow fz-l fw-5'>Скачать</a>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </BorderedPageLayout>
     )

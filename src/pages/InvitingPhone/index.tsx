@@ -4,29 +4,20 @@ import { Link } from 'react-router-dom'
 import { BorderedPageLayout } from '../BorderedPageLayout'
 import { InputField } from '../../components/InputField'
 
-export const SmsLogin = () => {
+export const InvitingPhone = () => {
     return (
         <BorderedPageLayout
             contentClassName={"f-column-betw"}
             top={
                 <div className='f-row-betw'>
                     <div></div>
-                    <h2 className="title fw-6">Код из СМС</h2>
+                    <h2 className="title fw-6">Приглашение пациента</h2>
                     <div></div>
                 </div>
             }>
             <div className="f-column gap-15">
-                <div className="f-column gap-10">
-                    <p className='fz-m fw-5'>Введите код из СМС +7 951 735-89-45</p>
-                    <div className="f-row-betw gap-10">
-                        <InputField className='txt-center' label={''} />
-                        <InputField className='txt-center' label={''} />
-                        <InputField className='txt-center' label={''} />
-                        <InputField className='txt-center' label={''} />
-                    </div>
-                </div>
-
-                <YellowButton>Отправить код еще раз</YellowButton>
+                <InputField placeholder='+7' label='Введите номер телефона пациента' />
+                <YellowButton>Продолжить</YellowButton>
             </div>
             <div>
                 <p className={`fz-s`}>

@@ -12,7 +12,7 @@ export const PinCreate = () => {
             top={
                 <div className='f-row-betw'>
                     <div></div>
-                    <h2 className="title">Придумайте пин-код</h2>
+                    <h2 className="title fw-6">Придумайте пин-код</h2>
                     <div></div>
                 </div>
             }>

@@ -96,3 +96,22 @@ body {
 .c-error {
     color: rgb(242, 59, 59);
 }
+.search-block {
+    border-radius: 6px;
+    background: #eff6f8;
+}
+.search-block input {
+    background: transparent;
+}
+.border-bottom {
+    border-bottom: 1px solid #f3f3f3;
+}
+.scrollableItemsList {
+    height: 100%;
+    overflow-y: auto;
+    top: 0;
+    left: 0
+}
+.scrollableItemsList::-webkit-scrollbar {
+    display: none;
+}

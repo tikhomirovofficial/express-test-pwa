@@ -15,6 +15,10 @@ import { PinCreate } from "../pages/Pin/PinCreate";
 import { PinLogin } from "../pages/Pin/PinLogin";
 import { ProfileCreate } from "../pages/ProfileCreate";
 import { DocumentAccept } from "../pages/DocumentAccept";
+import { InvitingForm } from "../pages/InvitingForm";
+import { InvitingPhone } from "../pages/InvitingPhone";
+import { OrderPatient } from "../pages/OrderPatient";
+import { OrderCategory } from "../pages/OrderCategory";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -80,6 +84,22 @@ export const routes: RoutesCollection = {
         {
             Component: DocumentAccept,
             path: "/register/docs"
+        },
+        {
+            Component: InvitingPhone,
+            path: "/inviting/phone"
+        },
+        {
+            Component: InvitingForm,
+            path: "/inviting/form"
+        },
+        {
+            Component: OrderPatient,
+            path: "/order/patient"
+        },
+        {
+            Component: OrderCategory,
+            path: "/order/category"
         }
     ],
     auth: [

@@ -4,40 +4,40 @@ import { Link } from 'react-router-dom'
 import { BorderedPageLayout } from '../BorderedPageLayout'
 import { InputField } from '../../components/InputField'
 
-export const ProfileCreate = () => {
+export const InvitingForm = () => {
     return (
         <BorderedPageLayout
             contentClassName={"f-column-betw"}
             top={
                 <div className='f-row-betw'>
                     <div></div>
-                    <h2 className="title fw-6">Настройки</h2>
+                    <h2 className="title fw-6">Приглашение пациента</h2>
                     <div></div>
                 </div>
             }>
             <div className="f-column gap-40">
-                <h2 className="title">Укажите информацию о себе для пациентов</h2>
+                <div className="f-column gap-15">
+                    <h2 className="title">Данные пациента</h2>
+                    <p className="text c-lg fz-m">
+                        Заполните данные ниже, чтобы пригласить пациента в приложение
+                    </p>
+                </div>
+
                 <div className="f-column gap-30">
                     <InputField placeholder='Иванов' label='Фамилия' />
                     <InputField placeholder='Иван' label='Имя' />
                     <InputField placeholder='Иванович' label='Отчество' />
                     <InputField placeholder={"ДД.ММ.ГГГГ"} label='Дата рождения' />
-                    <InputField placeholder='Место рождения' label='Место рождения' />
                     <div className="f-column gap-15">
-                        <p className='fz-m fw-5'>Ваш пол</p>
+                        <p className='fz-m fw-5'>Пол</p>
                         <div className="f-row-betw gap-15">
                             <YellowButton className={"f-1"}>Мужчина</YellowButton>
                             <YellowButton isFilled={false} className={"f-1"}>Женщина</YellowButton>
-
                         </div>
                     </div>
-
-                    <InputField placeholder='СССС НННННН' label='Серия и номер паспорта' />
-                    <InputField placeholder={"ДД.ММ.ГГГГ"} label='Когда выдан' />
-                    <InputField placeholder='Кем выдан паспорт' label='Кем выдан' />
                     <InputField placeholder='E-mail' label='E-mail' />
                 </div>
-                <YellowButton>Сохранить</YellowButton>
+                <YellowButton>Далее</YellowButton>
             </div>
         </BorderedPageLayout>
     )

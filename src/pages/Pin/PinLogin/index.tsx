@@ -12,7 +12,7 @@ export const PinLogin = () => {
             top={
                 <div className='f-row-betw'>
                     <div></div>
-                    <h2 className="title">Подтверждение входа</h2>
+                    <h2 className="title fw-6">Подтверждение входа</h2>
                     <div></div>
                 </div>
             }>
