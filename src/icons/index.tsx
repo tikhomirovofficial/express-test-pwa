@@ -100,6 +100,56 @@ export const CheckedCircle: FC<IconProps> = ({ width = 24, height = 24 }) => {
 
     );
 };
+export const AddIcon: FC<IconProps> = ({ width = 24, height = 24 }) => {
+    return (
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.6857 2H7.31429C4.04762 2 2 4.31208 2 7.58516V16.4148C2 19.6879 4.0381 22 7.31429 22H16.6857C19.9619 22 22 19.6879 22 16.4148V7.58516C22 4.31208 19.9619 2 16.6857 2Z" fill="#FFCF00" stroke="#FFCF00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M12 8.32715V15.6535" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15.6667 11.9904H8.33337" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    );
+};
+export const RemoveIcon: FC<IconProps> = ({ width = 24, height = 24 }) => {
+    return (
+        <svg width={width} height={height} viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.6857 2.5H7.31429C4.04762 2.5 2 4.81208 2 8.08516V16.9148C2 20.1879 4.0381 22.5 7.31429 22.5H16.6857C19.9619 22.5 22 20.1879 22 16.9148V8.08516C22 4.81208 19.9619 2.5 16.6857 2.5Z" fill="url(#paint0_linear_502_6077)" stroke="url(#paint1_linear_502_6077)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15.6667 12.4904H8.33337" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <defs>
+                <linearGradient id="paint0_linear_502_6077" x1="2" y1="22.5" x2="22" y2="2.5" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#12B2B3" />
+                    <stop offset="1" stop-color="#56E0E0" />
+                </linearGradient>
+                <linearGradient id="paint1_linear_502_6077" x1="2" y1="22.5" x2="22" y2="2.5" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#12B2B3" />
+                    <stop offset="1" stop-color="#56E0E0" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+    );
+};
+export const HeartIcon: FC<IconProps> = ({ width = 18, height = 18 }) => {
+    return (
+        <svg width={width} height={height} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.82076 15.6403C7.1928 14.6384 5.67833 13.4592 4.30447 12.1239C3.33858 11.1622 2.60325 9.98983 2.15482 8.69654C1.34786 6.18773 2.29045 3.31562 4.92834 2.46564C6.31471 2.01933 7.82884 2.27441 8.99707 3.15111C10.1657 2.27548 11.6793 2.02048 13.0658 2.46564C15.7037 3.31562 16.6531 6.18773 15.8461 8.69654C15.3977 9.98983 14.6623 11.1622 13.6965 12.1239C12.3226 13.4592 10.8081 14.6384 9.18016 15.6403L9.00385 15.75L8.82076 15.6403Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M11.8044 5.28955C12.6034 5.54478 13.1711 6.26208 13.2421 7.10604" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+    );
+};
+export const TrashIcon: FC<IconProps> = ({ width = 24, height = 24 }) => {
+    return (
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.3249 9.46777C19.3249 9.46777 18.7819 16.2028 18.4669 19.0398C18.3169 20.3948 17.4799 21.1888 16.1089 21.2138C13.4999 21.2608 10.8879 21.2638 8.27991 21.2088C6.96091 21.1818 6.13791 20.3778 5.99091 19.0468C5.67391 16.1848 5.13391 9.46777 5.13391 9.46777" stroke="#F40F0F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M20.7082 6.23926H3.75024" stroke="#F40F0F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M17.4407 6.23949C16.6557 6.23949 15.9797 5.68449 15.8257 4.91549L15.5827 3.69949C15.4327 3.13849 14.9247 2.75049 14.3457 2.75049H10.1127C9.5337 2.75049 9.0257 3.13849 8.8757 3.69949L8.6327 4.91549C8.4787 5.68449 7.8027 6.23949 7.0177 6.23949" stroke="#F40F0F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+    );
+};
+
+
+
 
 
 

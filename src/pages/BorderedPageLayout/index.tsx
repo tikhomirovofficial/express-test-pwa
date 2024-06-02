@@ -5,10 +5,13 @@ import { HasNodeChildren } from '../../types/common.types'
 type BorderedPageLayoutProps = {
     top?: ReactNode,
     contentClassName?: string
+    modal?: {
+        level: number
+    }
 }
-export const BorderedPageLayout: FC<BorderedPageLayoutProps & HasNodeChildren> = ({ top, children, contentClassName }) => {
+export const BorderedPageLayout: FC<BorderedPageLayoutProps & HasNodeChildren> = ({ top, children, contentClassName, modal }) => {
     return (
-        <div className={`${styles.borderedPage} gap-15 m-100v f-column`}>
+        <div style={modal !== undefined ? { paddingTop: `${5 + (2 * modal.level)}rem`, zIndex: modal.level * 4 } : undefined} className={`${styles.borderedPage} ${modal !== undefined ? styles.modal : ""} gap-15 m-100v f-column`}>
             {
                 top ?
                     <div className="wrapper">

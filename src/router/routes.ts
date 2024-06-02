@@ -19,6 +19,9 @@ import { InvitingForm } from "../pages/InvitingForm";
 import { InvitingPhone } from "../pages/InvitingPhone";
 import { OrderPatient } from "../pages/OrderPatient";
 import { OrderCategory } from "../pages/OrderCategory";
+import { OrderAnalysis } from "../pages/OrderAnalysis";
+import { OrderCart } from "../pages/Cart";
+import { Orders } from "../pages/Orders";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -100,6 +103,18 @@ export const routes: RoutesCollection = {
         {
             Component: OrderCategory,
             path: "/order/category"
+        },
+        {
+            Component: OrderAnalysis,
+            path: "/order/analysis"
+        },
+        {
+            Component: OrderCart,
+            path: "/order/cart"
+        },
+        {
+            Component: Orders,
+            path: "/orders"
         }
     ],
     auth: [

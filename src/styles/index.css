@@ -15,6 +15,18 @@ html {
 body {
     background: #f4fafa;
     min-height: 100vh;
+    max-height: 100vh;
+    overflow-y: hidden;
+}
+.pageScrollable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1;
+    overflow-y: auto;
+    height: 100%;
+    
 }
 .textButton {
     font-size: 1.4rem;
@@ -91,10 +103,10 @@ body {
     font-weight: 600;
 }
 .pin-incorrect > .pin-item {
-    background: rgb(242, 59, 59);
+    background: #f40f0f;
 }
 .c-error {
-    color: rgb(242, 59, 59);
+    color: #f40f0f;
 }
 .search-block {
     border-radius: 6px;
@@ -110,8 +122,14 @@ body {
     height: 100%;
     overflow-y: auto;
     top: 0;
-    left: 0
+    left: 0;
 }
 .scrollableItemsList::-webkit-scrollbar {
     display: none;
+}
+.titleTopOverflowed {
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

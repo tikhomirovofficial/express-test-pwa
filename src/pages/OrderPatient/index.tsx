@@ -40,6 +40,17 @@ export const OrderPatient = () => {
                         <PatientItem />
                         <PatientItem />
                         <PatientItem />
+                        <PatientItem />
+                        <PatientItem />
+                        <PatientItem />
+                        <PatientItem />
+                        <PatientItem />
+                        <PatientItem />
+                        <PatientItem />
+                        <PatientItem />
+                        <PatientItem />
+                        <PatientItem />
+                        <PatientItem />
                     </div>
                 </div>
                 <YellowButton>Далее</YellowButton>
