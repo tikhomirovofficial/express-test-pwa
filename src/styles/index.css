@@ -26,7 +26,6 @@ body {
     z-index: 1;
     overflow-y: auto;
     height: 100%;
-    
 }
 .textButton {
     font-size: 1.4rem;
@@ -132,4 +131,29 @@ body {
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+.whiteBorderedBlock {
+    border-radius: 1.6rem;
+    background: #fff;
+    box-shadow: 0px 1px 8px 0px rgba(19, 101, 101, 0.1);
+}
+.big-btn {
+    padding: 2.4rem;
+}
+.grayInfo {
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    background: #f8f8f8;
+}
+.status {
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    color: white;
+    border-radius: 2px;
+}
+.status-green {
+    background: #7ed321;
+}
+.text-underline {
+    text-decoration: underline;
 }

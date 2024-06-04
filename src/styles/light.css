@@ -1,3 +1,4 @@
+/*COLORS*/
 .c-lg {
     color: #a9a9a9;
 }
@@ -6,4 +7,8 @@
 }
 .c-dark {
     color: #4d4d4d;
+}
+/*BACKGROUND*/
+.bg-dark {
+    background-color: #4d4d4d;
 }
