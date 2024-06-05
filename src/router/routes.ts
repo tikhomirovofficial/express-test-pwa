@@ -22,6 +22,8 @@ import { OrderCategory } from "../pages/OrderCategory";
 import { OrderAnalysis } from "../pages/OrderAnalysis";
 import { OrderCart } from "../pages/Cart";
 import { Orders } from "../pages/Orders";
+import { Help } from "../pages/Help";
+import { Profile } from "../pages/Profile";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -115,13 +117,18 @@ export const routes: RoutesCollection = {
         {
             Component: Orders,
             path: "/orders"
+        },
+        {
+            Component: Help,
+            path: "/help"
+        },
+        {
+            Component: Profile,
+            path: "/profile"
         }
     ],
     auth: [
-        {
-            Component: NeededAuth,
-            path: "/profile"
-        }
+        
     ],
     non_auth: [
         {

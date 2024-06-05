@@ -1,0 +1,24 @@
+.bottomNav {
+    z-index: 2;
+    bottom: 0;
+    background: white;
+    left: 0;
+    padding-bottom: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #dadada;
+    box-shadow: 0px -1px 8px 0px rgba(53, 53, 53, 0.1);
+    position: fixed;
+    .navItem {
+        gap: 4px;
+    }
+    .navItemCurrent {
+        svg {
+            path {
+                stroke: #36CACB
+            }
+        }
+        p {
+            color: #36CACB
+        }
+    }
+}

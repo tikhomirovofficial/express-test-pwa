@@ -32,6 +32,9 @@ export const Orders = () => {
                 <div className="f-column gap-15">
                     <OrderItem />
                     <OrderItem />
+                    <OrderItem />
+                    <OrderItem />
+                    <OrderItem />
                 </div>
             </div>
         </BorderedPageLayout>
