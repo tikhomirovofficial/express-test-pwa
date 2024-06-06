@@ -15,7 +15,7 @@ export const Profile = () => {
     return (
         <BorderedPageLayout
             contentClassName={`f-column gap-50 ${styles.page}`}>
-            <BottomNav/>
+            <BottomNav current={3}/>
             <div className="f-column gap-15">
                 <h2 className="title txt-center">Подосёнов <br />Вячеслав Сергеевич</h2>
                 <div className={`d-f al-center ${styles.bonuses} gap-5`}>
