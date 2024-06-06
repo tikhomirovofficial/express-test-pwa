@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import {profileReducer} from "../features/profile/profileSlice";
+import { modalsReducer } from '../features/modals/modalsSlice';
 export const store = configureStore({
     reducer: {
-        profile: profileReducer
+        profile: profileReducer,
+        modals: modalsReducer
     }
 })
 

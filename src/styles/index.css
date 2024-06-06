@@ -24,8 +24,17 @@ body {
     left: 0;
     width: 100vw;
     z-index: 1;
-    overflow-y: auto;
     height: 100%;
+    transition: .3s transform;
+}
+.pageScrollable::-webkit-scrollbar {
+    display: none;
+}
+.scrollEnabled {
+    overflow-y: auto;
+}
+.scrollDisabled {
+    overflow-y: auto;
 }
 .textButton {
     font-size: 1.4rem;
@@ -159,5 +168,9 @@ body {
 }
 .pageZoomOut {
     transform: scale(0.91) translateY(-4rem);
-    
+}
+.countYellowBlack {
+    padding: 2px 8px;
+    border-radius: 1000px;
+    background: #ffcf00;
 }

@@ -3,18 +3,30 @@ import AppRoutes from "./router/AppRoutes";
 import { MobileContainer } from './containers/MobileContainer';
 import { Modal } from './components/Modal';
 import { OrderModal } from './components/Modals/OrderModal';
+import { Modals } from './components/Modals';
+import { useAppSelector } from './app/hooks';
 
 function App() {
-    const [opened, setOpened] = useState(false)
+    const modals = useAppSelector(state => state.modals)
+    const [someOpened, setSomeOpened] = useState(false)
+
+    useEffect(() => {
+        const modalsKeys = Object.keys(modals)
+        const some = modalsKeys.some(key => {
+            const typedKey = key as keyof typeof modals
+            return modals[typedKey]
+        })
+        setSomeOpened(some)
+    }, [modals])
+
     return (
         <>
-            <button>dsadas</button>
             <MobileContainer>
-                <div className="App p-rel m-100v pageScrollable">
+                <div className={`App p-rel m-100v pageScrollable ${!someOpened ? "scrollEnabled" : "pageZoomOut scrollDisabled"}`}>
                     <AppRoutes />
                 </div>
             </MobileContainer>
-            <OrderModal opened={opened} />
+            <Modals />
         </>
     );
 }

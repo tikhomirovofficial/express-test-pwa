@@ -8,7 +8,10 @@ import { HasNodeChildren } from '../../types/common.types'
 export type ModalProps = {
     opened: boolean
 }
-export const Modal: FC<HasNodeChildren & ModalProps> = ({ children, opened }) => {
+export type ModalContentProps = {
+    handleModal?: () => any
+}
+export const Modal: FC<HasNodeChildren & ModalProps & ModalContentProps> = ({ children, opened , handleModal}) => {
     const modalTransitions = useTransition(opened, {
         from: { y: 1000, x: 0 },
         enter: { y: 0, x: 0 },
@@ -31,7 +34,7 @@ export const Modal: FC<HasNodeChildren & ModalProps> = ({ children, opened }) =>
             {
                 modalTransitions((style, opened) => (
                     opened ?
-                        <animated.div style={style} className={`h-100p w-100v p-abs ${styles.modal}`}>
+                        <animated.div style={style} onClick={handleModal} className={`h-100p w-100v p-abs ${styles.modal}`}>
                             {children}
                         </animated.div> : null
                 ))
