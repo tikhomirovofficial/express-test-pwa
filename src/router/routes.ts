@@ -24,6 +24,8 @@ import { OrderCart } from "../pages/Cart";
 import { Orders } from "../pages/Orders";
 import { Help } from "../pages/Help";
 import { Profile } from "../pages/Profile";
+import { LoadingPage } from "../pages/LoadingPage";
+import { WifiProblem } from "../pages/WifiProblem";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -125,6 +127,14 @@ export const routes: RoutesCollection = {
         {
             Component: Profile,
             path: "/profile"
+        },
+        {
+            Component: LoadingPage,
+            path: "/loading"
+        },
+        {
+            Component: WifiProblem,
+            path: "/wifi-problem"
         }
     ],
     auth: [

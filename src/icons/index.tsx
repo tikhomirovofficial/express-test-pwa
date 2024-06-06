@@ -293,8 +293,23 @@ export const LogoutIcon: FC<IconProps> = ({ width = 64, height = 64 }) => {
         </svg>
     );
 };
+export const Preloader: FC<IconProps> = ({ width = 14, height = 14, fill = "#E2E2E9" }) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 14 14" fill="none">
+            <path
+                d="M7 13C5.81331 13 4.65327 12.6481 3.66658 11.9888C2.67988 11.3295 1.91085 10.3925 1.45672 9.2961C1.0026 8.19974 0.883777 6.99334 1.11529 5.82946C1.3468 4.66557 1.91824 3.59647 2.75736 2.75736C3.59647 1.91824 4.66557 1.3468 5.82946 1.11529C6.99334 0.883777 8.19974 1.0026 9.2961 1.45672C10.3925 1.91085 11.3295 2.67988 11.9888 3.66658C12.6481 4.65327 13 5.81331 13 7"
+                stroke={fill} strokeWidth="1" />
+        </svg>
+    )
+}
+export const WifiProblemIcon: FC<IconProps> = ({ width = 140, height = 116 }) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg"  width={width} height={height} viewBox="0 0 140 116" fill="none">
+            <path d="M70 108H70.062M8 36.7956C18.5209 26.6702 31.1983 19.0825 45.2 14.9271M26.6 63.7229C31.9476 58.0862 38.2407 53.4828 45.2 50.2135M94.8 14.9271C108.801 19.0825 121.479 26.6702 132 36.7956M94.8 50.2135C101.759 53.4828 108.052 58.0862 113.4 63.7229M70 8V81.3331" stroke="#FFCF00" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
 
-
+    )
+}
 
 
 
