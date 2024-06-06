@@ -1,36 +1,42 @@
-import React from 'react'
+import React, { FC, useState } from 'react'
 import { BorderedPageLayout } from '../../pages/BorderedPageLayout'
 import styles from './modal.module.scss'
 import { PatientItem } from '../ListItems/PatientItem'
+import { useTransition, animated } from '@react-spring/web'
+import { HasNodeChildren } from '../../types/common.types'
 
-export const Modal = () => {
+export type ModalProps = {
+    opened: boolean
+}
+export const Modal: FC<HasNodeChildren & ModalProps> = ({ children, opened }) => {
+    const modalTransitions = useTransition(opened, {
+        from: { y: 1000, x: 0 },
+        enter: { y: 0, x: 0 },
+        leave: { y: 1000, x: 0 }
+    })
+    const bgShadowTransitions = useTransition(opened, {
+        from: { opacity: 0 },
+        enter: { opacity: 1 },
+        leave: { opacity: 0 }
+    })
     return (
         <>
             {
-                <div className={`h-100p w-100p t-opacity-visible-3 ${styles.bgShadow} ${styles.bgShadowVisible}`}></div>
+                bgShadowTransitions((style, opened) => (
+                    opened ?
+                        <animated.div style={style} className={`h-100p w-100p  ${styles.bgShadow} ${styles.bgShadowVisible}`}></animated.div>
+                        : null
+                ))
             }
-            <div className={`h-100p w-100v p-abs ${styles.modal} ${styles.modalOpened}`}>
-                <BorderedPageLayout modal={{ level: 1 }}>
-                    <h2 className="title">Информация о заказе</h2>
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                    <PatientItem />
-                </BorderedPageLayout>
-            </div>
+            {
+                modalTransitions((style, opened) => (
+                    opened ?
+                        <animated.div style={style} className={`h-100p w-100v p-abs ${styles.modal}`}>
+                            {children}
+                        </animated.div> : null
+                ))
+            }
+
         </>
 
     )

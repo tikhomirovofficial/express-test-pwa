@@ -1,13 +1,6 @@
 .modal {
-    top: 0;
-    left: 0;
     z-index: 4;
     overflow-y: auto;
-    transition: .3s transform;
-    transform: translateY(150vh);
-}
-.modalOpened {
-    transform: translateY(0);
 }
 .bgShadow {
     z-index: 2;
