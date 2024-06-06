@@ -8,14 +8,20 @@ import { PatientItem } from '../../components/ListItems/PatientItem'
 import { AnalysisItem } from '../../components/ListItems/AnalysisItem'
 import { CartItem } from '../../components/ListItems/CartItem'
 import styles from './profile.module.scss'
-import { OrderItem } from '../../components/OrderItem'
 import { BottomNav } from '../../components/BottomNav'
+import { useAppDispatch } from '../../app/hooks'
+import { handleProfileEditModal } from '../../features/modals/modalsSlice'
 
 export const Profile = () => {
+    const dispatch = useAppDispatch()
+
+    const handleProfileModal = () => {
+        dispatch(handleProfileEditModal())
+    }
     return (
         <BorderedPageLayout
             contentClassName={`f-column gap-50 ${styles.page}`}>
-            <BottomNav current={3}/>
+            <BottomNav current={3} />
             <div className="f-column gap-15">
                 <h2 className="title txt-center">Подосёнов <br />Вячеслав Сергеевич</h2>
                 <div className={`d-f al-center ${styles.bonuses} gap-5`}>
@@ -26,7 +32,7 @@ export const Profile = () => {
             </div>
             <div className={`f-column gap-15 ${styles.hub}`}>
                 <div className="f-row-betw gap-15">
-                    <div className={`big-btn whiteBorderedBlock f-column-betw al-center gap-15 w-100p ${styles.profileBtn}`}>
+                    <div onClick={handleProfileModal} className={`big-btn whiteBorderedBlock f-column-betw al-center gap-15 w-100p ${styles.profileBtn}`}>
                         <ProfileCircleIcon />
                         <div className="f-column f-1 ">
                             <p className='c-black txt-center fw-5 fz-m'>Личные данные</p>

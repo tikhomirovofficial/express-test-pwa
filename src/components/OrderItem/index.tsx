@@ -1,30 +1,25 @@
-import React from 'react'
-import { DownloadIcon } from '../../icons'
+import React, { FC } from 'react'
 import styles from './orderItem.module.scss'
+import { HasId } from '../../types/common.types'
 
-export const OrderItem = () => {
+type OrderItemProps = {
+    rightTopText: string,
+    leftBottomText: string,
+    rightBottomText: string
+} & HasId
+export const OrderItem: FC<OrderItemProps> = ({ rightBottomText, rightTopText, leftBottomText, id }) => {
     return (
-        <div className={`${styles.item} f-column pd-15 whiteBorderedBlock gap-25`}>
-            <div className="d-f jc-between">
-                <div className="f-column gap-10">
-                    <div className="d-f al-center">
-                        <p className={`c-dark fz-m fw-5`}>Заказ №</p>
-                        <div className="grayInfo">
-                            <p className="c-dark fz-s">02-014</p>
-                        </div>
-                    </div>
-                    <p className="fz-s c-lg">Владислав Тузов</p>
+        <div className={`f-column gap-10 ${styles.orderItem} border-bottom`}>
+            <div className="f-row-betw">
+                <div className="d-f al-center gap-10">
+                    <p className='fz-m c-dark fw-5'>Заказ №</p>
+                    <div className="grayInfo fz-s">{id}</div>
                 </div>
-                <p className="fz-s c-lg">25.09.2023</p>
+                <p className='fz-m c-dark fw-6'>{rightTopText}</p>
             </div>
             <div className="f-row-betw">
-                <div className="status status-green fz-s">Не оплачен</div>
-                <div className={`d-f al-center gap-10 f-07 ${styles.download} jc-end`}>
-                    <DownloadIcon />
-                    <p className="text-underline fz-xs c-lg">
-                        Скачать результаты анализов
-                    </p>
-                </div>
+                <p className='fz-s c-lg'>{leftBottomText}</p>
+                <p className='fz-s c-lg'>{rightBottomText}</p>
             </div>
         </div>
     )

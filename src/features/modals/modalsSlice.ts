@@ -15,12 +15,12 @@ type ModalsSliceState = {
 }
 
 const initialState: ModalsSliceState = {
-    orderInfoModal: !false,
+    orderInfoModal: false,
     patientsModal: false,
     bonusesModal: false,
     aboutAppModal: false,
     bonusesBottomSheet: false,
-    ordersFinancesModal: false,
+    ordersFinancesModal: !false,
     analysisInfoModal: false,
     profileEditModal: false,
     patientInfoModal: false,

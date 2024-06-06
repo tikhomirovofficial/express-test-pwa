@@ -31,7 +31,6 @@ export const ProfileCreate = () => {
 
                         </div>
                     </div>
-
                     <InputField placeholder='СССС НННННН' label='Серия и номер паспорта' />
                     <InputField placeholder={"ДД.ММ.ГГГГ"} label='Когда выдан' />
                     <InputField placeholder='Кем выдан паспорт' label='Кем выдан' />

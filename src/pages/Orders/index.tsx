@@ -8,7 +8,7 @@ import { PatientItem } from '../../components/ListItems/PatientItem'
 import { AnalysisItem } from '../../components/ListItems/AnalysisItem'
 import { CartItem } from '../../components/ListItems/CartItem'
 import styles from '../Profile/profile.module.scss'
-import { OrderItem } from '../../components/OrderItem'
+import { OrderCard } from '../../components/OrderCard'
 import { BottomNav } from '../../components/BottomNav'
 
 export const Orders = () => {
@@ -32,11 +32,11 @@ export const Orders = () => {
             <div className={`f-column gap-25 ${styles.hub}`}>
                 <h2 className="title">Заказы анализов</h2>
                 <div className="f-column gap-15">
-                    <OrderItem />
-                    <OrderItem />
-                    <OrderItem />
-                    <OrderItem />
-                    <OrderItem />
+                    <OrderCard />
+                    <OrderCard />
+                    <OrderCard />
+                    <OrderCard />
+                    <OrderCard />
                 </div>
             </div>
         </BorderedPageLayout>

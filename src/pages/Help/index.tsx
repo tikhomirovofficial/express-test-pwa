@@ -8,7 +8,6 @@ import { PatientItem } from '../../components/ListItems/PatientItem'
 import { AnalysisItem } from '../../components/ListItems/AnalysisItem'
 import { CartItem } from '../../components/ListItems/CartItem'
 import styles from './help.module.scss'
-import { OrderItem } from '../../components/OrderItem'
 import { BottomNav } from '../../components/BottomNav'
 
 export const Help = () => {
