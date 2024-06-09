@@ -5,10 +5,10 @@ import { useAppDispatch } from '../../../app/hooks'
 import { handleOrderInfoModal } from '../../../features/modals/modalsSlice'
 import { ModalContentProps } from '../../Modal'
 
-export const OrderModalContent: FC<ModalContentProps> = ({handleModal}) => {
+export const OrderModalContent: FC<ModalContentProps> = ({ handleModal, level }) => {
     return (
         <BorderedPageLayout
-            modal={{ level: 1 }}
+            modal={{ level: level || 1 }}
             handleModal={handleModal}
             contentClassName='f-column gap-40'>
             <div className="d-f jc-between">
@@ -24,7 +24,7 @@ export const OrderModalContent: FC<ModalContentProps> = ({handleModal}) => {
             <div className="f-column gap-35">
                 <div className="f-column gap-15">
                     <h2 className="title">Информация о заказе</h2>
-                    <div className="f-column gap-10">
+                    <div style={{ maxWidth: 230 }} className="f-column gap-10">
                         <div className="f-row-betw">
                             <p className={`fz-m c-lg`}>Статус</p>
                             <p className={`fz-m c-dark`}>Отправлен</p>

@@ -2,18 +2,18 @@ import React, { FC } from 'react'
 import { Modal, ModalProps } from '../../Modal'
 import { FinancesModalContent } from './content'
 import { useAppDispatch } from '../../../app/hooks'
-import { handleOrderInfoModal, handleProfileEditModal } from '../../../features/modals/modalsSlice'
+import { handleOrderInfoModal, handleOrdersFinancesModal, handleProfileEditModal } from '../../../features/modals/modalsSlice'
 
 
-export const FinancesModal: FC<ModalProps> = ({ opened }) => {
+export const FinancesModal: FC<ModalProps> = ({ opened, level}) => {
     const dispatch = useAppDispatch()
 
     const handleModal = () => {
-        dispatch(handleProfileEditModal())
+        dispatch(handleOrdersFinancesModal())
     }
     return (
         <Modal opened={opened}>
-            <FinancesModalContent handleModal={handleModal} />
+            <FinancesModalContent  level={level} handleModal={handleModal} />
         </Modal>
     )
 }

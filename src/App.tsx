@@ -14,7 +14,7 @@ function App() {
         const modalsKeys = Object.keys(modals)
         const some = modalsKeys.some(key => {
             const typedKey = key as keyof typeof modals
-            return modals[typedKey]
+            return modals[typedKey].opened
         })
         setSomeOpened(some)
     }, [modals])

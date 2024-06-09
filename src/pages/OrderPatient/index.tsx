@@ -37,20 +37,11 @@ export const OrderPatient = () => {
                 </div>
                 <div className="f-1 p-rel">
                     <div className="list p-abs w-100p f-column scrollableItemsList">
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
-                        <PatientItem />
+                        {
+                            [1, 2, 3, 4, 5].map(item => (
+                                <PatientItem />
+                            ))
+                        }
                     </div>
                 </div>
                 <YellowButton>Далее</YellowButton>

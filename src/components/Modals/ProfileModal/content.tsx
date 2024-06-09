@@ -7,10 +7,10 @@ import { ModalContentProps } from '../../Modal'
 import { InputField } from '../../InputField'
 import { YellowButton } from '../../YellowButton'
 
-export const ProfileModalContent: FC<ModalContentProps> = ({ handleModal }) => {
+export const ProfileModalContent: FC<ModalContentProps> = ({ handleModal, level }) => {
     return (
         <BorderedPageLayout
-            modal={{ level: 1 }}
+            modal={{ level: level || 1 }}
             handleModal={handleModal}
             contentClassName='f-column gap-40'>
             <div className="d-f jc-between">

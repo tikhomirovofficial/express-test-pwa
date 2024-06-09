@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../../app/hooks'
 import { handleOrderInfoModal, handleProfileEditModal } from '../../../features/modals/modalsSlice'
 
 
-export const ProfileModal: FC<ModalProps> = ({ opened }) => {
+export const ProfileModal: FC<ModalProps> = ({ opened, level }) => {
     const dispatch = useAppDispatch()
 
     const handleModal = () => {
@@ -13,7 +13,7 @@ export const ProfileModal: FC<ModalProps> = ({ opened }) => {
     }
     return (
         <Modal opened={opened}>
-            <ProfileModalContent handleModal={handleModal} />
+            <ProfileModalContent level={level} handleModal={handleModal} />
         </Modal>
     )
 }

@@ -6,12 +6,14 @@ import { useTransition, animated } from '@react-spring/web'
 import { HasNodeChildren } from '../../types/common.types'
 
 export type ModalProps = {
-    opened: boolean
+    opened: boolean,
+    level?: number
 }
 export type ModalContentProps = {
-    handleModal?: () => any
+    handleModal?: () => any,
+    level?: number
 }
-export const Modal: FC<HasNodeChildren & ModalProps & ModalContentProps> = ({ children, opened , handleModal}) => {
+export const Modal: FC<HasNodeChildren & ModalProps & ModalContentProps> = ({ children, opened, handleModal }) => {
     const modalTransitions = useTransition(opened, {
         from: { y: 1000, x: 0 },
         enter: { y: 0, x: 0 },
@@ -27,14 +29,14 @@ export const Modal: FC<HasNodeChildren & ModalProps & ModalContentProps> = ({ ch
             {
                 bgShadowTransitions((style, opened) => (
                     opened ?
-                        <animated.div style={style} className={`h-100p w-100p  ${styles.bgShadow} ${styles.bgShadowVisible}`}></animated.div>
+                        <animated.div style={style} className={`h-100p w-100p   ${styles.bgShadow} ${styles.bgShadowVisible}`}></animated.div>
                         : null
                 ))
             }
             {
                 modalTransitions((style, opened) => (
                     opened ?
-                        <animated.div style={style} onClick={handleModal} className={`h-100p w-100v p-abs ${styles.modal}`}>
+                        <animated.div style={style} onClick={handleModal} className={`h-100p w-100v p-abs  ${styles.modal}`}>
                             {children}
                         </animated.div> : null
                 ))
