@@ -36,8 +36,8 @@ const initialState: ModalsSliceState = {
         level: 1
     },
     bonusesBottomSheet: {
-        opened: false,
-        level: 1
+        opened: !false,
+        level: 2
     },
     ordersFinancesModal: {
         opened: false,

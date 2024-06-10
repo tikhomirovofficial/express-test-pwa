@@ -8,6 +8,7 @@ import { PatientModal } from './PatientModal'
 import { AboutAppModal } from './AboutAppModal'
 import { ProductModal } from './ProductModal'
 import { BonusesModal } from './BonusesModal'
+import { BonusesPatientModal } from './BonusesPatientModal'
 
 export const Modals = () => {
     const {
@@ -19,6 +20,7 @@ export const Modals = () => {
         aboutAppModal,
         analysisInfoModal,
         patientOrderInfoModal,
+        bonusesBottomSheet,
         bonusesModal
     } = useAppSelector(state => state.modals)
     return (
@@ -32,6 +34,7 @@ export const Modals = () => {
             <ProductModal level={analysisInfoModal.level} opened={analysisInfoModal.opened} />
             <OrderModal level={patientOrderInfoModal.level} opened={patientOrderInfoModal.opened} />
             <BonusesModal level={bonusesModal.level} opened={bonusesModal.opened} />
+            <BonusesPatientModal level={bonusesBottomSheet.level} opened={bonusesBottomSheet.opened} />
         </>
     )
 }
