@@ -5,6 +5,7 @@ import { Modal } from './components/Modal';
 import { OrderModal } from './components/Modals/OrderModal';
 import { Modals } from './components/Modals';
 import { useAppSelector } from './app/hooks';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 function App() {
     const modals = useAppSelector(state => state.modals)
@@ -20,14 +21,14 @@ function App() {
     }, [modals])
 
     return (
-        <>
+        <SkeletonTheme baseColor="lightgray" highlightColor="#fff">
             <MobileContainer>
                 <div className={`App p-rel m-100v pageScrollable ${!someOpened ? "scrollEnabled" : "pageZoomOut scrollDisabled"}`}>
                     <AppRoutes />
                 </div>
             </MobileContainer>
             <Modals />
-        </>
+        </SkeletonTheme>
     );
 }
 

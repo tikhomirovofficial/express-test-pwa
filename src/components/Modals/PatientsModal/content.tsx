@@ -8,6 +8,8 @@ import { InputField } from '../../InputField'
 import { YellowButton } from '../../YellowButton'
 import { HeartIcon } from '../../../icons'
 import { OrderItem } from '../../OrderItem'
+import Skeleton from 'react-loading-skeleton'
+const loading = false
 
 export const PatientsModalContent: FC<ModalContentProps> = ({ handleModal, level }) => {
     return (
@@ -21,13 +23,25 @@ export const PatientsModalContent: FC<ModalContentProps> = ({ handleModal, level
                 <div className='f-03'></div>
             </div>
             <div className="f-1 p-rel h-100p">
-                <div className="list p-abs w-100p f-column scrollableItemsList">
-                    {
-                        [1, 2, 3, 4, 5].map(item => (
-                            <PatientItem />
-                        ))
-                    }
-                </div>
+                {
+                    !loading ?
+                        <div className="list p-abs w-100p f-column scrollableItemsList">
+                            {
+                                [1, 2, 3, 4, 5].map(item => (
+                                    <PatientItem />
+                                ))
+                            }
+                        </div> :
+                        <>
+                            <div className="f-column gap-5">
+                                <Skeleton borderRadius={6} height={50} />
+                                <Skeleton borderRadius={6} height={50} />
+                                <Skeleton borderRadius={6} height={50} />
+                                <Skeleton borderRadius={6} height={50} />
+                            </div>
+                        </>
+                }
+
             </div>
             <YellowButton>Пригласить пациентов</YellowButton>
         </BorderedPageLayout>

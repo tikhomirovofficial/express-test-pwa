@@ -13,8 +13,7 @@ type ModalsSliceState = {
     analysisInfoModal: ModalStateProps
     bonusesModal: ModalStateProps
     ordersFinancesModal: ModalStateProps,
-    patientInfoModal: ModalStateProps,
-    patientInvitingModal: ModalStateProps,
+    patientInfoModal: ModalStateProps
     patientOrderInfoModal: ModalStateProps
 }
 
@@ -28,7 +27,7 @@ const initialState: ModalsSliceState = {
         level: 1
     },
     bonusesModal: {
-        opened: !false,
+        opened: false,
         level: 1
     },
     aboutAppModal: {
@@ -36,7 +35,7 @@ const initialState: ModalsSliceState = {
         level: 1
     },
     bonusesBottomSheet: {
-        opened: !false,
+        opened: false,
         level: 2
     },
     ordersFinancesModal: {
@@ -55,10 +54,6 @@ const initialState: ModalsSliceState = {
         opened: false,
         level: 2
     },
-    patientInvitingModal: {
-        opened: false,
-        level: 1
-    },
     patientOrderInfoModal: {
         opened: false,
         level: 3
@@ -75,7 +70,6 @@ export const ModalsSlice = createSlice({
         handleAboutModal: (state) => { state.aboutAppModal.opened = !state.aboutAppModal },
         handleBonusesModal: (state) => { state.bonusesModal.opened = !state.bonusesModal },
         handlePatientInfoModal: (state) => { state.patientInfoModal.opened = !state.patientInfoModal },
-        handlePatientInvitingModal: (state) => { state.patientInvitingModal.opened = !state.patientInvitingModal },
         handlePatientOrderInfoModal: (state) => { state.patientOrderInfoModal.opened = !state.patientOrderInfoModal },
         handleBonusesBottomSheet: (state) => { state.bonusesBottomSheet.opened = !state.bonusesBottomSheet },
         handleOrdersFinancesModal: (state) => { state.ordersFinancesModal.opened = !state.ordersFinancesModal },
@@ -90,7 +84,6 @@ export const {
     handlePatientInfoModal,
     handleBonusesModal,
     handleAboutModal,
-    handlePatientInvitingModal,
     handleBonusesBottomSheet,
     handleAnalysisInfoModal,
     handlePatientOrderInfoModal,

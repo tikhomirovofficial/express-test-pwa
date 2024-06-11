@@ -8,6 +8,8 @@ import { HeartIcon, LogoLongIcon } from '../../../icons'
 import { YellowButton } from '../../YellowButton'
 import { OrderCard } from '../../OrderCard'
 import { DocumentItem } from '../../ListItems/DocumentItem'
+import Skeleton from 'react-loading-skeleton'
+const loading = false
 
 export const ProductModalContent: FC<ModalContentProps> = ({ handleModal, level }) => {
     return (
@@ -23,9 +25,12 @@ export const ProductModalContent: FC<ModalContentProps> = ({ handleModal, level 
 
             <div className="gap-35 f-column">
                 <div className="f-column gap-15">
-                    <h2 className="title">
-                        Индекс ROMA (включает исследования СА 125 и НЕ-4) (П)
-                    </h2>
+                    {
+                        loading ? <Skeleton borderRadius={6} height={60} /> : <h2 className="title">
+                            Индекс ROMA (включает исследования СА 125 и НЕ-4) (П)
+                        </h2>
+                    }
+
                     {/* <div style={{ maxWidth: 230 }} className="f-column gap-10">
                         <div className="f-row-betw">
                             <p className={`fz-m c-lg`}>Версия</p>
@@ -35,9 +40,12 @@ export const ProductModalContent: FC<ModalContentProps> = ({ handleModal, level 
                 </div>
                 <div className={`f-column gap-15`}>
                     <h2 className="fw-7 fz-m">Описание</h2>
-                    <p className="text c-lg fz-m">
-                        Если у вас возникли вопросы или вам нужна помощь в работе приложения, то вы можете связаться с нами удобным способом
-                    </p>
+                    {
+                        loading ? <Skeleton borderRadius={6} height={100} /> : <p className="text c-lg fz-m">
+                            Если у вас возникли вопросы или вам нужна помощь в работе приложения, то вы можете связаться с нами удобным способом
+                        </p>
+                    }
+
                 </div>
 
             </div>

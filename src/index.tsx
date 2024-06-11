@@ -8,12 +8,14 @@ import './styles/tikstyles.css';
 import './styles/index.css';
 import './styles/animations.css';
 import './styles/light.css';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
+    
     <BrowserRouter>
         <Provider store={store}>
             <App />

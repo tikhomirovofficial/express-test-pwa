@@ -13,3 +13,6 @@
     background: transparent;
     border: 1px solid #fb0;
 }
+.button:disabled {
+    background: rgb(227, 227, 227);
+}

@@ -6,7 +6,9 @@ import { InputField } from '../../components/InputField'
 import { AddIcon, ArrowRight, AvatarIcon, CheckedCircle, SearchIcon, UncheckedCircle } from '../../icons'
 import { PatientItem } from '../../components/ListItems/PatientItem'
 import { AnalysisItem } from '../../components/ListItems/AnalysisItem'
-
+import { CategoryItem } from '../../components/ListItems/CategoryItem'
+import Skeleton from 'react-loading-skeleton'
+const loading = !false
 export const OrderCategory = () => {
     return (
         <BorderedPageLayout
@@ -36,22 +38,23 @@ export const OrderCategory = () => {
                     </div>
                 </div>
                 <div className="f-1 p-rel">
-                    <div className="list p-abs w-100p f-column scrollableItemsList gap-10">
-                        <div className="category-item f-row-betw gap-15">
-                            <div className="d-f gap-5">
-                                <p className='c-dark fz-m fw-5'>Прочее</p>
-                                <p className='c-lg fz-m fw-5'>
-                                    156
-                                </p>
-                            </div>
-                            <div className="f-c-col">
-                                <ArrowRight />
-                            </div>
-                        </div>
-                        
-                        <AnalysisItem/>
-                        <AnalysisItem/>
-                    </div>
+                    {
+                        !loading ?
+                            <div className="list p-abs w-100p f-column scrollableItemsList gap-10">
+                                <CategoryItem />
+                                <AnalysisItem />
+                                <AnalysisItem />
+                            </div> :
+                            <>
+                                <div className="f-column gap-5">
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+                                </div>
+                            </>
+                    }
+
                 </div>
                 <YellowButton>Далее</YellowButton>
             </div>

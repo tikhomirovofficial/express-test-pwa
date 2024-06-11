@@ -11,6 +11,8 @@ import styles from './profile.module.scss'
 import { BottomNav } from '../../components/BottomNav'
 import { useAppDispatch } from '../../app/hooks'
 import { handleProfileEditModal } from '../../features/modals/modalsSlice'
+import Skeleton from 'react-loading-skeleton'
+const loading = !true
 
 export const Profile = () => {
     const dispatch = useAppDispatch()
@@ -23,12 +25,21 @@ export const Profile = () => {
             contentClassName={`f-column gap-50 ${styles.page}`}>
             <BottomNav current={3} />
             <div className="f-column gap-15">
-                <h2 className="title txt-center">Подосёнов <br />Вячеслав Сергеевич</h2>
-                <div className={`d-f al-center ${styles.bonuses} gap-5`}>
-                    <HeartIcon />
-                    <p className={`fz-l c-dark fw-6`}>54 Бонуса</p>
-                </div>
-
+                {
+                    loading ? <>
+                        <div className="f-column gap-10 al-center">
+                            <Skeleton height={24} width={240} borderRadius={6} />
+                            <Skeleton height={24} width={150} borderRadius={6} />
+                            <Skeleton height={28} width={170} borderRadius={6} />
+                        </div>
+                    </> : <>
+                        <h2 className="title txt-center">Подосёнов <br />Вячеслав Сергеевич</h2>
+                        <div className={`d-f al-center ${styles.bonuses} gap-5`}>
+                            <HeartIcon />
+                            <p className={`fz-l c-dark fw-6`}>54 Бонуса</p>
+                        </div>
+                    </>
+                }
             </div>
             <div className={`f-column gap-15 ${styles.hub}`}>
                 <div className="f-row-betw gap-15">

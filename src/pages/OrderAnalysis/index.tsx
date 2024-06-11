@@ -6,7 +6,8 @@ import { InputField } from '../../components/InputField'
 import { AddIcon, ArrowRight, AvatarIcon, CheckedCircle, SearchIcon, UncheckedCircle } from '../../icons'
 import { PatientItem } from '../../components/ListItems/PatientItem'
 import { AnalysisItem } from '../../components/ListItems/AnalysisItem'
-
+import Skeleton from 'react-loading-skeleton'
+const loading = false
 export const OrderAnalysis = () => {
     return (
         <BorderedPageLayout
@@ -36,10 +37,21 @@ export const OrderAnalysis = () => {
                     </div>
                 </div>
                 <div className="f-1 p-rel">
-                    <div className="list p-abs w-100p f-column scrollableItemsList gap-10">
-                        <AnalysisItem />
-                        <AnalysisItem />
-                    </div>
+                    {
+                        !loading ?
+                            <div className="list p-abs w-100p f-column scrollableItemsList gap-10">
+                                <AnalysisItem />
+                                <AnalysisItem />
+                            </div> :
+                            <>
+                                <div className="f-column gap-5">
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+
+                                </div>
+                            </>
+                    }
                 </div>
                 <YellowButton>Корзина</YellowButton>
             </div>

@@ -9,6 +9,7 @@ import { YellowButton } from '../../YellowButton'
 import { HeartIcon } from '../../../icons'
 import { OrderItem } from '../../OrderItem'
 import BarChart from '../../BarChart'
+import Skeleton from 'react-loading-skeleton'
 
 
 type DailyStars = {
@@ -19,7 +20,7 @@ type Series = {
     label: string,
     data: { date: Date, stars: number }[]
 }
-
+const loading = false
 export const BonusesModalContent: FC<ModalContentProps> = ({ handleModal, level }) => {
 
 
@@ -34,13 +35,26 @@ export const BonusesModalContent: FC<ModalContentProps> = ({ handleModal, level 
                 <div className='f-025'></div>
             </div>
             <div className="f-column gap-15 f-1">
-                <BarChart />
+                {
+                    !loading ?
+                        <BarChart /> :
+                        <Skeleton height={160} borderRadius={6} width={"100%"} />
+                }
+
                 <div className="f-1 p-rel h-100p">
                     <div className="list p-abs w-100p f-column scrollableItemsList">
                         {
-                            [1, 2, 3, 4, 5, 1, 1, 1, 1, 1].map(item => (
-                                <PatientItem />
-                            ))
+                            loading ?
+                                <div className="f-column gap-5">
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+                                </div>
+                                :
+                                [1, 2, 3, 4, 5, 1, 1, 1, 1, 1].map(item => (
+                                    <PatientItem />
+                                ))
                         }
                     </div>
                 </div>

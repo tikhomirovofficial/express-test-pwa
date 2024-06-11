@@ -41,8 +41,6 @@ export const Modal: FC<HasNodeChildren & ModalProps & ModalContentProps> = ({ ch
                         </animated.div> : null
                 ))
             }
-
         </>
-
     )
 }

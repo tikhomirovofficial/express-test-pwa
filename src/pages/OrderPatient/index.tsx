@@ -5,6 +5,9 @@ import { BorderedPageLayout } from '../BorderedPageLayout'
 import { InputField } from '../../components/InputField'
 import { AvatarIcon, CheckedCircle, SearchIcon, UncheckedCircle } from '../../icons'
 import { PatientItem } from '../../components/ListItems/PatientItem'
+import Skeleton from 'react-loading-skeleton'
+
+const loading = false
 
 export const OrderPatient = () => {
     return (
@@ -36,13 +39,24 @@ export const OrderPatient = () => {
                     </div>
                 </div>
                 <div className="f-1 p-rel">
-                    <div className="list p-abs w-100p f-column scrollableItemsList">
-                        {
-                            [1, 2, 3, 4, 5].map(item => (
-                                <PatientItem />
-                            ))
-                        }
-                    </div>
+                    {
+                        !loading ?
+                            <div className="list p-abs w-100p f-column scrollableItemsList">
+                                {
+                                    [1, 2, 3, 4, 5].map(item => (
+                                        <PatientItem />
+                                    ))
+                                }
+                            </div> :
+                            <>
+                                <div className="f-column gap-5">
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+                                    <Skeleton borderRadius={6} height={50} />
+                                </div>
+                            </>
+                    }
                 </div>
                 <YellowButton>Далее</YellowButton>
             </div>
