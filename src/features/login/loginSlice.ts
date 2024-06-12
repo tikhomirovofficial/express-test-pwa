@@ -36,7 +36,7 @@ const initialState: LoginSliceType = {
     access_token: "",
     token: {
         checking: true,
-        valid: false
+        valid: true
     },
     auth: {
         loading: false,
@@ -60,42 +60,43 @@ const initialState: LoginSliceType = {
     }
 }
 
-export const logout = createAsyncThunk(
-    'logout',
-    async (_, { dispatch }) => {
-        await deleteTokens()
-    }
-)
-
 export const sendAuthPhone = createAsyncThunk(
     'login/phone',
     async (req: AuthReq, { dispatch }) => {
-        const res: AxiosResponse<AuthRes> = await UserApi.LoginPhone(req)
-        if (!res.status || !res.data.status) {
-            throw new Error("Ошибка сервера!")
-        }
-        return res.data
+        // const res: AxiosResponse<AuthRes> = await UserApi.LoginPhone(req)
+        // if (!res.status || !res.data.status) {
+        //     throw new Error("Ошибка сервера!")
+        // }
+        // return res.data
+        return new Promise<AuthRes>((res, rej) => {
+            setTimeout(() => {
+                res({
+                    status: true
+                })
+            }, 1000)
+        })
     }
 )
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE3MDY4MjM3MTUsImV4cCI6MTczODM1OTcxNSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.XIwgkYXEV4jr8ykkkPq196lsIDOw9V05lysW4DswROM"
 export const sendAuthCode = createAsyncThunk(
     'login/code',
     async (req: AuthAcceptReq, { dispatch }) => {
-        const res: AxiosResponse<AuthAcceptRes> = await UserApi.LoginCode(req)
-        if (!res.data) {
-            throw new Error("Ошибка сервера!")
-        }
-        if (res.status === 401) {
-            throw new Error("Неверный код!")
-        }
-        storeTokens({ refresh: res.data.refresh, access: res.data.access })
-        return res.data
-        // return new Promise<AuthRes>((res, rej) => {
-        //     setTimeout(() => {
-        //         res(resp)
-        //     }, 1000)
-        // })
-
+        // const res: AxiosResponse<AuthAcceptRes> = await UserApi.LoginCode(req)
+        // if (!res.data) {
+        //     throw new Error("Ошибка сервера!")
+        // }
+        // if (res.status === 401) {
+        //     throw new Error("Неверный код!")
+        // }
+        // storeTokens({ refresh: res.data.refresh, access: res.data.access })
+        // return res.data
+        return new Promise<AuthAcceptRes>((res, rej) => {
+            setTimeout(() => {
+                res({
+                    access: "dsadasdsadsa",
+                    refresh: "dsadsa"
+                })
+            }, 1000)
+        })
     }
 )
 
@@ -120,6 +121,9 @@ export const LoginSlice = createSlice({
         },
         resetLoginForm: (state) => {
             state.auth = initialState.auth
+        },
+        setValidToken: (state, action: PayloadAction<boolean>) => {
+            state.token.valid = action.payload
         },
         resetLoginCodeStatus: (state) => {
             state.auth.success.code = null
@@ -167,7 +171,7 @@ export const LoginSlice = createSlice({
             const isBadCode = action.error.code === "ERR_BAD_REQUEST"
             state.auth.loading = false
             state.auth.success.code = false
-            state.auth.errors.code = String(isBadCode ? "Неверный код"  :action.error.message)
+            state.auth.errors.code = String(isBadCode ? "Неверный код" : action.error.message)
         })
         // //CHECK TOKEN IS VALID
         // builder.addCase(checkToken.pending, (state, action) => {
@@ -183,16 +187,6 @@ export const LoginSlice = createSlice({
         //     state.token.checking = false
         // })
         //LOGOUT
-        builder.addCase(logout.pending, (state, action) => {
-            state.token.checking = true
-        })
-        builder.addCase(logout.fulfilled, (state, action) => {
-            state.token.valid = false
-            state.token.checking = false
-        })
-        builder.addCase(logout.rejected, (state, action) => {
-            state.token.checking = false
-        })
     },
 })
 
@@ -200,6 +194,7 @@ export const {
     handleLoginForm,
     resetLoginForm,
     resetLoginCodeStatus,
+    setValidToken,
     resetLoginPhoneStatus,
     setCodeFreezedSecs,
     setCodeIsFreezed

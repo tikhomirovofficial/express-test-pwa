@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { InfoPageLayout } from '../../InfoPageLayout'
 import { YellowButton } from '../../../components/YellowButton'
 import { TickBlueIcon } from '../../../icons'
 import { Link } from 'react-router-dom'
+import { useAppDispatch } from '../../../app/hooks'
+import { setAlreadyBeen } from '../../../features/access/accessSlice'
 
 export const WelcomePatients = () => {
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(setAlreadyBeen(true))
+    }, [])
+
     return <InfoPageLayout
         title={"Работа с пациентами"}
         image={'images/welcome/1.jpg'}
