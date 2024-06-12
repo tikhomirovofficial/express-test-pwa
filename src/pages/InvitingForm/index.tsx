@@ -3,6 +3,7 @@ import { YellowButton } from '../../components/YellowButton'
 import { Link } from 'react-router-dom'
 import { BorderedPageLayout } from '../BorderedPageLayout'
 import { InputField } from '../../components/InputField'
+import { DATE_MASK } from '../../config/masks'
 
 export const InvitingForm = () => {
     return (
@@ -27,7 +28,7 @@ export const InvitingForm = () => {
                     <InputField placeholder='Иванов' label='Фамилия' />
                     <InputField placeholder='Иван' label='Имя' />
                     <InputField placeholder='Иванович' label='Отчество' />
-                    <InputField placeholder={"ДД.ММ.ГГГГ"} label='Дата рождения' />
+                    <InputField mask={DATE_MASK} maskPlaceholder={"ДД.ММ.ГГГГ"} placeholder={"ДД.ММ.ГГГГ"} label='Дата рождения' />
                     <div className="f-column gap-15">
                         <p className='fz-m fw-5'>Пол</p>
                         <div className="f-row-betw gap-15">

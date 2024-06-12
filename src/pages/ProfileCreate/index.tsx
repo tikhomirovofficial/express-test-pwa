@@ -3,6 +3,7 @@ import { YellowButton } from '../../components/YellowButton'
 import { Link } from 'react-router-dom'
 import { BorderedPageLayout } from '../BorderedPageLayout'
 import { InputField } from '../../components/InputField'
+import { DATE_MASK, PASSPORT_MASK } from '../../config/masks'
 
 export const ProfileCreate = () => {
     return (
@@ -21,18 +22,17 @@ export const ProfileCreate = () => {
                     <InputField placeholder='Иванов' label='Фамилия' />
                     <InputField placeholder='Иван' label='Имя' />
                     <InputField placeholder='Иванович' label='Отчество' />
-                    <InputField placeholder={"ДД.ММ.ГГГГ"} label='Дата рождения' />
+                    <InputField maskPlaceholder={"ДД.ММ.ГГГГ"} mask={DATE_MASK} placeholder={"ДД.ММ.ГГГГ"} label='Дата рождения' />
                     <InputField placeholder='Место рождения' label='Место рождения' />
                     <div className="f-column gap-15">
                         <p className='fz-m fw-5'>Ваш пол</p>
                         <div className="f-row-betw gap-15">
                             <YellowButton className={"f-1"}>Мужчина</YellowButton>
                             <YellowButton isFilled={false} className={"f-1"}>Женщина</YellowButton>
-
                         </div>
                     </div>
-                    <InputField placeholder='СССС НННННН' label='Серия и номер паспорта' />
-                    <InputField placeholder={"ДД.ММ.ГГГГ"} label='Когда выдан' />
+                    <InputField maskPlaceholder={"СССС НННННН"} mask={PASSPORT_MASK} placeholder='СССС НННННН' label='Серия и номер паспорта' />
+                    <InputField maskPlaceholder={"ДД-ММ-ГГГГ"} mask={DATE_MASK} placeholder={"ДД.ММ.ГГГГ"} label='Когда выдан' />
                     <InputField placeholder='Кем выдан паспорт' label='Кем выдан' />
                     <InputField placeholder='E-mail' label='E-mail' />
                 </div>

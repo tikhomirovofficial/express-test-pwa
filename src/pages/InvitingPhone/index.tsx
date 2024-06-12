@@ -16,7 +16,7 @@ export const InvitingPhone = () => {
                 </div>
             }>
             <div className="f-column gap-15">
-                <InputField placeholder='+7' label='Введите номер телефона пациента' />
+                <InputField mask='+7(999)999-99-99' placeholder='+7' label='Введите номер телефона пациента' />
                 <YellowButton>Продолжить</YellowButton>
             </div>
             <div>

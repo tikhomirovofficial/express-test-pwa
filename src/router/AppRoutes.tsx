@@ -6,10 +6,20 @@ import AuthRoute from "./AuthRoute";
 import NonAuthRoute from "./NonAuthRoute";
 import { Orders } from '../pages/Orders';
 import { WelcomePatients } from '../pages/Welcome/WelcomePatients';
+import AccessRoute from './AccessRoute';
 
 const AppRoutes = ({ isAuth = false }) => {
     return (
         <Routes>
+            {
+                routes.access.map(({ path, Component }) => (
+                    <Route
+                        key={path}
+                        path={path}
+                        element={<AccessRoute Component={Component} />}
+                    />
+                ))
+            }
             {
                 routes.auth.map(({ path, Component }) => (
                     <Route
@@ -28,29 +38,17 @@ const AppRoutes = ({ isAuth = false }) => {
                     />
                 ))
             }
-            {/* {
-                routes.public.map(({path, Component}) => (
+            {
+                routes.public.map(({ path, Component }) => (
                     <Route
                         key={path}
                         path={path}
-                        element={<PublicRoute Component={Component}/>}
+                        element={<PublicRoute Component={Component} />}
                     />
                 ))
-            } */}
-            {
-
             }
-            <Route
-                key={"/"}
-                path={"/"}
-                element={<PublicRoute Component={Orders} />}
-            />
-            
-            <Route
-                key={"/welcome"}
-                path={"/welcome"}
-                element={<PublicRoute Component={WelcomePatients} />}
-            />
+
+
 
         </Routes>
     );

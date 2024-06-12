@@ -16,7 +16,7 @@ export const PhoneLogin = () => {
                 </div>
             }>
             <div className="f-column gap-15">
-                <InputField />
+                <InputField mask='+7(999)999-99-99' label='Введите номер телефона, чтобы войти' />
                 <YellowButton>Продолжить</YellowButton>
             </div>
             <div>

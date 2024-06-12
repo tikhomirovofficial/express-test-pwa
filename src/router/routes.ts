@@ -30,6 +30,7 @@ import { WifiProblem } from "../pages/WifiProblem";
 export interface RoutesCollection {
     auth: RoutesList,
     public: RoutesList,
+    access: RoutesList,
     non_auth: RoutesList
 }
 
@@ -37,45 +38,15 @@ export interface RoutesCollection {
 export const routes: RoutesCollection = {
     public: [
         {
-            Component: Main,
-            path: "/s"
+            Component: LoadingPage,
+            path: "/loading"
         },
         {
-            Component: WelcomePatients,
-            path: "/"
-        },
-        {
-            Component: WelcomeConditions,
-            path: "/welcome-conditions"
-        },
-        {
-            Component: WelcomeFinish,
-            path: "/welcome-finish"
-        },
-        {
-            Component: PatientPinned,
-            path: "/patient-pinned"
-        },
-        {
-            Component: PatientInvited,
-            path: "/patient-invited"
-        },
-        {
-            Component: OrderSent,
-            path: "/order-sent"
-        },
-        {
-            Component: HowGetResults,
-            path: "/how-get-results"
-        },
-        {
-            Component: PhoneLogin,
-            path: "/login/phone"
-        },
-        {
-            Component: SmsLogin,
-            path: "/login/sms"
-        },
+            Component: WifiProblem,
+            path: "/wifi-problem"
+        }
+    ],
+    auth: [
         {
             Component: PinCreate,
             path: "/login/pin/create"
@@ -83,6 +54,20 @@ export const routes: RoutesCollection = {
         {
             Component: PinLogin,
             path: "/login/pin/login"
+        },
+    ],
+    access: [
+        {
+            Component: Orders,
+            path: "/"
+        },
+        {
+            Component: Help,
+            path: "/help"
+        },
+        {
+            Component: Profile,
+            path: "/profile"
         },
         {
             Component: ProfileCreate,
@@ -117,33 +102,42 @@ export const routes: RoutesCollection = {
             path: "/order/cart"
         },
         {
-            Component: Orders,
-            path: "/orders"
+            Component: PatientPinned,
+            path: "/patient-pinned"
         },
         {
-            Component: Help,
-            path: "/help"
+            Component: PatientInvited,
+            path: "/patient-invited"
         },
         {
-            Component: Profile,
-            path: "/profile"
+            Component: OrderSent,
+            path: "/order-sent"
         },
         {
-            Component: LoadingPage,
-            path: "/loading"
+            Component: HowGetResults,
+            path: "/how-get-results"
         },
-        {
-            Component: WifiProblem,
-            path: "/wifi-problem"
-        }
-    ],
-    auth: [
-        
     ],
     non_auth: [
         {
-            Component: Login,
-            path: "/login"
-        }
+            Component: PhoneLogin,
+            path: "/login/phone"
+        },
+        {
+            Component: SmsLogin,
+            path: "/login/sms"
+        },
+        {
+            Component: WelcomePatients,
+            path: "/welcome-patients"
+        },
+        {
+            Component: WelcomeConditions,
+            path: "/welcome-conditions"
+        },
+        {
+            Component: WelcomeFinish,
+            path: "/welcome-finish"
+        },
     ]
 }
