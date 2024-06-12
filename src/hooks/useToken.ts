@@ -11,11 +11,10 @@ const useToken = () => {
         deleteTokens()
         return;
     }
+    
     const decoded = decodeToken(refresh || "") as { user_id?: string } || {};
     const hasUserId = "user_id" in decoded;
-
     const isRefreshValid = !!(refresh && hasUserId);
-
     return isRefreshValid
 };
 

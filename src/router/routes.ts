@@ -44,7 +44,19 @@ export const routes: RoutesCollection = {
         {
             Component: WifiProblem,
             path: "/wifi-problem"
-        }
+        },
+        {
+            Component: WelcomePatients,
+            path: "/welcome-patients"
+        },
+        {
+            Component: WelcomeConditions,
+            path: "/welcome-conditions"
+        },
+        {
+            Component: WelcomeFinish,
+            path: "/welcome-finish"
+        },
     ],
     auth: [
         {
@@ -127,17 +139,6 @@ export const routes: RoutesCollection = {
             Component: SmsLogin,
             path: "/login/sms"
         },
-        {
-            Component: WelcomePatients,
-            path: "/welcome-patients"
-        },
-        {
-            Component: WelcomeConditions,
-            path: "/welcome-conditions"
-        },
-        {
-            Component: WelcomeFinish,
-            path: "/welcome-finish"
-        },
+
     ]
 }

@@ -16,7 +16,9 @@ const AppRoutes = ({ isAuth = false }) => {
                     <Route
                         key={path}
                         path={path}
-                        element={<AccessRoute Component={Component} />}
+                        element={
+                            <AccessRoute Component={Component} />
+                        }
                     />
                 ))
             }
