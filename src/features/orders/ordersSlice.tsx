@@ -64,7 +64,7 @@ export const getAllOrders = createAsyncThunk(
                             pacient: "Тузов Владислав",
                         }
                     ],
-                    can_next: false,
+                    can_next: !false,
                 })
             }, 1000)
         })

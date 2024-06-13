@@ -11,21 +11,31 @@ import useToken from './hooks/useToken';
 import { setValidToken } from './features/login/loginSlice';
 import { LoadingPage } from './pages/LoadingPage';
 import { getHasProfile } from './features/profile/profileSlice';
+import { useLocation } from 'react-router-dom';
+import { ConditionContainer } from './containers/ConditionContainer';
+import { BottomNav } from './components/BottomNav';
+const validPaths = ['/', '/help', '/profile'];
 
 function App() {
     const dispatch = useAppDispatch();
     const token = useToken()
     const modals = useAppSelector(state => state.modals)
+    const location = useLocation()
+
     const { alreadyBeen, pin, accepted } = useAppSelector(state => state.access)
     const { has_profile } = useAppSelector(state => state.profile)
     const { valid } = useAppSelector(state => state.login.token)
     const [someOpened, setSomeOpened] = useState(false)
 
     useEffect(() => {
+        console.log(validPaths.findIndex(item => item === location.pathname));
+
+
+    }, [location.pathname])
+
+    useEffect(() => {
         //dispatch(setValidToken(token as boolean))
         dispatch(setValidToken(true))
-
-
     }, [token])
 
     useEffect(() => {
@@ -59,6 +69,9 @@ function App() {
                 </div>
             </MobileContainer>
             <Modals />
+            {
+                !validPaths.includes(location.pathname) ? null : <BottomNav current={validPaths.findIndex(item => item === location.pathname) + 1} />
+            }
         </SkeletonTheme>
     );
 }

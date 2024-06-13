@@ -170,6 +170,10 @@ body {
 .status-gray {
     background: #d7d7d7;
 }
+.mini-btn {
+    max-width: fit-content;
+    padding: 1.4rem;
+}
 .text-underline {
     text-decoration: underline;
 }

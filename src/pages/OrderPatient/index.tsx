@@ -42,11 +42,11 @@ export const OrderPatient = () => {
                     {
                         !loading ?
                             <div className="list p-abs w-100p f-column scrollableItemsList">
-                                {
+                                {/* {
                                     [1, 2, 3, 4, 5].map(item => (
                                         <PatientItem />
                                     ))
-                                }
+                                } */}
                             </div> :
                             <>
                                 <div className="f-column gap-5">

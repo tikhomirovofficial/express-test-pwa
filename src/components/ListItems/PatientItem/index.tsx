@@ -1,5 +1,6 @@
 import React, { FC, useCallback } from 'react'
 import { AvatarIcon, CheckedCircle, UncheckedCircle } from '../../../icons'
+import { PatientApi } from '../../../types/entities/patients.types'
 
 type PatientItemProps = {
     selected?: boolean,
@@ -7,7 +8,7 @@ type PatientItemProps = {
     neededBottomBorder?: boolean
     bottomText?: string,
     handlePress?: () => any,
-}
+} & PatientApi
 
 export const PatientItem: FC<PatientItemProps> = (props) => {
     const GetSelectedIcon = useCallback(() => {
@@ -20,10 +21,10 @@ export const PatientItem: FC<PatientItemProps> = (props) => {
         return null
     }, [props.selected])
     return (
-        <div className="patient-item pd-10-0 border-bottom f-row-betw gap-15">
+        <div onClick={props.handlePress} className={`patient-item pd-10-0 ${props.neededBottomBorder ? "border-bottom" : ""} f-row-betw gap-15`}>
             <AvatarIcon />
             <div className="f-column f-1">
-                <p className='c-dark fz-m fw-6'>Ахмет Ахматович</p>
+                <p className='c-dark fz-m fw-6'>{props.first_name} {props.last_name}</p>
                 <p className='c-lg fz-s'>{props.bottomText}</p>
             </div>
             {

@@ -53,7 +53,8 @@ export const BonusesModalContent: FC<ModalContentProps> = ({ handleModal, level 
                                 </div>
                                 :
                                 [1, 2, 3, 4, 5, 1, 1, 1, 1, 1].map(item => (
-                                    <PatientItem />
+                                    // <PatientItem />
+                                    <></>
                                 ))
                         }
                     </div>

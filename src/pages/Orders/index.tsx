@@ -61,7 +61,6 @@ export const Orders = () => {
     return (
         <BorderedPageLayout
             contentClassName={"f-column gap-50"}>
-            <BottomNav current={1} />
             <div className="f-column gap-25">
                 {
                     profile.loadings.profile ? <Skeleton height={22} borderRadius={6} /> :
@@ -100,6 +99,13 @@ export const Orders = () => {
                                     customer={item.pacient || "Имя Фамилия"}
                                     analysisList={[]} />
                             ))
+                        }
+                        {
+                            can_next ?
+                                <div className="f-c-col">
+                                    <YellowButton className='fz-s mini-btn' onClick={loadMore} loading={loadings.all_orders_pagination}>Загрузить еще</YellowButton>
+                                </div>
+                                : null
                         }
                     </div> : <>
                         <Skeleton height={140} borderRadius={6} />

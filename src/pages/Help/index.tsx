@@ -14,7 +14,6 @@ export const Help = () => {
     return (
         <BorderedPageLayout
             contentClassName={"f-column gap-25"}>
-            <BottomNav current={2} />
             <div className="f-column gap-15">
                 <h2 className="title">Поддержка</h2>
                 <p className={`fz-m c-lg`}>Если у вас возникли вопросы или вам нужна помощь в работе приложения, то вы можете связаться с нами удобным способом</p>
