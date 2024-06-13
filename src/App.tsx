@@ -9,18 +9,30 @@ import { SkeletonTheme } from 'react-loading-skeleton';
 import { storeAlreadyBeen } from './utils/storeAlreadyBeen';
 import useToken from './hooks/useToken';
 import { setValidToken } from './features/login/loginSlice';
+import { LoadingPage } from './pages/LoadingPage';
+import { getHasProfile } from './features/profile/profileSlice';
 
 function App() {
     const dispatch = useAppDispatch();
     const token = useToken()
     const modals = useAppSelector(state => state.modals)
-    const { alreadyBeen } = useAppSelector(state => state.access)
+    const { alreadyBeen, pin, accepted } = useAppSelector(state => state.access)
+    const { has_profile } = useAppSelector(state => state.profile)
+    const { valid } = useAppSelector(state => state.login.token)
     const [someOpened, setSomeOpened] = useState(false)
 
     useEffect(() => {
         //dispatch(setValidToken(token as boolean))
-        dispatch(setValidToken(true))
+        dispatch(setValidToken(!true))
+
+
     }, [token])
+
+    useEffect(() => {
+        if (valid) {
+            dispatch(getHasProfile(() => { }))
+        }
+    }, [valid])
 
     useEffect(() => {
         const modalsKeys = Object.keys(modals)
@@ -35,7 +47,9 @@ function App() {
         storeAlreadyBeen(alreadyBeen.valid)
     }, [alreadyBeen.valid])
 
-
+    // if (has_profile === null) {
+    //     return <LoadingPage />
+    // }
 
     return (
         <SkeletonTheme baseColor="lightgray" highlightColor="#fff">

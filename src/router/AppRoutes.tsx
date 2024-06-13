@@ -7,10 +7,22 @@ import NonAuthRoute from "./NonAuthRoute";
 import { Orders } from '../pages/Orders';
 import { WelcomePatients } from '../pages/Welcome/WelcomePatients';
 import AccessRoute from './AccessRoute';
+import HasProfileRoute from './HasProfileRoute';
 
-const AppRoutes = ({ isAuth = false }) => {
+const AppRoutes = () => {
     return (
         <Routes>
+            {
+                routes.has_profile.map(({ path, Component }) => (
+                    <Route
+                        key={path}
+                        path={path}
+                        element={
+                            <HasProfileRoute Component={Component} />
+                        }
+                    />
+                ))
+            }
             {
                 routes.access.map(({ path, Component }) => (
                     <Route

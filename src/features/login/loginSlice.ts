@@ -36,7 +36,7 @@ const initialState: LoginSliceType = {
     access_token: "",
     token: {
         checking: true,
-        valid: true
+        valid: !true
     },
     auth: {
         loading: false,

@@ -1,6 +1,4 @@
-import Main from "../pages/Main";
-import NeededAuth from "../pages/NeededAuth";
-import Login from "../pages/Login";
+
 import { RoutesList } from "../types/router.types";
 import { WelcomePatients } from "../pages/Welcome/WelcomePatients";
 import { WelcomeConditions } from "../pages/Welcome/WelcomeConditions";
@@ -11,8 +9,6 @@ import { OrderSent } from "../pages/Informational/OrderSent";
 import { HowGetResults } from "../pages/Informational/HowGetResults";
 import { PhoneLogin } from "../pages/PhoneLogin";
 import { SmsLogin } from "../pages/SmsLogin";
-import { PinCreate } from "../pages/Pin/PinCreate";
-import { PinLogin } from "../pages/Pin/PinLogin";
 import { ProfileCreate } from "../pages/ProfileCreate";
 import { DocumentAccept } from "../pages/DocumentAccept";
 import { InvitingForm } from "../pages/InvitingForm";
@@ -26,11 +22,15 @@ import { Help } from "../pages/Help";
 import { Profile } from "../pages/Profile";
 import { LoadingPage } from "../pages/LoadingPage";
 import { WifiProblem } from "../pages/WifiProblem";
+import { PinCreateContainer } from "../containers/RouteContainers/PinCreateContainer";
+import { PinLoginContainer } from "../containers/RouteContainers/PinLoginContainer";
+import { ProfileCreateContainer } from "../containers/RouteContainers/ProfileCreateContainer";
 
 export interface RoutesCollection {
     auth: RoutesList,
     public: RoutesList,
     access: RoutesList,
+    has_profile: RoutesList,
     non_auth: RoutesList
 }
 
@@ -60,16 +60,23 @@ export const routes: RoutesCollection = {
     ],
     auth: [
         {
-            Component: PinCreate,
+            Component: PinCreateContainer,
             path: "/login/pin/create"
         },
         {
-            Component: PinLogin,
+            Component: PinLoginContainer,
             path: "/login/pin/login"
         },
     ],
     access: [
         {
+            Component: ProfileCreateContainer,
+            path: "/register/profile"
+        }
+    ],
+    has_profile: [
+        {
+
             Component: Orders,
             path: "/"
         },
@@ -81,10 +88,7 @@ export const routes: RoutesCollection = {
             Component: Profile,
             path: "/profile"
         },
-        {
-            Component: ProfileCreate,
-            path: "/register/profile"
-        },
+
         {
             Component: DocumentAccept,
             path: "/register/docs"
@@ -129,6 +133,7 @@ export const routes: RoutesCollection = {
             Component: HowGetResults,
             path: "/how-get-results"
         },
+
     ],
     non_auth: [
         {
