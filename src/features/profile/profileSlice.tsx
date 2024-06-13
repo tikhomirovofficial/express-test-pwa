@@ -118,7 +118,7 @@ export const createProfile = createAsyncThunk(
             setTimeout(() => {
                 res({
                     status: true,
-                    url: ""
+                    url: "https://medmente.ru/uploads/docs/fz_2300_04-08-2023.pdf"
                 })
             }, 1000)
         })

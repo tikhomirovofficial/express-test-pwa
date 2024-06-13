@@ -25,6 +25,8 @@ import { WifiProblem } from "../pages/WifiProblem";
 import { PinCreateContainer } from "../containers/RouteContainers/PinCreateContainer";
 import { PinLoginContainer } from "../containers/RouteContainers/PinLoginContainer";
 import { ProfileCreateContainer } from "../containers/RouteContainers/ProfileCreateContainer";
+import { ProfileContainer } from "../containers/RouteContainers/ProfileContainer";
+import { DocumentAcceptContainer } from "../containers/RouteContainers/DocumentAcceptContainer";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -77,7 +79,7 @@ export const routes: RoutesCollection = {
     has_profile: [
         {
 
-            Component: Orders,
+            Component: ProfileContainer,
             path: "/"
         },
         {
@@ -90,7 +92,7 @@ export const routes: RoutesCollection = {
         },
 
         {
-            Component: DocumentAccept,
+            Component: DocumentAcceptContainer,
             path: "/register/docs"
         },
         {

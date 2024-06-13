@@ -74,8 +74,6 @@ export const PinCreate = () => {
             return [...prev]
         })
     }
-
-
     useEffect(() => {
         if (pin.every(item => item !== "")) {
             setIsAccepting(true)
