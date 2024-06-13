@@ -3,11 +3,12 @@ import { UserApi } from "../http/api/user.api";
 import { AxiosError } from "axios";
 
 export async function handleTokenRefreshedRequest(cb: any | null = null, apiFunction: Function, ...args: any[]) {
-    const isRefreshValid = getTokens().refresh
+    const isRefreshValid = true
 
     if (isRefreshValid) {
         const tokens = getTokens();
-        const refresh = tokens.refresh
+        //const refresh = tokens.refresh
+        const refresh = "dasdasasdsadsad"
         try {
             const res = await apiFunction(...args);
             return res

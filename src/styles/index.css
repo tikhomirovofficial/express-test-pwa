@@ -167,6 +167,9 @@ body {
 .status-green {
     background: #7ed321;
 }
+.status-gray {
+    background: #d7d7d7;
+}
 .text-underline {
     text-decoration: underline;
 }

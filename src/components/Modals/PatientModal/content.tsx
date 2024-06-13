@@ -70,7 +70,7 @@ export const PatientModalContent: FC<ModalContentProps> = ({ handleModal, level 
                                 <Skeleton height={140} borderRadius={6} />
                             </> :
                             [1, 2, 4].map(item => (
-                                <OrderCard />
+                               <></>
                             ))
                     }
                 </div>

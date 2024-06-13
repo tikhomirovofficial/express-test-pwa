@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { YellowButton } from '../../components/YellowButton'
 import { Link } from 'react-router-dom'
 import { BorderedPageLayout } from '../BorderedPageLayout'
@@ -11,20 +11,62 @@ import styles from '../Profile/profile.module.scss'
 import { OrderCard } from '../../components/OrderCard'
 import { BottomNav } from '../../components/BottomNav'
 import Skeleton from 'react-loading-skeleton'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { getProfile } from '../../features/profile/profileSlice'
+import { getGreeting } from '../../utils/getGreeting'
+import { getAllOrders, incrementOrdersPart, resetOrders } from '../../features/orders/ordersSlice'
+import { usePagination } from '../../hooks/usePagination'
+import { handleOrderInfoModal } from '../../features/modals/modalsSlice'
+import { normalizeDate } from '../../utils/normalizeDate'
 const loading = !true
 
 export const Orders = () => {
+    const dispatch = useAppDispatch()
+    const { profile_got } = useAppSelector(state => state.profile)
+    const { all_orders, loadings, can_next, part } = useAppSelector(state => state.orders)
+    const profile = useAppSelector(state => state.profile)
+
+    const [loadOrders, loadMore] = usePagination(
+        () => {
+            dispatch(getAllOrders({ part }
+            ))
+        },
+        () => { dispatch(incrementOrdersPart()) },
+        {
+            part,
+            can_more: can_next,
+            items: all_orders,
+            loading: loadings.all_orders_pagination
+        }
+    )
+    const handleToOrdering = () => {
+        // dispatch(resetPatient())
+        //navigate("order_patient")
+    }
+
+    useEffect(() => {
+        if (!profile_got) {
+            dispatch(getProfile())
+        }
+    }, [profile_got])
+
+    useEffect(loadOrders, [part])
+
+    useEffect(() => {
+        return () => {
+            dispatch(resetOrders())
+        }
+    }, [])
+
     return (
         <BorderedPageLayout
             contentClassName={"f-column gap-50"}>
             <BottomNav current={1} />
             <div className="f-column gap-25">
                 {
-                    loading ? <Skeleton height={22} borderRadius={6} /> :
-                        <h2 className="title">Вячеслав, добрый день!</h2>
+                    profile.loadings.profile ? <Skeleton height={22} borderRadius={6} /> :
+                        <h2 className="title">{profile.data.first_name.trim()}, {getGreeting()}!</h2>
                 }
-
-
                 <div className="f-row-betw gap-10">
                     <Link to="/welcome" className="big-btn whiteBorderedBlock f-c-col bg-dark gap-15 w-100p">
                         <LogoIcon />
@@ -43,12 +85,19 @@ export const Orders = () => {
                         <h2 className="title">Заказы анализов</h2>
                 }
                 {
-                    !loading ? <div className="f-column gap-15">
-                        <OrderCard />
-                        <OrderCard />
-                        <OrderCard />
-                        <OrderCard />
-                        <OrderCard />
+                    !loadings.all_orders ? <div className="f-column gap-15">
+                        {
+                            all_orders.map(item => (
+                                <OrderCard status={item.status}
+                                    handlePress={() => dispatch(handleOrderInfoModal())}
+                                    key={item.id}
+                                    paid={true}
+                                    date={normalizeDate(item.date)}
+                                    id={item.id}
+                                    customer={item.pacient || "Имя Фамилия"}
+                                    analysisList={[]} />
+                            ))
+                        }
                     </div> : <>
                         <Skeleton height={140} borderRadius={6} />
                         <Skeleton height={140} borderRadius={6} />

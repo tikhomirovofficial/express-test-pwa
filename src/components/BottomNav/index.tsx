@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const navItems = [
     {
         id: 1,
-        link: "/orders",
+        link: "/",
         Icon: HomeIcon,
         name: "Главная"
     },

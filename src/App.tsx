@@ -23,7 +23,7 @@ function App() {
 
     useEffect(() => {
         //dispatch(setValidToken(token as boolean))
-        dispatch(setValidToken(!true))
+        dispatch(setValidToken(true))
 
 
     }, [token])

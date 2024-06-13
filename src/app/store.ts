@@ -3,12 +3,14 @@ import { profileReducer } from "../features/profile/profileSlice";
 import { modalsReducer } from '../features/modals/modalsSlice';
 import { accessReducer } from '../features/access/accessSlice';
 import { loginReducer } from '../features/login/loginSlice';
+import { ordersReducer } from '../features/orders/ordersSlice';
 export const store = configureStore({
     reducer: {
         profile: profileReducer,
         modals: modalsReducer,
         access: accessReducer,
         login: loginReducer,
+        orders: ordersReducer,
 
     }
 })

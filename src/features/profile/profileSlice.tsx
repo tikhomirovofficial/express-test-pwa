@@ -28,6 +28,7 @@ type ProfileSliceState = {
     docs_url: string
     data: ProfileData,
     form: Omit<ProfileData, "bonus">,
+    profile_got: boolean
     loadings: {
         profile: boolean
         orders: boolean
@@ -61,6 +62,7 @@ const initialState: ProfileSliceState = {
     has_profile: null,
     push_token: null,
     docs_url: "",
+    profile_got: false,
     data: {
         first_name: "",
         last_name: "",
@@ -135,8 +137,8 @@ export const getHasProfile = createAsyncThunk(
 
         return {
             id: 1,
-            is_doc_signed: false,
-            is_fill_fio: !true,
+            is_doc_signed: !false,
+            is_fill_fio: true,
             is_phone_confirm: true,
             status: true
         } as GetProfileFilledRes
@@ -224,10 +226,10 @@ export const ProfileSlice = createSlice({
         })
         builder.addCase(getProfile.fulfilled, (state, action) => {
             console.log(action.payload);
-
             state.data = action.payload
             state.form = action.payload
             state.loadings.profile = false
+            state.profile_got = true
         })
         builder.addCase(getProfile.rejected, (state, action) => {
             console.log(action.error);
