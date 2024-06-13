@@ -89,7 +89,10 @@ export const Orders = () => {
                         {
                             all_orders.map(item => (
                                 <OrderCard status={item.status}
-                                    handlePress={() => dispatch(handleOrderInfoModal())}
+                                    handlePress={() => {
+                                        alert("sas")
+                                        dispatch(handleOrderInfoModal())
+                                    }}
                                     key={item.id}
                                     paid={true}
                                     date={normalizeDate(item.date)}

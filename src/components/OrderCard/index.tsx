@@ -4,6 +4,7 @@ import styles from './orderCard.module.scss'
 import { OrderAnalysisType } from '../../types/entities/analysis.types'
 import { useAppDispatch } from '../../app/hooks'
 import { handleOrderInfoModal } from '../../features/modals/modalsSlice'
+import { getOrderById } from '../../features/current-data/currentData'
 
 export const OrderCard: FC<OrderAnalysisType> = ({
     id,
@@ -12,7 +13,6 @@ export const OrderCard: FC<OrderAnalysisType> = ({
     customerHide = false,
     status,
     paid,
-    handlePress,
 }) => {
     const dispatch = useAppDispatch()
 
@@ -32,21 +32,23 @@ export const OrderCard: FC<OrderAnalysisType> = ({
 
     const handleOpenInfo = () => {
         dispatch(handleOrderInfoModal())
-        //dispatch(getOrderById({ id }))
+        dispatch(getOrderById({ id }))
     }
+
     return (
-        <div className={`${styles.item} f-column pd-15 whiteBorderedBlock gap-25`}>
+        <div onClick={handleOpenInfo} className={`${styles.item} f-column pd-15 whiteBorderedBlock gap-25`}>
             <div className="d-f jc-between">
                 <div className="f-column gap-10">
                     <div className="d-f al-center">
                         <p className={`c-dark fz-m fw-5`}>Заказ №</p>
                         <div className="grayInfo">
-                            <p className="c-dark fz-s">02-014</p>
+                            <p className="c-dark fz-s">{id}</p>
                         </div>
                     </div>
-                    <p className="fz-s c-lg">Владислав Тузов</p>
+                    {!customerHide ? <p className="fz-s c-lg">{customer}</p> : null}
+
                 </div>
-                <p className="fz-s c-lg">25.09.2023</p>
+                <p className="fz-s c-lg">{date}</p>
             </div>
             <div className="f-row-betw">
                 <div className={`status ${getStatusObj().statusClassName} fz-s`}>{getStatusObj().text}</div>

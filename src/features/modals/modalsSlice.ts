@@ -64,16 +64,16 @@ export const ModalsSlice = createSlice({
     name: "modals",
     initialState,
     reducers: {
-        handleOrderInfoModal: (state) => { state.orderInfoModal.opened = !state.orderInfoModal },
-        handleProfileEditModal: (state) => { state.profileEditModal.opened = !state.profileEditModal },
-        handlePatientsModal: (state) => { state.patientsModal.opened = !state.patientsModal },
-        handleAboutModal: (state) => { state.aboutAppModal.opened = !state.aboutAppModal },
-        handleBonusesModal: (state) => { state.bonusesModal.opened = !state.bonusesModal },
-        handlePatientInfoModal: (state) => { state.patientInfoModal.opened = !state.patientInfoModal },
-        handlePatientOrderInfoModal: (state) => { state.patientOrderInfoModal.opened = !state.patientOrderInfoModal },
-        handleBonusesBottomSheet: (state) => { state.bonusesBottomSheet.opened = !state.bonusesBottomSheet },
-        handleOrdersFinancesModal: (state) => { state.ordersFinancesModal.opened = !state.ordersFinancesModal },
-        handleAnalysisInfoModal: (state) => { state.analysisInfoModal.opened = !state.analysisInfoModal },
+        handleOrderInfoModal: (state) => { state.orderInfoModal.opened = !state.orderInfoModal.opened },
+        handleProfileEditModal: (state) => { state.profileEditModal.opened = !state.profileEditModal.opened },
+        handlePatientsModal: (state) => { state.patientsModal.opened = !state.patientsModal.opened },
+        handleAboutModal: (state) => { state.aboutAppModal.opened = !state.aboutAppModal.opened },
+        handleBonusesModal: (state) => { state.bonusesModal.opened = !state.bonusesModal.opened },
+        handlePatientInfoModal: (state) => { state.patientInfoModal.opened = !state.patientInfoModal.opened },
+        handlePatientOrderInfoModal: (state) => { state.patientOrderInfoModal.opened = !state.patientOrderInfoModal.opened },
+        handleBonusesBottomSheet: (state) => { state.bonusesBottomSheet.opened = !state.bonusesBottomSheet.opened },
+        handleOrdersFinancesModal: (state) => { state.ordersFinancesModal.opened = !state.ordersFinancesModal.opened },
+        handleAnalysisInfoModal: (state) => { state.analysisInfoModal.opened = !state.analysisInfoModal.opened },
     }
 })
 
