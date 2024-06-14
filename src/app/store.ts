@@ -7,6 +7,7 @@ import { ordersReducer } from '../features/orders/ordersSlice';
 import { currentDataReducer } from '../features/current-data/currentData';
 import { patientsReducer } from '../features/patients/patientsSlice';
 import { bonusesReducer } from '../features/bonuses/bonusesSlice';
+import { invitingReducer } from '../features/inviting/invitingSlice';
 
 export const store = configureStore({
     reducer: {
@@ -17,7 +18,8 @@ export const store = configureStore({
         orders: ordersReducer,
         currentData: currentDataReducer,
         patients: patientsReducer,
-        bonuses: bonusesReducer
+        bonuses: bonusesReducer,
+        inviting: invitingReducer
 
     }
 })

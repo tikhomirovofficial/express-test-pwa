@@ -27,18 +27,16 @@ export const AboutAppModalContent: FC<ModalContentProps> = ({ handleModal, level
                     <div style={{ maxWidth: 230 }} className="f-column gap-10">
                         <div className="f-row-betw">
                             <p className={`fz-m c-lg`}>Версия</p>
-                            <p className={`fz-m c-dark`}>1.4</p>
+                            <p className={`fz-m c-dark`}>1.0</p>
                         </div>
                     </div>
                 </div>
                 <div className={`f-column gap-15`}>
                     <h2 className="title">Документы</h2>
                     <div className="f-column">
-                        {
-                            [1, 2, 4].map(item => (
-                                <DocumentItem />
-                            ))
-                        }
+                        <DocumentItem title={"Пользовательское соглашение"} />
+                        <DocumentItem title={"Политика конфиденциальности"} />
+                        <DocumentItem title={"Согласие на обработку персональных данных"} />
                     </div>
                 </div>
 

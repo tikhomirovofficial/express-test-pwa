@@ -67,7 +67,7 @@ export const Orders = () => {
                         <h2 className="title">{profile.data.first_name.trim()}, {getGreeting()}!</h2>
                 }
                 <div className="f-row-betw gap-10">
-                    <Link to="/welcome" className="big-btn whiteBorderedBlock f-c-col bg-dark gap-15 w-100p">
+                    <Link to="/inviting/form" className="big-btn whiteBorderedBlock f-c-col bg-dark gap-15 w-100p">
                         <LogoIcon />
                         <p className='c-white txt-center fw-5 fz-m'>Пригласить в Экспресс Тест</p>
                     </Link>

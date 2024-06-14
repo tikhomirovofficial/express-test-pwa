@@ -31,7 +31,7 @@ export const TickBlueIcon: FC<IconProps> = ({ width = 18, height = 18 }) => {
 export const DocumentIcon: FC<IconProps> = ({ width = 40, height = 40 }) => {
     return (
 
-        <svg width={width} height={height} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width={width} height={height} style={{minWidth: 40}} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="20" cy="20" r="20" fill="#F4FAFA" />
             <path d="M22.4774 22.8156H17.6641" stroke="#4D4D4D" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M22.4774 20.0246H17.6641" stroke="#4D4D4D" stroke-linecap="round" stroke-linejoin="round" />

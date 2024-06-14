@@ -27,6 +27,8 @@ import { PinLoginContainer } from "../containers/RouteContainers/PinLoginContain
 import { ProfileCreateContainer } from "../containers/RouteContainers/ProfileCreateContainer";
 import { ProfileContainer } from "../containers/RouteContainers/ProfileContainer";
 import { DocumentAcceptContainer } from "../containers/RouteContainers/DocumentAcceptContainer";
+import { InvitingLinkedContainer } from "../containers/RouteContainers/InvitingLinkedContainer";
+import { InvitingCreateContainer } from "../containers/RouteContainers/InvitingCreateContainer";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -100,7 +102,7 @@ export const routes: RoutesCollection = {
             path: "/inviting/phone"
         },
         {
-            Component: InvitingForm,
+            Component: InvitingCreateContainer,
             path: "/inviting/form"
         },
         {
@@ -120,7 +122,7 @@ export const routes: RoutesCollection = {
             path: "/order/cart"
         },
         {
-            Component: PatientPinned,
+            Component: InvitingLinkedContainer,
             path: "/patient-pinned"
         },
         {

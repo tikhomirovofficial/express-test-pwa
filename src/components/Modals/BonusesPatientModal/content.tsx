@@ -75,7 +75,7 @@ export const BonusesPatientModalContent: FC<ModalContentProps> = ({ handleModal,
                                 </div>
                         }
                         {
-                            can_next ?
+                            can_next && !loadings.patient_orders ?
                                 <div style={{ marginTop: 15 }} className="f-c-col">
                                     <YellowButton className='fz-s mini-btn' onClick={loadMore} loading={loadings.patient_orders_pagination}>Загрузить еще</YellowButton>
                                 </div>
