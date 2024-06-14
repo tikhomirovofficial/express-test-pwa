@@ -185,3 +185,9 @@ body {
     border-radius: 1000px;
     background: #ffcf00;
 }
+.countYellowWhite {
+    padding: 2px 8px;
+    color: #ffcf00;
+    border-radius: 1000px;
+    background: white;
+}

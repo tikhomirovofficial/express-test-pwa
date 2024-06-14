@@ -13,30 +13,36 @@ import { usePagination } from '../../../hooks/usePagination'
 import { normalizeDate } from '../../../utils/normalizeDate'
 import { formatPhoneNumber } from '../../../utils/formatePhone'
 import { getAgeByDob } from '../../../utils/getAgeByDob'
+import { clearCart } from '../../../features/cart/cartSlice'
+import { setPatient, resetOrderBonusesTotal } from '../../../features/order/orderSlice'
+import { useNavigate } from 'react-router-dom'
 const loading = false;
 
 export const PatientModalContent: FC<ModalContentProps> = ({ handleModal, level }) => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const { patientInfoModal, patientOrderInfoModal, patientsModal } = useAppSelector(state => state.modals)
     const { patientInfo, loadings, parts, can_next } = useAppSelector(state => state.currentData)
 
-    // const handleToOrder = () => {
-    //     dispatch(setPatient({
-    //         id: 1,
-    //         first_name: patientInfo.data.first_name,
-    //         last_name: patientInfo.data.last_name
-    //     }))
-    //     // alert(patientInfo.data.id)
-    //     dispatch(clearCart())
-    //     handleModal()
-    //     dispatch(resetOrderBonusesTotal())
-    //     if (patientsModal) {
-    //         dispatch(handlePatientsModal())
-    //     }
-    //     // setTimeout(() => {
-    //     //     navigation.navigate("order_category")
-    //     // }, 50)
-    // }
+    const handleToOrder = () => {
+        dispatch(setPatient({
+            id: 1,
+            first_name: patientInfo.data.first_name,
+            last_name: patientInfo.data.last_name
+        }))
+
+        dispatch(clearCart())
+        if (handleModal) {
+            handleModal()
+        }
+        dispatch(resetOrderBonusesTotal())
+        if (patientsModal) {
+            dispatch(handlePatientsModal())
+        }
+        setTimeout(() => {
+            navigate("order/category")
+        }, 50)
+    }
 
     const [loadOrders, loadMore] = usePagination(
         () => {
@@ -91,7 +97,7 @@ export const PatientModalContent: FC<ModalContentProps> = ({ handleModal, level 
                             <h2 className="title txt-center">{patientInfo.data.last_name} <br />{patientInfo.data.first_name} {patientInfo.data.subname}</h2>
                         </div>
                 }
-                <YellowButton>Заказать анализы</YellowButton>
+                <YellowButton onClick={handleToOrder}>Заказать анализы</YellowButton>
             </div>
             <div className="f-column gap-15">
                 {

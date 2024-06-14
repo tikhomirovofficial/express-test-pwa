@@ -9,7 +9,7 @@ export const HowGetResults = () => {
     return <InfoPageLayout
         title={"Как узнать результаты?"}
         image={'images/info/info_get_results.jpg'}
-        content={<div className="f-1 f-column wrapper f-column-betw gap-10">
+        content={<div className="f-1 f-column AppContainer f-column-betw gap-10">
             <div className="list f-column gap-15">
                 <div className={`info-text-item d-f gap-10`}>
                     <TickBlueIcon />

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { YellowButton } from '../../components/YellowButton'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BorderedPageLayout } from '../BorderedPageLayout'
 import { InputField } from '../../components/InputField'
 import { AddIcon, AnalysisIcon, ArrowRight, AvatarIcon, CheckedCircle, DownloadIcon, HeartIcon, LogoIcon, SearchIcon, TrashIcon, UncheckedCircle } from '../../icons'
@@ -18,10 +18,12 @@ import { getAllOrders, incrementOrdersPart, resetOrders } from '../../features/o
 import { usePagination } from '../../hooks/usePagination'
 import { handleOrderInfoModal } from '../../features/modals/modalsSlice'
 import { normalizeDate } from '../../utils/normalizeDate'
+import { resetPatient } from '../../features/order/orderSlice'
 const loading = !true
 
 export const Orders = () => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const { profile_got } = useAppSelector(state => state.profile)
     const { all_orders, loadings, can_next, part } = useAppSelector(state => state.orders)
     const profile = useAppSelector(state => state.profile)
@@ -39,9 +41,10 @@ export const Orders = () => {
             loading: loadings.all_orders_pagination
         }
     )
+
     const handleToOrdering = () => {
-        // dispatch(resetPatient())
-        //navigate("order_patient")
+        dispatch(resetPatient())
+        navigate("/order/patient")
     }
 
     useEffect(() => {
@@ -71,10 +74,10 @@ export const Orders = () => {
                         <LogoIcon />
                         <p className='c-white txt-center fw-5 fz-m'>Пригласить в Экспресс Тест</p>
                     </Link>
-                    <Link to={"/order/patient"} className="big-btn whiteBorderedBlock f-c-col gap-15 w-100p">
+                    <div onClick={handleToOrdering} className="big-btn whiteBorderedBlock f-c-col gap-15 w-100p">
                         <AnalysisIcon />
                         <p className='c-black txt-center fw-5 fz-m'>Назначить анализы</p>
-                    </Link>
+                    </div>
 
                 </div>
             </div>

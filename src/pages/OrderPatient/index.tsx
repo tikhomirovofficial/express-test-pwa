@@ -13,8 +13,6 @@ import { useDeferred } from '../../hooks/useDeffered'
 import { usePagination } from '../../hooks/usePagination'
 import { clearCart } from '../../features/cart/cartSlice'
 
-const loading = false
-
 export const OrderPatient = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()

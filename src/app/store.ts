@@ -11,6 +11,7 @@ import { invitingReducer } from '../features/inviting/invitingSlice';
 import { orderReducer } from '../features/order/orderSlice';
 import { cartReducer } from '../features/cart/cartSlice';
 import { categoriesReducer } from '../features/categories/categoriesSlice';
+import { productsReducer } from '../features/products/productSlice';
 
 export const store = configureStore({
     reducer: {
@@ -25,7 +26,8 @@ export const store = configureStore({
         inviting: invitingReducer,
         order: orderReducer,
         cart: cartReducer,
-        categories: categoriesReducer
+        categories: categoriesReducer,
+        products: productsReducer
 
     }
 })

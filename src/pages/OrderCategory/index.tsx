@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { YellowButton } from '../../components/YellowButton'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BorderedPageLayout } from '../BorderedPageLayout'
 import { InputField } from '../../components/InputField'
 import { AddIcon, ArrowRight, AvatarIcon, CheckedCircle, SearchIcon, UncheckedCircle } from '../../icons'
@@ -16,12 +16,12 @@ import { usePagination } from '../../hooks/usePagination'
 import { getCategories, incrementCategoriesProductsPart, resetCategoriesProducts } from '../../features/categories/categoriesSlice'
 import { AnalysisApi } from '../../types/entities/analysis.types'
 import { CategoryApi } from '../../types/entities/categories.types'
-const loading = !false
+import { CategoryOrProductItem } from '../../components/ListItems/CategoryOrProductItem'
+
 
 export const OrderCategory = () => {
     const dispatch = useAppDispatch()
-
-    const { analysisInfoModal } = useAppSelector(state => state.modals)
+    const navigate = useNavigate()
     const { can_next, part, categories, analisys } = useAppSelector(state => state.categories)
     const cart = useAppSelector(state => state.cart)
     const patient = useAppSelector(state => state.order.patientData)
@@ -49,11 +49,11 @@ export const OrderCategory = () => {
     }
 
     const toProducts = () => {
-        alert("to products")
+        navigate("/order/analysis")
     }
 
     const toCart = () => {
-        alert("to cart")
+        navigate("/order/cart")
     }
 
     const handleOpenProductInfo = (product_id: number) => {
@@ -99,8 +99,13 @@ export const OrderCategory = () => {
                         !loadings.categories ?
                             <div className="list p-abs w-100p f-column scrollableItemsList gap-10">
                                 {
-                                    [[...categories, ...analisys] as (CategoryApi | AnalysisApi)[]].map(item => (
-                                        <CategoryItem />
+                                    [...[...categories, ...analisys] as (CategoryApi | AnalysisApi)[]].map(item => (
+                                        <CategoryOrProductItem
+                                            openAnalysisInfo={() => handleOpenProductInfo(item.id)}
+                                            item={item}
+                                            toProducts={toProducts}
+                                            cartProducts={cartProducts}
+                                        />
                                     ))
                                 }
                                 {
@@ -122,7 +127,10 @@ export const OrderCategory = () => {
                     }
 
                 </div>
-                <YellowButton>Далее</YellowButton>
+                <YellowButton disabled={cart.items.length === 0} className='f-c-row gap-10' onClick={toCart}>
+                    Корзина
+                    <div className="countYellowWhite fz-s">{cart.items.length}</div>
+                </YellowButton>
             </div>
         </BorderedPageLayout>
     )

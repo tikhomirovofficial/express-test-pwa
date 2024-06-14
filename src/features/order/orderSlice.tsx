@@ -39,16 +39,18 @@ const initialState: OrderSliceState = {
 export const createOrder = createAsyncThunk(
     'order/create',
     async (req: CreateOrderReq, { dispatch }) => {
-        const res: AxiosResponse<CreateOrderRes> = await handleTokenRefreshedRequest(null, OrdersApi.Create, req)
-        if (!res.status) {
-            throw new Error("Не удалось создать заказ.")
-        }
-        return res.data
-        // return new Promise<InvitingCreateRes>((res, rej) => {
-        //     setTimeout(() => {
-        //         res(resp)
-        //     }, 1000)
-        // })
+        //const res: AxiosResponse<CreateOrderRes> = await handleTokenRefreshedRequest(null, OrdersApi.Create, req)
+        // if (!res.status) {
+        //     throw new Error("Не удалось создать заказ.")
+        // }
+        // return res.data
+        return new Promise<CreateOrderRes>((res, rej) => {
+            setTimeout(() => {
+                res({
+                    status: true
+                })
+            }, 1000)
+        })
     }
 )
 
@@ -58,6 +60,9 @@ export const OrderSlice = createSlice({
     reducers: {
         resetOrderErr(state) {
             state.err = ""
+        },
+        resetOrderSuccess(state) {
+            state.success = null
         },
         setOrderBonusesTotal(state, action: PayloadAction<number>) {
             state.bonuses.order_total = action.payload
@@ -99,6 +104,7 @@ export const {
     setPatient,
     setCurrentCategory,
     resetPatient,
+    resetOrderSuccess,
     resetOrderErr,
     resetOrderBonusesTotal,
     setOrderBonusesTotal

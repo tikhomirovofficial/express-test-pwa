@@ -14,6 +14,7 @@ import { getHasProfile } from './features/profile/profileSlice';
 import { useLocation } from 'react-router-dom';
 import { ConditionContainer } from './containers/ConditionContainer';
 import { BottomNav } from './components/BottomNav';
+
 const validPaths = ['/', '/help', '/profile'];
 
 function App() {
@@ -56,6 +57,9 @@ function App() {
     useEffect(() => {
         storeAlreadyBeen(alreadyBeen.valid)
     }, [alreadyBeen.valid])
+    useEffect(() => {
+
+    }, [])
 
     // if (has_profile === null) {
     //     return <LoadingPage />
