@@ -67,11 +67,12 @@ function App() {
                 <div className={`App p-rel m-100v pageScrollable ${!someOpened ? "scrollEnabled" : "pageZoomOut scrollDisabled"}`}>
                     <AppRoutes />
                 </div>
+                <Modals />
+                {
+                    !validPaths.includes(location.pathname) ? null : <BottomNav current={validPaths.findIndex(item => item === location.pathname) + 1} />
+                }
             </MobileContainer>
-            <Modals />
-            {
-                !validPaths.includes(location.pathname) ? null : <BottomNav current={validPaths.findIndex(item => item === location.pathname) + 1} />
-            }
+
         </SkeletonTheme>
     );
 }

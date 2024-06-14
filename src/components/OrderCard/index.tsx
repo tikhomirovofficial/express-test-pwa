@@ -10,6 +10,7 @@ export const OrderCard: FC<OrderAnalysisType> = ({
     id,
     date,
     customer,
+    handlePress,
     customerHide = false,
     status,
     paid,
@@ -31,8 +32,10 @@ export const OrderCard: FC<OrderAnalysisType> = ({
     }, [status])
 
     const handleOpenInfo = () => {
-        dispatch(handleOrderInfoModal())
         dispatch(getOrderById({ id }))
+        if(handlePress) {
+            handlePress()
+        }
     }
 
     return (

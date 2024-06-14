@@ -12,6 +12,7 @@ import { BottomNav } from '../../components/BottomNav'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { handleAboutModal, handleOrdersFinancesModal, handlePatientsModal, handleProfileEditModal } from '../../features/modals/modalsSlice'
 import Skeleton from 'react-loading-skeleton'
+import { formatBonus } from '../../utils/formatBonusesString'
 const loading = !true
 
 export const Profile = () => {
@@ -39,10 +40,10 @@ export const Profile = () => {
                             <Skeleton height={28} width={170} borderRadius={6} />
                         </div>
                     </> : <>
-                        <h2 className="title txt-center">Подосёнов <br />Вячеслав Сергеевич</h2>
+                        <h2 className="title txt-center">{profile.data.last_name} <br />{profile.data.first_name} {profile.data.subname}</h2>
                         <div className={`d-f al-center ${styles.bonuses} gap-5`}>
                             <HeartIcon />
-                            <p className={`fz-l c-dark fw-6`}>54 Бонуса</p>
+                            <p className={`fz-l c-dark fw-6`}>{formatBonus(profile.data.bonus)}</p>
                         </div>
                     </>
                 }

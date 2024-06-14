@@ -6,14 +6,15 @@ type OrderItemProps = {
     rightTopText: string,
     leftBottomText: string,
     rightBottomText: string
+    codeText?: string
 } & HasId
-export const OrderItem: FC<OrderItemProps> = ({ rightBottomText, rightTopText, leftBottomText, id }) => {
+export const OrderItem: FC<OrderItemProps> = ({ rightBottomText, rightTopText, leftBottomText, id, codeText }) => {
     return (
         <div className={`f-column gap-10 ${styles.orderItem} border-bottom`}>
             <div className="f-row-betw">
                 <div className="d-f al-center gap-10">
                     <p className='fz-m c-dark fw-5'>Заказ №</p>
-                    <div className="grayInfo fz-s">{id}</div>
+                    <div className="grayInfo fz-s">{codeText}</div>
                 </div>
                 <p className='fz-m c-dark fw-6'>{rightTopText}</p>
             </div>

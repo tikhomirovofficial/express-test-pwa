@@ -12,11 +12,12 @@ import Skeleton from 'react-loading-skeleton'
 import { getPatientById } from '../../../features/current-data/currentData'
 import { getAllPatients, incrementPatientsPart, resetAllPatients } from '../../../features/patients/patientsSlice'
 import { usePagination } from '../../../hooks/usePagination'
+import { useNavigate } from 'react-router-dom'
 const loading = false
 
 export const PatientsModalContent: FC<ModalContentProps> = ({ handleModal, level }) => {
     const dispatch = useAppDispatch()
-    const { patientsModal, patientInfoModal } = useAppSelector(state => state.modals)
+    const navigate = useNavigate()
     const patients = useAppSelector(state => state.patients)
     const [loadOrders, loadMore] = usePagination(
         () => { dispatch(getAllPatients({ part: patients.part })) },
@@ -33,7 +34,7 @@ export const PatientsModalContent: FC<ModalContentProps> = ({ handleModal, level
         if (handleModal) {
             handleModal()
         }
-        //navigation.navigate('inviting_exists')
+        navigate("/inviting/phone")
     }
 
     const handlePatientInfo = (id: number) => {
@@ -66,8 +67,8 @@ export const PatientsModalContent: FC<ModalContentProps> = ({ handleModal, level
                             {
                                 patients.list.map((item, index) => (
                                     <PatientItem
-                                        handlePress={() => handlePatientInfo(item.id)}
                                         {...item}
+                                        handlePress={() => handlePatientInfo(item.id)}
                                         bottomText={item.phone}
                                         neededBottomBorder={index < patients.list.length - 1}
                                     />

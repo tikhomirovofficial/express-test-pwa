@@ -6,6 +6,7 @@ import { loginReducer } from '../features/login/loginSlice';
 import { ordersReducer } from '../features/orders/ordersSlice';
 import { currentDataReducer } from '../features/current-data/currentData';
 import { patientsReducer } from '../features/patients/patientsSlice';
+import { bonusesReducer } from '../features/bonuses/bonusesSlice';
 
 export const store = configureStore({
     reducer: {
@@ -15,7 +16,8 @@ export const store = configureStore({
         login: loginReducer,
         orders: ordersReducer,
         currentData: currentDataReducer,
-        patients: patientsReducer
+        patients: patientsReducer,
+        bonuses: bonusesReducer
 
     }
 })

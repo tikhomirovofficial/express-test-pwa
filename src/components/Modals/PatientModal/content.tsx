@@ -1,16 +1,74 @@
 import React, { FC, useEffect } from 'react'
 import { BorderedPageLayout } from '../../../pages/BorderedPageLayout'
 import { PatientItem } from '../../ListItems/PatientItem'
-import { useAppDispatch } from '../../../app/hooks'
-import { handleOrderInfoModal } from '../../../features/modals/modalsSlice'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import { handleOrderInfoModal, handlePatientOrderInfoModal, handlePatientsModal } from '../../../features/modals/modalsSlice'
 import { ModalContentProps } from '../../Modal'
 import { HeartIcon } from '../../../icons'
 import { YellowButton } from '../../YellowButton'
 import { OrderCard } from '../../OrderCard'
 import Skeleton from 'react-loading-skeleton'
+import { getOrdersByPatientId, incrementPatientOrdersPart, resetPatientInfo, resetPatientOrders } from '../../../features/current-data/currentData'
+import { usePagination } from '../../../hooks/usePagination'
+import { normalizeDate } from '../../../utils/normalizeDate'
+import { formatPhoneNumber } from '../../../utils/formatePhone'
+import { getAgeByDob } from '../../../utils/getAgeByDob'
 const loading = false;
 
 export const PatientModalContent: FC<ModalContentProps> = ({ handleModal, level }) => {
+    const dispatch = useAppDispatch()
+    const { patientInfoModal, patientOrderInfoModal, patientsModal } = useAppSelector(state => state.modals)
+    const { patientInfo, loadings, parts, can_next } = useAppSelector(state => state.currentData)
+
+    // const handleToOrder = () => {
+    //     dispatch(setPatient({
+    //         id: 1,
+    //         first_name: patientInfo.data.first_name,
+    //         last_name: patientInfo.data.last_name
+    //     }))
+    //     // alert(patientInfo.data.id)
+    //     dispatch(clearCart())
+    //     handleModal()
+    //     dispatch(resetOrderBonusesTotal())
+    //     if (patientsModal) {
+    //         dispatch(handlePatientsModal())
+    //     }
+    //     // setTimeout(() => {
+    //     //     navigation.navigate("order_category")
+    //     // }, 50)
+    // }
+
+    const [loadOrders, loadMore] = usePagination(
+        () => {
+            dispatch(getOrdersByPatientId({
+                pacient: patientInfo.data.id,
+                part: parts.patients_orders
+            }))
+        },
+        () => { dispatch(incrementPatientOrdersPart()) },
+        {
+            part: parts.patients_orders,
+            can_more: can_next.patients_orders,
+            items: patientInfo.orders,
+            loading: loadings.patient_orders_pagination
+        },
+        [patientInfo.data.id]
+    )
+
+    useEffect(() => {
+        if (patientInfo.data.id) {
+            loadOrders()
+        }
+
+    }, [parts.patients_orders, patientInfo.data.id])
+
+    useEffect(() => {
+        return () => {
+            dispatch(resetPatientInfo())
+            dispatch(resetPatientOrders())
+        }
+    }, [])
+
     return (
         <BorderedPageLayout
             modal={{ level: level || 1 }}
@@ -24,37 +82,37 @@ export const PatientModalContent: FC<ModalContentProps> = ({ handleModal, level 
             <div className="f-column gap-15">
                 {
 
-                    loading ? <div className="f-column gap-5 al-center">
+                    loadings.patient_info ? <div className="f-column gap-5 al-center">
                         <Skeleton height={20} width={150} borderRadius={6} />
                         <Skeleton height={20} width={240} borderRadius={6} />
 
                     </div> :
                         <div className="f-column gap-15">
-                            <h2 className="title txt-center">Подосёнов <br />Вячеслав Сергеевич</h2>
+                            <h2 className="title txt-center">{patientInfo.data.last_name} <br />{patientInfo.data.first_name} {patientInfo.data.subname}</h2>
                         </div>
                 }
                 <YellowButton>Заказать анализы</YellowButton>
             </div>
             <div className="f-column gap-15">
                 {
-                    loading ? <Skeleton borderRadius={6} height={22} width={"70%"} /> :
+                    loadings.patient_info ? <Skeleton borderRadius={6} height={22} width={"70%"} /> :
                         <h2 className="title">Личная информация</h2>
                 }
                 {
-                    loading ?
+                    loadings.patient_info ?
                         <Skeleton borderRadius={6} height={73} width={"70%"} /> :
                         <div style={{ maxWidth: 230 }} className="f-column gap-10">
                             <div className="f-row-betw">
                                 <p className={`fz-m c-lg`}>Возраст</p>
-                                <p className={`fz-m c-dark`}>27 лет</p>
+                                <p className={`fz-m c-dark`}>{patientInfo.data?.dob ? getAgeByDob(patientInfo.data?.dob || "") : "Не указан"}</p>
                             </div>
                             <div className="f-row-betw">
                                 <p className={`fz-m c-lg`}>Пол</p>
-                                <p className={`fz-m c-dark`}>Мужской</p>
+                                <p className={`fz-m c-dark`}>{patientInfo.data.sex ? "Мужской" : "Женский"}</p>
                             </div>
                             <div className="f-row-betw">
                                 <p className={`fz-m c-lg`}>Телефон</p>
-                                <p className={`fz-m c-dark`}>+7 (951) 735-89-45</p>
+                                <p className={`fz-m c-dark`}>{formatPhoneNumber(patientInfo.data.phone)}</p>
                             </div>
                         </div>
                 }
@@ -64,14 +122,32 @@ export const PatientModalContent: FC<ModalContentProps> = ({ handleModal, level 
                 <h2 className="title">Анализы</h2>
                 <div className="f-column gap-15">
                     {
-                        loading ?
+                        loadings.patient_orders ?
                             <>
                                 <Skeleton height={140} borderRadius={6} />
                                 <Skeleton height={140} borderRadius={6} />
                             </> :
-                            [1, 2, 4].map(item => (
-                               <></>
+                            patientInfo.orders.map(item => (
+                                <OrderCard status={item.status}
+                                    handlePress={() => {
+                                        dispatch(handlePatientOrderInfoModal())
+                                    }}
+                                    key={item.id}
+                                    paid={true}
+                                    date={normalizeDate(item.date)}
+                                    customer={""}
+                                    id={item.id}
+                                    customerHide
+                                    analysisList={[]} />
                             ))
+
+                    }
+                    {
+                        can_next.patients_orders ?
+                            <div className="f-c-col">
+                                <YellowButton className='fz-s mini-btn' onClick={loadMore} loading={loadings.patient_orders_pagination}>Загрузить еще</YellowButton>
+                            </div>
+                            : null
                     }
                 </div>
             </div>

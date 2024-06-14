@@ -89,7 +89,6 @@ export const Orders = () => {
                             all_orders.map(item => (
                                 <OrderCard status={item.status}
                                     handlePress={() => {
-                                        alert("sas")
                                         dispatch(handleOrderInfoModal())
                                     }}
                                     key={item.id}

@@ -1,28 +1,42 @@
 import React, { FC, useEffect } from 'react'
 import { BorderedPageLayout } from '../../../pages/BorderedPageLayout'
 import { PatientItem } from '../../ListItems/PatientItem'
-import { useAppDispatch } from '../../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import { handleOrderInfoModal } from '../../../features/modals/modalsSlice'
 import { ModalContentProps } from '../../Modal'
-import { InputField } from '../../InputField'
-import { YellowButton } from '../../YellowButton'
-import { HeartIcon } from '../../../icons'
 import { OrderItem } from '../../OrderItem'
-import BarChart from '../../BarChart'
 import Skeleton from 'react-loading-skeleton'
+import { getOrdersByPatientId, incrementPatientOrdersPart, resetPatientOrders } from '../../../features/current-data/currentData'
+import { usePagination } from '../../../hooks/usePagination'
+import { normalizeDate } from '../../../utils/normalizeDate'
+import { YellowButton } from '../../YellowButton'
 
-
-type DailyStars = {
-    date: Date,
-    stars: number,
-}
-type Series = {
-    label: string,
-    data: { date: Date, stars: number }[]
-}
-const loading = false
 export const BonusesPatientModalContent: FC<ModalContentProps> = ({ handleModal, level }) => {
+    const dispatch = useAppDispatch()
+    const { patientInfo, loadings, parts, can_next } = useAppSelector(state => state.currentData)
 
+    const [loadOrders, loadMore] = usePagination(
+        () => {
+            dispatch(getOrdersByPatientId({
+                pacient: patientInfo.data.id,
+                part: parts.patients_orders
+            }))
+        },
+        () => { dispatch(incrementPatientOrdersPart()) },
+        {
+            part: parts.patients_orders,
+            can_more: can_next.patients_orders,
+            items: patientInfo.orders,
+            loading: loadings.patient_orders_pagination
+        }
+    )
+    useEffect(loadOrders, [parts.patients_orders])
+
+    useEffect(() => {
+        return () => {
+            dispatch(resetPatientOrders())
+        }
+    }, [])
 
     return (
         <BorderedPageLayout
@@ -31,24 +45,25 @@ export const BonusesPatientModalContent: FC<ModalContentProps> = ({ handleModal,
             contentClassName='f-column gap-40'>
             <div className="d-f jc-between">
                 <div onClick={handleModal} className="textButton fz-l">Закрыть</div>
-                <p className='c-dark fw-5 fz-l fw-6'>Ахмет Ахматович</p>
+                <p className='c-dark fw-5 fz-l fw-6'>{patientInfo.data.first_name} {patientInfo.data.last_name}</p>
                 <div className='f-025'></div>
             </div>
             <div className="f-column gap-15 f-1">
                 <div className="f-row-betw">
                     <h2 className="title">Всего</h2>
-                    <h2 className="title">7 865</h2>
+                    <h2 className="title">{patientInfo.data.bonus}</h2>
                 </div>
                 <div className="f-1 p-rel h-100p">
                     <div className="list p-abs w-100p f-column scrollableItemsList">
                         {
-                            !loading ?
-                                [1, 2, 3, 4, 5, 1, 1, 1,].map(item => (
+                            !loadings.patient_orders ?
+                                patientInfo.orders.map(item => (
                                     <OrderItem
-                                        id={1}
-                                        leftBottomText={"Владислав Тузов"}
-                                        rightBottomText={"Ожидание"}
-                                        rightTopText={"100"}
+                                        id={item.id}
+                                        codeText={String(item.id)}
+                                        leftBottomText={`От ${normalizeDate(item.date)}`}
+                                        rightBottomText={item.status}
+                                        rightTopText={String(item.bonus)}
                                     />
                                 ))
                                 :
@@ -59,12 +74,17 @@ export const BonusesPatientModalContent: FC<ModalContentProps> = ({ handleModal,
                                     <Skeleton borderRadius={6} height={50} />
                                 </div>
                         }
+                        {
+                            can_next ?
+                                <div style={{ marginTop: 15 }} className="f-c-col">
+                                    <YellowButton className='fz-s mini-btn' onClick={loadMore} loading={loadings.patient_orders_pagination}>Загрузить еще</YellowButton>
+                                </div>
+                                : null
+                        }
                     </div>
                 </div>
 
             </div>
-
-
         </BorderedPageLayout>
     )
 }

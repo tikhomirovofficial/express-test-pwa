@@ -28,7 +28,7 @@ const initialState: ModalsSliceState = {
     },
     bonusesModal: {
         opened: false,
-        level: 1
+        level: 2
     },
     aboutAppModal: {
         opened: false,
@@ -36,7 +36,7 @@ const initialState: ModalsSliceState = {
     },
     bonusesBottomSheet: {
         opened: false,
-        level: 2
+        level: 3
     },
     ordersFinancesModal: {
         opened: false,

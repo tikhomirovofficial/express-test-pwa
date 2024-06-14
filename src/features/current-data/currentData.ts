@@ -136,80 +136,88 @@ export const getOrderById = createAsyncThunk(
 export const getOrdersByPatientId = createAsyncThunk(
     'patient/orders/get',
     async (req: OrdersByPatientGetReq, { dispatch }) => {
-        const preparedReq: OrdersByPatientGetReq = {
-            part: req.part || 1,
-            pacient: req.pacient
-        }
-        const res: AxiosResponse<OrdersByPatientGetRes> = await handleTokenRefreshedRequest(null, OrdersApi.GetByPatientId, preparedReq)
-        // console.log(req.pacient);
-        return res.data
-        // return new Promise<OrdersByPatientGetRes>((res, rej) => {
-        //     setTimeout(() => {
-        //         res({
-        //             first_name: "Артём",
-        //             last_name: "Тихомиров",
-        //             can_next: true,
-        //             total_bonus: 300,
-        //             status: true,
-        //             orders: Array(8).fill("").map((_, index) => {
-        //                 return {
-        //                     id: index,
-        //                     pacient: "",
-        //                     status: "Окончено",
-        //                     date: "2024-02-24",
-        //                     bonus: 300,
-        //                     bonus_status: true,
-        //                 }
-        //             })
-        //         })
-        //     }, 1000)
-        // })
+        // const preparedReq: OrdersByPatientGetReq = {
+        //     part: req.part || 1,
+        //     pacient: req.pacient
+        // }
+        // const res: AxiosResponse<OrdersByPatientGetRes> = await handleTokenRefreshedRequest(null, OrdersApi.GetByPatientId, preparedReq)
+        // // console.log(req.pacient);
+        // return res.data
+        return new Promise<OrdersByPatientGetRes>((res, rej) => {
+            setTimeout(() => {
+                res({
+                    
+                    first_name: "Артём",
+                    last_name: "Тихомиров",
+                    can_next: true,
+                    total_bonus: 300,
+                    status: true,
+                    orders: Array(8).fill("").map((_, index) => {
+                        return {
+                            id: index,
+                            pacient: "",
+                            status: "Окончено",
+                            date: "2024-02-24",
+                            bonus: 300,
+                            bonus_status: true,
+                        }
+                    })
+                })
+            }, 1000)
+        })
     }
 )
 export const getPatientById = createAsyncThunk(
     'patient/get',
     async (req: PatientByIdReq, { dispatch }) => {
-        const res: AxiosResponse<PatientByIdRes> = await handleTokenRefreshedRequest(null, PatientsApi.GetById, req)
-        console.log(res.data);
-        return res.data
-        // return new Promise<PatientApi>((res, rej) => {
-        //     setTimeout(() => {
-        //         res({
-        //             id: 1,
-        //             first_name: "Артём",
-        //             last_name: "Тихомиров",
-        //             bonus: 400,
-        //             date: "2024-01-22",
-        //             phone: "79211400129"
-        //         })
-        //     }, 1000)
-        // })
+        // const res: AxiosResponse<PatientByIdRes> = await handleTokenRefreshedRequest(null, PatientsApi.GetById, req)
+        // console.log(res.data);
+        // return res.data
+        return new Promise<PatientByIdRes>((res, rej) => {
+            setTimeout(() => {
+                res({
+                    status: true,
+
+                    pacient: {
+                        id: 1,
+                        first_name: "Артём",
+                        last_name: "Тихомиров",
+                        bonus: 400,
+                        date: "2024-01-22",
+                        phone: "79211400129"
+                    }
+
+                })
+            }, 1000)
+        })
     }
 )
 export const getProductById = createAsyncThunk(
     'product/get',
     async (req: AnalysisGetByIdReq, { dispatch }) => {
-        const res: AxiosResponse<AnalysisGetByIdRes> = await handleTokenRefreshedRequest(null, AnalysisServiceApi.GetById, req)
-        console.log(res.data);
-        return res.data
-        // return new Promise<AnalysisApi>((res, rej) => {
+        // const res: AxiosResponse<AnalysisGetByIdRes> = await handleTokenRefreshedRequest(null, AnalysisServiceApi.GetById, req)
+        // console.log(res.data);
+        // return res.data
+        return new Promise<AnalysisGetByIdRes>((res, rej) => {
 
-        //     setTimeout(() => {
-        //         res({
-        //             id: req.id,
-        //             cat: 1,
-        //             code: "1",
-        //             cost: 300,
-        //             info: "Временно не доступно",
-        //             maxdur: 1,
-        //             mindur: 10,
-        //             name: "Временно не доступно",
-        //             prepare: [],
-        //             tags: [],
-        //             templates: []
-        //         })
-        //     }, 1000)
-        // })
+            setTimeout(() => {
+                res({
+                    analiz: {
+                        id: req.id,
+                        cat: 1,
+                        code: "1",
+                        cost: 300,
+                        info: "Временно не доступно",
+                        maxdur: 1,
+                        mindur: 10,
+                        name: "Временно не доступно",
+                        prepare: [],
+                        tags: [],
+                        templates: []
+                    }
+                })
+            }, 1000)
+        })
     }
 )
 

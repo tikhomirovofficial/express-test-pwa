@@ -2,6 +2,7 @@ import React from 'react'
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { useAppSelector } from '../../app/hooks';
 
 ChartJS.register(
     CategoryScale,
@@ -14,26 +15,16 @@ ChartJS.register(
 );
 
 const BarChart = () => {
+    const { chartData } = useAppSelector(state => state.bonuses)
     const data = {
         labels: [
-            "Янв",
-            "Фев",
-            "Мар",
-            "Апр",
-            "Май",
-            "Июн",
-            "Июл",
-            "Авг",
-            "Сен",
-            "Окт",
-            "Ноя",
-            "Дек"
+            ...chartData.labels
         ],
         datasets: [
             {
-                label: 'Sales',
+                label: 'Бонусов',
                 data: [
-                    12800, 13332, 13456, 26000, 31488, 31488, 40456, 30000, 30475, 32500, 28465, 30374
+                    ...chartData.datasets[0].data
                 ],
                 barThickness: 10, // Толщина баров
                 maxBarThickness: 20,
