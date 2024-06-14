@@ -29,6 +29,7 @@ import { ProfileContainer } from "../containers/RouteContainers/ProfileContainer
 import { DocumentAcceptContainer } from "../containers/RouteContainers/DocumentAcceptContainer";
 import { InvitingLinkedContainer } from "../containers/RouteContainers/InvitingLinkedContainer";
 import { InvitingCreateContainer } from "../containers/RouteContainers/InvitingCreateContainer";
+import { InvitedContainer } from "../containers/RouteContainers/InvitedContainer";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -126,7 +127,7 @@ export const routes: RoutesCollection = {
             path: "/patient-pinned"
         },
         {
-            Component: PatientInvited,
+            Component: InvitedContainer,
             path: "/patient-invited"
         },
         {
