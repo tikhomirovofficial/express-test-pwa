@@ -8,6 +8,9 @@ import { currentDataReducer } from '../features/current-data/currentData';
 import { patientsReducer } from '../features/patients/patientsSlice';
 import { bonusesReducer } from '../features/bonuses/bonusesSlice';
 import { invitingReducer } from '../features/inviting/invitingSlice';
+import { orderReducer } from '../features/order/orderSlice';
+import { cartReducer } from '../features/cart/cartSlice';
+import { categoriesReducer } from '../features/categories/categoriesSlice';
 
 export const store = configureStore({
     reducer: {
@@ -19,7 +22,10 @@ export const store = configureStore({
         currentData: currentDataReducer,
         patients: patientsReducer,
         bonuses: bonusesReducer,
-        inviting: invitingReducer
+        inviting: invitingReducer,
+        order: orderReducer,
+        cart: cartReducer,
+        categories: categoriesReducer
 
     }
 })

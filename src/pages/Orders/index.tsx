@@ -71,10 +71,10 @@ export const Orders = () => {
                         <LogoIcon />
                         <p className='c-white txt-center fw-5 fz-m'>Пригласить в Экспресс Тест</p>
                     </Link>
-                    <div className="big-btn whiteBorderedBlock f-c-col gap-15 w-100p">
+                    <Link to={"/order/patient"} className="big-btn whiteBorderedBlock f-c-col gap-15 w-100p">
                         <AnalysisIcon />
                         <p className='c-black txt-center fw-5 fz-m'>Назначить анализы</p>
-                    </div>
+                    </Link>
 
                 </div>
             </div>

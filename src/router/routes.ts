@@ -30,6 +30,7 @@ import { DocumentAcceptContainer } from "../containers/RouteContainers/DocumentA
 import { InvitingLinkedContainer } from "../containers/RouteContainers/InvitingLinkedContainer";
 import { InvitingCreateContainer } from "../containers/RouteContainers/InvitingCreateContainer";
 import { InvitedContainer } from "../containers/RouteContainers/InvitedContainer";
+import { SelectedPatientContainer } from "../containers/RouteContainers/SelectedPatientContainer";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -111,15 +112,15 @@ export const routes: RoutesCollection = {
             path: "/order/patient"
         },
         {
-            Component: OrderCategory,
+            Component: () => SelectedPatientContainer({ Component: OrderCategory }),
             path: "/order/category"
         },
         {
-            Component: OrderAnalysis,
+            Component: () => SelectedPatientContainer({ Component: OrderAnalysis }),
             path: "/order/analysis"
         },
         {
-            Component: OrderCart,
+            Component: () => SelectedPatientContainer({ Component: OrderCart }),
             path: "/order/cart"
         },
         {
