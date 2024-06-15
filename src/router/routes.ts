@@ -31,6 +31,7 @@ import { InvitingLinkedContainer } from "../containers/RouteContainers/InvitingL
 import { InvitingCreateContainer } from "../containers/RouteContainers/InvitingCreateContainer";
 import { InvitedContainer } from "../containers/RouteContainers/InvitedContainer";
 import { SelectedPatientContainer } from "../containers/RouteContainers/SelectedPatientContainer";
+import { PhoneSmsContainer } from "../containers/RouteContainers/PhoneSmsContainer";
 
 export interface RoutesCollection {
     auth: RoutesList,
@@ -149,7 +150,7 @@ export const routes: RoutesCollection = {
             path: "/login/phone"
         },
         {
-            Component: SmsLogin,
+            Component: PhoneSmsContainer,
             path: "/login/sms"
         },
 

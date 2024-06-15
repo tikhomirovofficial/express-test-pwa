@@ -38,70 +38,70 @@ const initialState: OrdersSliceState = {
 export const getAllOrders = createAsyncThunk(
     'all/orders/get',
     async (req: GetAllOrdersReq, { dispatch }) => {
-        // const preparedReq: GetAllOrdersReq = {
-        //     part: req.part || 1
-        // }
-        // const res: AxiosResponse<GetAllOrdersRes> = await handleTokenRefreshedRequest(null, OrdersApi.GetAll, preparedReq)
-        // console.log(res.data);
-        // return res.data
-        return new Promise<GetAllOrdersRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    status: true,
-                    orders: [
-                        {
-                            id: 123,
-                            date: "2024-10-12",
-                            bonus: 100,
-                            status: "Ожидание",
-                            pacient: "Тузов Владислав",
-                        },
-                        {
-                            id: 1232,
-                            date: "2024-10-12",
-                            bonus: 100,
-                            status: "Ожидание",
-                            pacient: "Тузов Владислав",
-                        }
-                    ],
-                    can_next: !false,
-                })
-            }, 1000)
-        })
+        const preparedReq: GetAllOrdersReq = {
+            part: req.part || 1
+        }
+        const res: AxiosResponse<GetAllOrdersRes> = await handleTokenRefreshedRequest(null, OrdersApi.GetAll, preparedReq)
+        console.log(res.data);
+        return res.data
+        // return new Promise<GetAllOrdersRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             status: true,
+        //             orders: [
+        //                 {
+        //                     id: 123,
+        //                     date: "2024-10-12",
+        //                     bonus: 100,
+        //                     status: "Ожидание",
+        //                     pacient: "Тузов Владислав",
+        //                 },
+        //                 {
+        //                     id: 1232,
+        //                     date: "2024-10-12",
+        //                     bonus: 100,
+        //                     status: "Ожидание",
+        //                     pacient: "Тузов Владислав",
+        //                 }
+        //             ],
+        //             can_next: !false,
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 export const getAllDatedOrders = createAsyncThunk(
     'all/orders/chrono/get',
     async (req: GetAllFinancesOrdersReq, { dispatch }) => {
-        // const preparedReq: GetAllFinancesOrdersReq = {
-        //     part: req.part || 1
-        // }
-        // const res: AxiosResponse<GetAllFinancesOrdersRes> = await handleTokenRefreshedRequest(null, OrdersApi.GetAllChrono, preparedReq)
+        const preparedReq: GetAllFinancesOrdersReq = {
+            part: req.part || 1
+        }
+        const res: AxiosResponse<GetAllFinancesOrdersRes> = await handleTokenRefreshedRequest(null, OrdersApi.GetAllChrono, preparedReq)
 
-        // return res.data
-        return new Promise<GetAllFinancesOrdersRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    status: true,
-                    can_next: true,
-                    total_bonus: 400,
-                    orders: [
-                        {
-                            date: "2024-10-12",
-                            orders: [
-                                {
-                                    id: 123,
-                                    date: "2024-10-12",
-                                    bonus: 100,
-                                    status: "Ожидание",
-                                    pacient: "Тузов Владислав",
-                                }
-                            ]
-                        }
-                    ],
-                })
-            }, 1000)
-        })
+        return res.data
+        // return new Promise<GetAllFinancesOrdersRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             status: true,
+        //             can_next: true,
+        //             total_bonus: 400,
+        //             orders: [
+        //                 {
+        //                     date: "2024-10-12",
+        //                     orders: [
+        //                         {
+        //                             id: 123,
+        //                             date: "2024-10-12",
+        //                             bonus: 100,
+        //                             status: "Ожидание",
+        //                             pacient: "Тузов Владислав",
+        //                         }
+        //                     ]
+        //                 }
+        //             ],
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 

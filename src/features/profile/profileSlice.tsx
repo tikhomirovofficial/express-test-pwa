@@ -89,59 +89,59 @@ const initialState: ProfileSliceState = {
 export const getProfile = createAsyncThunk(
     'profile/get',
     async (_, { dispatch }) => {
-        // const res: AxiosResponse<ProfileGetRes> = await handleTokenRefreshedRequest(null, UserApi.GetProfile)
-        // console.log("profile ", res.data);
+        const res: AxiosResponse<ProfileGetRes> = await handleTokenRefreshedRequest(null, UserApi.GetProfile)
+        console.log("profile ", res.data);
 
-        // return res.data
-        return new Promise<ProfileData>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    first_name: "Борис",
-                    last_name: "Борисов",
-                    subname: "Борисович",
-                    dob: "2000-11-11",
-                    image: "/",
-                    bonus: 3,
-                    gender: false
-                })
-            }, 1000)
-        })
+        return res.data
+        // return new Promise<ProfileData>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             first_name: "Борис",
+        //             last_name: "Борисов",
+        //             subname: "Борисович",
+        //             dob: "2000-11-11",
+        //             image: "/",
+        //             bonus: 3,
+        //             gender: false
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 export const createProfile = createAsyncThunk(
     'profile/create',
     async (req: ProfileCreateReq, { dispatch }) => {
-        // const res: AxiosResponse<ProfileCreateRes> = await handleTokenRefreshedRequest(null, UserApi.Create, req)
-        // if (!res.status) {
-        //     throw new Error("Не удалось создать профиль!")
-        // }
-        // return res.data
-        return new Promise<ProfileCreateRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    status: true,
-                    url: "https://medmente.ru/uploads/docs/fz_2300_04-08-2023.pdf"
-                })
-            }, 1000)
-        })
+        const res: AxiosResponse<ProfileCreateRes> = await handleTokenRefreshedRequest(null, UserApi.Create, req)
+        if (!res.status) {
+            throw new Error("Не удалось создать профиль!")
+        }
+        return res.data
+        // return new Promise<ProfileCreateRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             status: true,
+        //             url: "https://medmente.ru/uploads/docs/fz_2300_04-08-2023.pdf"
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 
 export const getHasProfile = createAsyncThunk(
     'has-profile/get',
     async (logout: any, { dispatch }) => {
-        // const res: AxiosResponse<GetProfileFilledRes> = await handleTokenRefreshedRequest(logout, UserApi.GetProfileFilled)
-        // //console.log(res.data);
-        // console.log(res);
-        // return res.data
+        const res: AxiosResponse<GetProfileFilledRes> = await handleTokenRefreshedRequest(logout, UserApi.GetProfileFilled)
+        //console.log(res.data);
+        console.log(res);
+        return res.data
 
-        return {
-            id: 1,
-            is_doc_signed: !false,
-            is_fill_fio: true,
-            is_phone_confirm: true,
-            status: true
-        } as GetProfileFilledRes
+        // return {
+        //     id: 1,
+        //     is_doc_signed: !false,
+        //     is_fill_fio: true,
+        //     is_phone_confirm: true,
+        //     status: true
+        // } as GetProfileFilledRes
     }
 )
 
