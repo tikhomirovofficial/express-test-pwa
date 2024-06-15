@@ -30,40 +30,40 @@ const initialState: CategoriesSliceState = {
 export const getCategories = createAsyncThunk(
     'all/categories/get',
     async (req: CategoriesGetReq, { dispatch }) => {
-        // const res: AxiosResponse<CategoriesGetRes> = await handleTokenRefreshedRequest(null, CategoriesApi.GetByTitle, req)
-        // console.log(res.data);
-        // return res.data
-        return new Promise<CategoriesGetRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    status: true,
-                    can_next: true,
-                    analisis: [
-                        {
-                            id: 4,
-                            prepare: [],
-                            tags: [],
-                            templates: [],
-                            name: "Анализ",
-                            cat: 23,
-                            code: "sdas",
-                            cost: 900,
-                            info: "Информация",
-                            maxdur: 23,
-                            mindur: 2,
+        const res: AxiosResponse<CategoriesGetRes> = await handleTokenRefreshedRequest(null, CategoriesApi.GetByTitle, req)
+        console.log(res.data);
+        return res.data
+        // return new Promise<CategoriesGetRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             status: true,
+        //             can_next: true,
+        //             analisis: [
+        //                 {
+        //                     id: 4,
+        //                     prepare: [],
+        //                     tags: [],
+        //                     templates: [],
+        //                     name: "Анализ",
+        //                     cat: 23,
+        //                     code: "sdas",
+        //                     cost: 900,
+        //                     info: "Информация",
+        //                     maxdur: 23,
+        //                     mindur: 2,
                             
-                        }
-                    ],
-                    category: [{
-                        color: "#ffffff",
-                        id: 3,
-                        istake: false,
-                        name: "Биохимические исследования крови",
-                        take: 128
-                    }]
-                })
-            }, 1000)
-        })
+        //                 }
+        //             ],
+        //             category: [{
+        //                 color: "#ffffff",
+        //                 id: 3,
+        //                 istake: false,
+        //                 name: "Биохимические исследования крови",
+        //                 take: 128
+        //             }]
+        //         })
+        //     }, 1000)
+        // })
     })
 
 export const CategoriesSlice = createSlice({

@@ -42,7 +42,7 @@ export const OrderCard: FC<OrderAnalysisType> = ({
         <div onClick={handleOpenInfo} className={`${styles.item} f-column pd-15 whiteBorderedBlock gap-25`}>
             <div className="d-f jc-between">
                 <div className="f-column gap-10">
-                    <div className="d-f al-center">
+                    <div className="d-f al-center gap-5">
                         <p className={`c-dark fz-m fw-5`}>Заказ №</p>
                         <div className="grayInfo">
                             <p className="c-dark fz-s">{id}</p>

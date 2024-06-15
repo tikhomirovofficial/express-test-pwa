@@ -47,30 +47,30 @@ const initialState: BonusesSliceData = {
 export const getChartBonusesData = createAsyncThunk(
     'bonuses/chart/get',
     async (_, { dispatch }) => {
-        // const res: AxiosResponse<BonusesDiagramGetRes> = await handleTokenRefreshedRequest(null, BonusesApi.GetDiagram)
-        // console.log(res.data);
-        // return res.data
-        return new Promise<BonusesDiagramGetRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    status: true,
-                    bonuses: [
-                        1,
-                        123,
-                        4234,
-                        2342,
-                        304,
-                        897,
-                        2485,
-                        2949,
-                        2348,
-                        2155,
-                        230,
-                        3432
-                    ]
-                })
-            }, 1000)
-        })
+        const res: AxiosResponse<BonusesDiagramGetRes> = await handleTokenRefreshedRequest(null, BonusesApi.GetDiagram)
+        console.log(res.data);
+        return res.data
+        // return new Promise<BonusesDiagramGetRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             status: true,
+        //             bonuses: [
+        //                 1,
+        //                 123,
+        //                 4234,
+        //                 2342,
+        //                 304,
+        //                 897,
+        //                 2485,
+        //                 2949,
+        //                 2348,
+        //                 2155,
+        //                 230,
+        //                 3432
+        //             ]
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 

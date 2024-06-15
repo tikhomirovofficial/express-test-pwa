@@ -22,7 +22,7 @@ export const AnalysisItem: FC<AnalysisItemProps> = ({ product, index, isInCart, 
     }, [dispatch, product]);
 
     return (
-        <div key={product.id} className="analysis-item pd-10-0 border-bottom f-row-betw gap-15">
+        <div onClick={clickHandle} key={product.id} className="analysis-item pd-10-0 border-bottom f-row-betw gap-15">
             <div className="f-column f-1">
                 <p className='c-dark fz-m fw-4'>{product.name}</p>
                 <p className='c-dark fz-m fw-7'>{product.cost} ₽</p>

@@ -28,33 +28,33 @@ const initialState: ProductSliceState = {
 export const getProducts = createAsyncThunk(
     'all/products/get',
     async (req: AnalysisGetReq, { dispatch }) => {
-        // const res: AxiosResponse<AnalysisGetRes> = await handleTokenRefreshedRequest(null, AnalysisServiceApi.GetByTitle, req)
-        // console.log(res.data);
-        // return res.data
-        return new Promise<AnalysisGetRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    can_next: true,
-                    status: true,
-                    analiz: Array(10).fill("").map((item, index) => {
-                        return {
-                            id: index,
-                            cat: 1,
-                            code: "",
-                            cost: 300,
-                            info: "dfdsf",
-                            maxdur: 1,
-                            mindur: 10,
-                            name: "Какой-то анализ" + " " + index,
-                            prepare: [],
-                            tags: [],
-                            templates: []
-                        }
-                    })
-                })
-            }, 1000)
+        const res: AxiosResponse<AnalysisGetRes> = await handleTokenRefreshedRequest(null, AnalysisServiceApi.GetByTitle, req)
+        console.log(res.data);
+        return res.data
+        // return new Promise<AnalysisGetRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             can_next: true,
+        //             status: true,
+        //             analiz: Array(10).fill("").map((item, index) => {
+        //                 return {
+        //                     id: index,
+        //                     cat: 1,
+        //                     code: "",
+        //                     cost: 300,
+        //                     info: "dfdsf",
+        //                     maxdur: 1,
+        //                     mindur: 10,
+        //                     name: "Какой-то анализ" + " " + index,
+        //                     prepare: [],
+        //                     tags: [],
+        //                     templates: []
+        //                 }
+        //             })
+        //         })
+        //     }, 1000)
 
-        })
+        // })
     })
 export const ProductsSlice = createSlice({
     name: "products",

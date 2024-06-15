@@ -108,116 +108,116 @@ const initialState: CurrentData = {
 export const getOrderById = createAsyncThunk(
     'order/get',
     async (req: OrderDetailsReq, { dispatch }) => {
-        // const res: AxiosResponse<OrderDetailsRes> = await handleTokenRefreshedRequest(null, OrdersApi.GetById, req)
-        // console.log(res.data);
-        // return res.data
-        return new Promise<OrderDetailsApi>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    info_order: {
-                        doctor: "Подосёнов",
-                        pacient: "Тузов",
-                        status: "Отправлен",
-                        date: "2023-01-22",
-                        order_id: 1
-                    },
-                    results: [],
-                    analiz_list: [
-                        {
-                            id: 1,
-                            title: "Анализ 1"
-                        }
-                    ]
-                })
-            }, 1000)
-        })
+        const res: AxiosResponse<OrderDetailsRes> = await handleTokenRefreshedRequest(null, OrdersApi.GetById, req)
+        console.log(res.data);
+        return res.data
+        // return new Promise<OrderDetailsApi>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             info_order: {
+        //                 doctor: "Подосёнов",
+        //                 pacient: "Тузов",
+        //                 status: "Отправлен",
+        //                 date: "2023-01-22",
+        //                 order_id: 1
+        //             },
+        //             results: [],
+        //             analiz_list: [
+        //                 {
+        //                     id: 1,
+        //                     title: "Анализ 1"
+        //                 }
+        //             ]
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 export const getOrdersByPatientId = createAsyncThunk(
     'patient/orders/get',
     async (req: OrdersByPatientGetReq, { dispatch }) => {
-        // const preparedReq: OrdersByPatientGetReq = {
-        //     part: req.part || 1,
-        //     pacient: req.pacient
-        // }
-        // const res: AxiosResponse<OrdersByPatientGetRes> = await handleTokenRefreshedRequest(null, OrdersApi.GetByPatientId, preparedReq)
-        // // console.log(req.pacient);
-        // return res.data
-        return new Promise<OrdersByPatientGetRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    
-                    first_name: "Артём",
-                    last_name: "Тихомиров",
-                    can_next: true,
-                    total_bonus: 300,
-                    status: true,
-                    orders: Array(8).fill("").map((_, index) => {
-                        return {
-                            id: index,
-                            pacient: "",
-                            status: "Окончено",
-                            date: "2024-02-24",
-                            bonus: 300,
-                            bonus_status: true,
-                        }
-                    })
-                })
-            }, 1000)
-        })
+        const preparedReq: OrdersByPatientGetReq = {
+            part: req.part || 1,
+            pacient: req.pacient
+        }
+        const res: AxiosResponse<OrdersByPatientGetRes> = await handleTokenRefreshedRequest(null, OrdersApi.GetByPatientId, preparedReq)
+        // console.log(req.pacient);
+        return res.data
+        // return new Promise<OrdersByPatientGetRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+
+        //             first_name: "Артём",
+        //             last_name: "Тихомиров",
+        //             can_next: true,
+        //             total_bonus: 300,
+        //             status: true,
+        //             orders: Array(8).fill("").map((_, index) => {
+        //                 return {
+        //                     id: index,
+        //                     pacient: "",
+        //                     status: "Окончено",
+        //                     date: "2024-02-24",
+        //                     bonus: 300,
+        //                     bonus_status: true,
+        //                 }
+        //             })
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 export const getPatientById = createAsyncThunk(
     'patient/get',
     async (req: PatientByIdReq, { dispatch }) => {
-        // const res: AxiosResponse<PatientByIdRes> = await handleTokenRefreshedRequest(null, PatientsApi.GetById, req)
-        // console.log(res.data);
-        // return res.data
-        return new Promise<PatientByIdRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    status: true,
+        const res: AxiosResponse<PatientByIdRes> = await handleTokenRefreshedRequest(null, PatientsApi.GetById, req)
+        console.log(res.data);
+        return res.data
+        // return new Promise<PatientByIdRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             status: true,
 
-                    pacient: {
-                        id: 1,
-                        first_name: "Артём",
-                        last_name: "Тихомиров",
-                        bonus: 400,
-                        date: "2024-01-22",
-                        phone: "79211400129"
-                    }
+        //             pacient: {
+        //                 id: 1,
+        //                 first_name: "Артём",
+        //                 last_name: "Тихомиров",
+        //                 bonus: 400,
+        //                 date: "2024-01-22",
+        //                 phone: "79211400129"
+        //             }
 
-                })
-            }, 1000)
-        })
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 export const getProductById = createAsyncThunk(
     'product/get',
     async (req: AnalysisGetByIdReq, { dispatch }) => {
-        // const res: AxiosResponse<AnalysisGetByIdRes> = await handleTokenRefreshedRequest(null, AnalysisServiceApi.GetById, req)
-        // console.log(res.data);
-        // return res.data
-        return new Promise<AnalysisGetByIdRes>((res, rej) => {
+        const res: AxiosResponse<AnalysisGetByIdRes> = await handleTokenRefreshedRequest(null, AnalysisServiceApi.GetById, req)
+        console.log(res.data);
+        return res.data
+        // return new Promise<AnalysisGetByIdRes>((res, rej) => {
 
-            setTimeout(() => {
-                res({
-                    analiz: {
-                        id: req.id,
-                        cat: 1,
-                        code: "1",
-                        cost: 300,
-                        info: "Временно не доступно",
-                        maxdur: 1,
-                        mindur: 10,
-                        name: "Временно не доступно",
-                        prepare: [],
-                        tags: [],
-                        templates: []
-                    }
-                })
-            }, 1000)
-        })
+        //     setTimeout(() => {
+        //         res({
+        //             analiz: {
+        //                 id: req.id,
+        //                 cat: 1,
+        //                 code: "1",
+        //                 cost: 300,
+        //                 info: "Временно не доступно",
+        //                 maxdur: 1,
+        //                 mindur: 10,
+        //                 name: "Временно не доступно",
+        //                 prepare: [],
+        //                 tags: [],
+        //                 templates: []
+        //             }
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 
@@ -254,7 +254,7 @@ export const CurrentDataSlice = createSlice({
             state.loadings.order = true
         })
         builder.addCase(getOrderById.fulfilled, (state, action) => {
-            state.orderInfo = action.payload
+            state.orderInfo = action.payload.order
             state.loadings.order = false
         })
         builder.addCase(getOrderById.rejected, (state, action) => {

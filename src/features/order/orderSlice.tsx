@@ -39,18 +39,18 @@ const initialState: OrderSliceState = {
 export const createOrder = createAsyncThunk(
     'order/create',
     async (req: CreateOrderReq, { dispatch }) => {
-        //const res: AxiosResponse<CreateOrderRes> = await handleTokenRefreshedRequest(null, OrdersApi.Create, req)
-        // if (!res.status) {
-        //     throw new Error("Не удалось создать заказ.")
-        // }
-        // return res.data
-        return new Promise<CreateOrderRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    status: true
-                })
-            }, 1000)
-        })
+        const res: AxiosResponse<CreateOrderRes> = await handleTokenRefreshedRequest(null, OrdersApi.Create, req)
+        if (!res.status) {
+            throw new Error("Не удалось создать заказ.")
+        }
+        return res.data
+        // return new Promise<CreateOrderRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             status: true
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 

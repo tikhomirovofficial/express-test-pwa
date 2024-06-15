@@ -51,7 +51,7 @@ export const BonusesPatientModalContent: FC<ModalContentProps> = ({ handleModal,
             <div className="f-column gap-15 f-1">
                 <div className="f-row-betw">
                     <h2 className="title">Всего</h2>
-                    <h2 className="title">{patientInfo.data.bonus}</h2>
+                    <h2 className="title">{patientInfo.bonuses_data.total}</h2>
                 </div>
                 <div className="f-1 p-rel h-100p">
                     <div className="list p-abs w-100p f-column scrollableItemsList">
@@ -75,7 +75,7 @@ export const BonusesPatientModalContent: FC<ModalContentProps> = ({ handleModal,
                                 </div>
                         }
                         {
-                            can_next && !loadings.patient_orders ?
+                            can_next.patients_orders && !loadings.patient_orders ?
                                 <div style={{ marginTop: 15 }} className="f-c-col">
                                     <YellowButton className='fz-s mini-btn' onClick={loadMore} loading={loadings.patient_orders_pagination}>Загрузить еще</YellowButton>
                                 </div>

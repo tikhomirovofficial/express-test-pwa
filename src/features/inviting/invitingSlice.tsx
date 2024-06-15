@@ -51,40 +51,40 @@ const initialState: InvitingSliceState = {
 export const createInviting = createAsyncThunk(
     'inviting/create',
     async (req: InvitingCreateReq, { dispatch }) => {
-        // const res: AxiosResponse<InvitingCreateRes> = await handleTokenRefreshedRequest(null, PatientsApi.Invite, req)
-        // console.log("Приглашение ответ: ", res.data);
-        // if (!res.status) {
-        //     throw new Error("Не удалось добавить пациента!")
-        // }
-        // return res.data
-        return new Promise<InvitingCreateRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    status: true,
-                    user_id: 1
-                })
-            }, 1000)
-        })
+        const res: AxiosResponse<InvitingCreateRes> = await handleTokenRefreshedRequest(null, PatientsApi.Invite, req)
+        console.log("Приглашение ответ: ", res.data);
+        if (!res.status) {
+            throw new Error("Не удалось добавить пациента!")
+        }
+        return res.data
+        // return new Promise<InvitingCreateRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             status: true,
+        //             user_id: 1
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 export const checkPatientExists = createAsyncThunk(
     'inviting/exists',
     async (req: GetIsExistsPatientReq, { dispatch }) => {
-        // const res: AxiosResponse<GetIsExistsPatientRes> = await handleTokenRefreshedRequest(null, PatientsApi.CheckExists, req)
-        // console.log("exists res ", res.data);
+        const res: AxiosResponse<GetIsExistsPatientRes> = await handleTokenRefreshedRequest(null, PatientsApi.CheckExists, req)
+        console.log("exists res ", res.data);
 
-        // if (!res.status) {
-        //     throw new Error("Не удалось проверить наличие пациента!")
-        // }
-        // return res.data
-        return new Promise<GetIsExistsPatientRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    status: true,
-                    exists: true,
-                })
-            }, 1000)
-        })
+        if (!res.status) {
+            throw new Error("Не удалось проверить наличие пациента!")
+        }
+        return res.data
+        // return new Promise<GetIsExistsPatientRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             status: true,
+        //             exists: true,
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 
