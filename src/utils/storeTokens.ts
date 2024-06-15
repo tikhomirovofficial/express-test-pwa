@@ -1,20 +1,18 @@
 import { JWT } from "../types/common.types"
 import { setCookie, getCookie, deleteCookie } from "./CookieUtil"
 
-;
-
 const DAYS = 30
 export const storeTokens = (tokens: JWT) => {
-    setCookie("tokens", {
-        access_token: tokens.access,
-        refresh_token: tokens.refresh
+    setCookie("ex_pwa_tokens", {
+        access: tokens.access,
+        refresh: tokens.refresh
     }, DAYS)
 }
 
 export const getTokens = (): JWT => {
-   return getCookie("tokens") as JWT
+    return getCookie("ex_pwa_tokens") as JWT
 }
 
 export const deleteTokens = () => {
-    deleteCookie("tokens")
+    deleteCookie("ex_pwa_tokens")
 }

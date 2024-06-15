@@ -37,7 +37,8 @@ export interface RoutesCollection {
     public: RoutesList,
     access: RoutesList,
     has_profile: RoutesList,
-    non_auth: RoutesList
+    non_auth: RoutesList,
+    non_accessed: RoutesList
 }
 
 
@@ -64,7 +65,14 @@ export const routes: RoutesCollection = {
             path: "/welcome-finish"
         },
     ],
-    auth: [
+    auth: [],
+    access: [
+        {
+            Component: ProfileCreateContainer,
+            path: "/register/profile"
+        }
+    ],
+    non_accessed: [
         {
             Component: PinCreateContainer,
             path: "/login/pin/create"
@@ -73,12 +81,6 @@ export const routes: RoutesCollection = {
             Component: PinLoginContainer,
             path: "/login/pin/login"
         },
-    ],
-    access: [
-        {
-            Component: ProfileCreateContainer,
-            path: "/register/profile"
-        }
     ],
     has_profile: [
         {

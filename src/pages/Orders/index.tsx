@@ -24,7 +24,7 @@ const loading = !true
 export const Orders = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const { profile_got } = useAppSelector(state => state.profile)
+  
     const { all_orders, loadings, can_next, part } = useAppSelector(state => state.orders)
     const profile = useAppSelector(state => state.profile)
 
@@ -47,11 +47,7 @@ export const Orders = () => {
         navigate("/order/patient")
     }
 
-    useEffect(() => {
-        if (!profile_got) {
-            dispatch(getProfile())
-        }
-    }, [profile_got])
+   
 
     useEffect(loadOrders, [part])
 

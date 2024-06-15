@@ -8,6 +8,7 @@ import { Orders } from '../pages/Orders';
 import { WelcomePatients } from '../pages/Welcome/WelcomePatients';
 import AccessRoute from './AccessRoute';
 import HasProfileRoute from './HasProfileRoute';
+import NonAccessRoute from './NonAccessRoute';
 
 const AppRoutes = () => {
     return (
@@ -49,6 +50,15 @@ const AppRoutes = () => {
                         key={path}
                         path={path}
                         element={<NonAuthRoute Component={Component} />}
+                    />
+                ))
+            }
+            {
+                routes.non_accessed.map(({ path, Component }) => (
+                    <Route
+                        key={path}
+                        path={path}
+                        element={<NonAccessRoute Component={Component} />}
                     />
                 ))
             }

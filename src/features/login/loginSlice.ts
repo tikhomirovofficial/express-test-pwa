@@ -7,7 +7,7 @@ import { deleteTokens, storeTokens } from "../../utils/storeTokens";
 type LoginSliceType = {
     access_token: string
     token: {
-        valid: boolean,
+        valid: boolean | null,
         checking: boolean
     },
     auth: {
@@ -36,7 +36,7 @@ const initialState: LoginSliceType = {
     access_token: "",
     token: {
         checking: true,
-        valid: !true
+        valid: null
     },
     auth: {
         loading: false,
@@ -63,40 +63,40 @@ const initialState: LoginSliceType = {
 export const sendAuthPhone = createAsyncThunk(
     'login/phone',
     async (req: AuthReq, { dispatch }) => {
-        // const res: AxiosResponse<AuthRes> = await UserApi.LoginPhone(req)
-        // if (!res.status || !res.data.status) {
-        //     throw new Error("Ошибка сервера!")
-        // }
-        // return res.data
-        return new Promise<AuthRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    status: true
-                })
-            }, 1000)
-        })
+        const res: AxiosResponse<AuthRes> = await UserApi.LoginPhone(req)
+        if (!res.status || !res.data.status) {
+            throw new Error("Ошибка сервера!")
+        }
+        return res.data
+        // return new Promise<AuthRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             status: true
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 export const sendAuthCode = createAsyncThunk(
     'login/code',
     async (req: AuthAcceptReq, { dispatch }) => {
-        // const res: AxiosResponse<AuthAcceptRes> = await UserApi.LoginCode(req)
-        // if (!res.data) {
-        //     throw new Error("Ошибка сервера!")
-        // }
-        // if (res.status === 401) {
-        //     throw new Error("Неверный код!")
-        // }
-        // storeTokens({ refresh: res.data.refresh, access: res.data.access })
-        // return res.data
-        return new Promise<AuthAcceptRes>((res, rej) => {
-            setTimeout(() => {
-                res({
-                    access: "dsadasdsadsa",
-                    refresh: "dsadsa"
-                })
-            }, 1000)
-        })
+        const res: AxiosResponse<AuthAcceptRes> = await UserApi.LoginCode(req)
+        if (!res.data) {
+            throw new Error("Ошибка сервера!")
+        }
+        if (res.status === 401) {
+            throw new Error("Неверный код!")
+        }
+
+        return res.data
+        // return new Promise<AuthAcceptRes>((res, rej) => {
+        //     setTimeout(() => {
+        //         res({
+        //             access: "dsadasdsadsa",
+        //             refresh: "dsadsa"
+        //         })
+        //     }, 1000)
+        // })
     }
 )
 
@@ -161,6 +161,7 @@ export const LoginSlice = createSlice({
         })
         //SAVE TOKENS
         builder.addCase(sendAuthCode.fulfilled, (state, action) => {
+            storeTokens({ refresh: action.payload.refresh, access: action.payload.access })
             state.auth.loading = false
             state.auth.success.code = true
             state.token.valid = true
