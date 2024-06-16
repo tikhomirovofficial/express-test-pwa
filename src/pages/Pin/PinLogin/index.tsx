@@ -8,12 +8,14 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import { resetAcceptedErr, setAcceptedErr, setPinCodeAccepted } from '../../../features/access/accessSlice'
 import { getPinCode } from '../../../utils/storePinCode'
 import { ClearCloseIcon, BackSpaceIcon } from '../../../icons'
+import { useLogout } from '../../../hooks/useLogout'
 
 export const PinLogin = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch();
     const [pin, setPin] = useState<string[]>(["", "", "", ""])
     const { accepted: { error } } = useAppSelector(state => state.access)
+    const logout = useLogout()
 
     const handlePin = (digit: string) => {
         setPin((prev) => {
@@ -102,6 +104,9 @@ export const PinLogin = () => {
                     <div onClick={() => handlePin("clear")} className="pin-btn f-c-col txt-center c-yellow">
                         <BackSpaceIcon height={20} />
                     </div>
+                </div>
+                <div style={{ marginTop: 20 }} className="d-f jc-center">
+                    <p onClick={logout} className="c-error fz-s">Выйти из аккаунта</p>
                 </div>
 
             </div>

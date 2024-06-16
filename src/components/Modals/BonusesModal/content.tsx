@@ -10,7 +10,7 @@ import { HeartIcon } from '../../../icons'
 import { OrderItem } from '../../OrderItem'
 import BarChart from '../../BarChart'
 import Skeleton from 'react-loading-skeleton'
-import { setPatientData } from '../../../features/current-data/currentData'
+import { getOrdersByPatientId, setPatientData } from '../../../features/current-data/currentData'
 import { getAllPatients, incrementPatientsPart, resetAllPatients } from '../../../features/patients/patientsSlice'
 import { usePagination } from '../../../hooks/usePagination'
 import { PatientApi } from '../../../types/entities/patients.types'
@@ -79,14 +79,18 @@ export const BonusesModalContent: FC<ModalContentProps> = ({ handleModal, level 
                                     <Skeleton borderRadius={6} height={50} />
                                 </div>
                                 :
-                                patients.list.map((item, index) => (
-                                    <PatientItem
-                                        {...item}
-                                        handlePress={() => handleOpenPatientInfo(item)}
-                                        bottomText={item.phone}
-                                        neededBottomBorder={index < patients.list.length - 1}
-                                    />
-                                ))
+                                patients.list.length ?
+                                    patients.list.map((item, index) => (
+                                        <PatientItem
+                                            {...item}
+                                            handlePress={() => handleOpenPatientInfo(item)}
+                                            bottomText={item.phone}
+                                            neededBottomBorder={index < patients.list.length - 1}
+                                        />
+                                    )) :
+                                    <div style={{ padding: "10px 0" }} className=''>
+                                        <p className='fz-m c-dark'>Здесь пока пусто.</p>
+                                    </div>
                         }
                         {
                             patients.can_next ?

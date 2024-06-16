@@ -100,14 +100,18 @@ export const OrderCategory = () => {
                         !loadings.categories ?
                             <div className="list p-abs w-100p f-column scrollableItemsList gap-10">
                                 {
-                                    [...[...categories, ...analisys] as (CategoryApi | AnalysisApi)[]].map(item => (
-                                        <CategoryOrProductItem
-                                            openAnalysisInfo={() => handleOpenProductInfo(item.id)}
-                                            item={item}
-                                            toProducts={toProducts}
-                                            cartProducts={cartProducts}
-                                        />
-                                    ))
+                                    [...[...categories, ...analisys] as (CategoryApi | AnalysisApi)[]].length ?
+                                        [...[...categories, ...analisys] as (CategoryApi | AnalysisApi)[]].map(item => (
+                                            <CategoryOrProductItem
+                                                openAnalysisInfo={() => handleOpenProductInfo(item.id)}
+                                                item={item}
+                                                toProducts={toProducts}
+                                                cartProducts={cartProducts}
+                                            />
+                                        )) :
+                                        <div style={{ padding: "10px 0" }} className=''>
+                                            <p className='fz-m c-dark'>Ничего не найдено.</p>
+                                        </div>
                                 }
                                 {
                                     can_next ?

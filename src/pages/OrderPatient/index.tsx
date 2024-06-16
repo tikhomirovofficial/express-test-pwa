@@ -13,6 +13,7 @@ import { useDeferred } from '../../hooks/useDeffered'
 import { usePagination } from '../../hooks/usePagination'
 import { clearCart } from '../../features/cart/cartSlice'
 import { BackButton } from '../../components/BackButton'
+import { formatPhoneNumber } from '../../utils/formatePhone'
 
 export const OrderPatient = () => {
     const dispatch = useAppDispatch()
@@ -96,7 +97,7 @@ export const OrderPatient = () => {
                             <SearchIcon />
                             <input value={searchVal} onChange={(e) => setSearchVal(e.target.value)} className='w-100p fz-m' type="text" placeholder='Найти по номеру телефона' />
                         </div>
-                        <div onClick={openNewPatient} style={{ textDecoration: "underline" }} className='textButton'>Новый номер телефона</div>
+                        <div onClick={openNewPatient} style={{ textDecoration: "underline" }} className='textButton'>Пригласить пациента</div>
                     </div>
                 </div>
                 <div className="f-1 p-rel">
@@ -104,14 +105,22 @@ export const OrderPatient = () => {
                         !loadings.search_patients ?
                             <div className="list p-abs w-100p f-column scrollableItemsList">
                                 {
-                                    searched_list.map(item => (
-                                        <PatientItem
-                                            handlePress={() => handleSelectPatient(item.id)}
-                                            isRadio={true}
-                                            key={item.id}
-                                            selected={patientSelected === item.id}
-                                            {...item} />
-                                    ))
+                                    searched_list.length ?
+                                        searched_list.map(item => (
+                                            <PatientItem
+                                                handlePress={() => handleSelectPatient(item.id)}
+                                                isRadio={true}
+                                                bottomText={formatPhoneNumber(item.phone)}
+                                                key={item.id}
+                                                selected={patientSelected === item.id}
+                                                {...item}
+                                            />
+
+                                        ))
+                                        :
+                                        <div style={{ padding: "10px 0" }} className=''>
+                                            <p className='fz-m c-dark'>Ничего не найдено.</p>
+                                        </div>
                                 }
                                 {
                                     searched_can_next ?

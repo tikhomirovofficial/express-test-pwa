@@ -133,19 +133,23 @@ export const PatientModalContent: FC<ModalContentProps> = ({ handleModal, level 
                                 <Skeleton height={140} borderRadius={6} />
                                 <Skeleton height={140} borderRadius={6} />
                             </> :
-                            patientInfo.orders.map(item => (
-                                <OrderCard status={item.status}
-                                    handlePress={() => {
-                                        dispatch(handlePatientOrderInfoModal())
-                                    }}
-                                    key={item.id}
-                                    paid={true}
-                                    date={normalizeDate(item.date)}
-                                    customer={""}
-                                    id={item.id}
-                                    customerHide
-                                    analysisList={[]} />
-                            ))
+                            patientInfo.orders.length ?
+                                patientInfo.orders.map(item => (
+                                    <OrderCard status={item.status}
+                                        handlePress={() => {
+                                            dispatch(handlePatientOrderInfoModal())
+                                        }}
+                                        key={item.id}
+                                        paid={true}
+                                        date={normalizeDate(item.date)}
+                                        customer={""}
+                                        id={item.id}
+                                        customerHide
+                                        analysisList={[]} />
+                                )) :
+                                <div style={{ padding: "10px 0" }} className=''>
+                                    <p className='fz-m c-dark'>Здесь пока пусто.</p>
+                                </div>
 
                     }
                     {

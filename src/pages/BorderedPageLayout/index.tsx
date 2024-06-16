@@ -12,7 +12,7 @@ type BorderedPageLayoutProps = {
 }
 export const BorderedPageLayout: FC<BorderedPageLayoutProps & HasNodeChildren & ModalContentProps> = ({ top, children, contentClassName, modal, handleModal }) => {
     return (
-        <div onClick={handleModal} style={modal !== undefined ? { paddingTop: `${5 + (2 * modal.level)}rem`, zIndex: modal.level * 4 } : undefined} className={`${styles.borderedPage} ${modal !== undefined ? styles.modal : ""} gap-15 m-100v f-column`}>
+        <div onClick={handleModal} style={modal !== undefined ? { paddingTop: `${5 + (2 * modal.level)}rem`, zIndex: modal.level * 4 } : undefined} className={`${styles.borderedPage} ${modal !== undefined ? styles.modal : "puff-in-center"} gap-15 m-100v f-column`}>
             {
                 top ?
                     <div className="wrapper">

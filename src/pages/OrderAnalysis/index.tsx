@@ -97,14 +97,18 @@ export const OrderAnalysis = () => {
                         !loadings.products ?
                             <div className="list p-abs w-100p f-column scrollableItemsList gap-10">
                                 {
-                                    items.map((item, index) => (
-                                        <AnalysisItem
-                                            clickHandle={() => handleOpenProductInfo(item.id)}
-                                            product={item}
-                                            isInCart={cartProducts.some(cartProduct => cartProduct.id === item.id)}
-                                            index={index}
-                                        />
-                                    ))
+                                    items.length ?
+                                        items.map((item, index) => (
+                                            <AnalysisItem
+                                                clickHandle={() => handleOpenProductInfo(item.id)}
+                                                product={item}
+                                                isInCart={cartProducts.some(cartProduct => cartProduct.id === item.id)}
+                                                index={index}
+                                            />
+                                        )) :
+                                        <div style={{ padding: "10px 0" }} className=''>
+                                            <p className='fz-m c-dark'>Ничего не найдено.</p>
+                                        </div>
                                 }
                                 {
                                     can_next ?

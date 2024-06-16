@@ -13,12 +13,15 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { handleAboutModal, handleOrdersFinancesModal, handlePatientsModal, handleProfileEditModal } from '../../features/modals/modalsSlice'
 import Skeleton from 'react-loading-skeleton'
 import { formatBonus } from '../../utils/formatBonusesString'
+import { useLogout } from '../../hooks/useLogout'
 const loading = !true
 
 export const Profile = () => {
     const dispatch = useAppDispatch()
     const profile = useAppSelector(state => state.profile)
     const { ordersFinancesModal, patientsModal, aboutAppModal, profileEditModal } = useAppSelector(state => state.modals)
+
+    const handleLogout = useLogout()
 
     const handleProfileDataModal = () => dispatch(handleProfileEditModal())
 
@@ -88,7 +91,7 @@ export const Profile = () => {
                             <p className='c-black txt-center fw-6 fz-m'>Включить<br /> тёмную тему</p>
                         </div>
                     </div>
-                    <div className={`big-btn whiteBorderedBlock f-column-betw al-center gap-15 w-100p ${styles.profileBtn}`}>
+                    <div onClick={handleLogout} className={`big-btn whiteBorderedBlock f-column-betw al-center gap-15 w-100p ${styles.profileBtn}`}>
                         <LogoutIcon />
                         <div className="f-column f-1">
                             <p className='c-error txt-center fw-6 fz-m'>Выйти из <br /> приложения</p>

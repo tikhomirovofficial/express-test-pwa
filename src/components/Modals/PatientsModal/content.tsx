@@ -65,14 +65,18 @@ export const PatientsModalContent: FC<ModalContentProps> = ({ handleModal, level
                     !patients.loadings.patients ?
                         <div className="list p-abs w-100p f-column scrollableItemsList">
                             {
-                                patients.list.map((item, index) => (
-                                    <PatientItem
-                                        {...item}
-                                        handlePress={() => handlePatientInfo(item.id)}
-                                        bottomText={item.phone}
-                                        neededBottomBorder={index < patients.list.length - 1}
-                                    />
-                                ))
+                                patients.list.length ?
+                                    patients.list.map((item, index) => (
+                                        <PatientItem
+                                            {...item}
+                                            handlePress={() => handlePatientInfo(item.id)}
+                                            bottomText={item.phone}
+                                            neededBottomBorder={index < patients.list.length - 1}
+                                        />
+                                    )) :
+                                    <div style={{ padding: "10px 0" }} className=''>
+                                        <p className='fz-m c-dark'>Здесь пока пусто.</p>
+                                    </div>
                             }
                             {
                                 patients.can_next ?
@@ -94,6 +98,6 @@ export const PatientsModalContent: FC<ModalContentProps> = ({ handleModal, level
 
             </div>
             <YellowButton onClick={toInviting}>Пригласить пациентов</YellowButton>
-        </BorderedPageLayout>
+        </BorderedPageLayout >
     )
 }

@@ -80,32 +80,39 @@ export const Orders = () => {
                         <h2 className="title">Заказы анализов</h2>
                 }
                 {
-                    !loadings.all_orders ? <div className="f-column gap-15">
-                        {
-                            all_orders.map(item => (
-                                <OrderCard status={item.status}
-                                    handlePress={() => {
-                                        dispatch(handleOrderInfoModal())
-                                    }}
-                                    key={item.id}
-                                    paid={true}
-                                    date={normalizeDate(item.date)}
-                                    id={item.id}
-                                    customer={item.pacient || "Имя Фамилия"}
-                                    analysisList={[]} />
-                            ))
-                        }
-                        {
-                            can_next ?
-                                <div className="f-c-col">
-                                    <YellowButton className='fz-s mini-btn' onClick={loadMore} loading={loadings.all_orders_pagination}>Загрузить еще</YellowButton>
-                                </div>
-                                : null
-                        }
-                    </div> : <>
-                        <Skeleton height={140} borderRadius={6} />
-                        <Skeleton height={140} borderRadius={6} />
-                    </>
+                    !loadings.all_orders ?
+                        all_orders.length ?
+
+                            <div className="f-column gap-15">
+                                {
+                                    all_orders.map(item => (
+                                        <OrderCard status={item.status}
+                                            handlePress={() => {
+                                                dispatch(handleOrderInfoModal())
+                                            }}
+                                            key={item.id}
+                                            paid={true}
+                                            date={normalizeDate(item.date)}
+                                            id={item.id}
+                                            customer={item.pacient || "Имя Фамилия"}
+                                            analysisList={[]} />
+                                    ))
+                                }
+                                {
+                                    can_next ?
+                                        <div className="f-c-col">
+                                            <YellowButton className='fz-s mini-btn' onClick={loadMore} loading={loadings.all_orders_pagination}>Загрузить еще</YellowButton>
+                                        </div>
+                                        : null
+                                }
+                            </div>
+                            : <div style={{ padding: "10px 0" }} className=''>
+                                <p className='fz-m c-dark'>Здесь пока пусто.</p>
+                            </div>
+                        : <>
+                            <Skeleton height={140} borderRadius={6} />
+                            <Skeleton height={140} borderRadius={6} />
+                        </>
                 }
             </div>
         </BorderedPageLayout>

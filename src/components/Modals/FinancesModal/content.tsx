@@ -100,13 +100,17 @@ export const FinancesModalContent: FC<ModalContentProps> = ({ handleModal, level
                                 </div>
                             </div>
                         </div> :
-                        <div className="f-column gap-30">
-                            {
-                                all_dated_orders.map(item => (
-                                    <OrdersByDateGroup data={item} />
-                                ))
-                            }
-                        </div>
+                        all_dated_orders.length ?
+                            <div className="f-column gap-30">
+                                {
+                                    all_dated_orders.map(item => (
+                                        <OrdersByDateGroup data={item} />
+                                    ))
+                                }
+                            </div> :
+                            <div style={{ padding: "10px 0" }} className=''>
+                                <p className='fz-m c-dark'>Здесь пока пусто.</p>
+                            </div>
                 }
 
             </div>

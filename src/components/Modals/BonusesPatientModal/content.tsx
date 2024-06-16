@@ -57,15 +57,19 @@ export const BonusesPatientModalContent: FC<ModalContentProps> = ({ handleModal,
                     <div className="list p-abs w-100p f-column scrollableItemsList">
                         {
                             !loadings.patient_orders ?
-                                patientInfo.orders.map(item => (
-                                    <OrderItem
-                                        id={item.id}
-                                        codeText={String(item.id)}
-                                        leftBottomText={`От ${normalizeDate(item.date)}`}
-                                        rightBottomText={item.status}
-                                        rightTopText={String(item.bonus)}
-                                    />
-                                ))
+                                patientInfo.orders.length ?
+                                    patientInfo.orders.map(item => (
+                                        <OrderItem
+                                            id={item.id}
+                                            codeText={String(item.id)}
+                                            leftBottomText={`От ${normalizeDate(item.date)}`}
+                                            rightBottomText={item.status}
+                                            rightTopText={String(item.bonus)}
+                                        />
+                                    )) :
+                                    <div style={{ padding: "10px 0" }} className=''>
+                                        <p className='fz-m c-dark'>Здесь пока пусто.</p>
+                                    </div>
                                 :
                                 <div className="f-column gap-5">
                                     <Skeleton borderRadius={6} height={50} />
