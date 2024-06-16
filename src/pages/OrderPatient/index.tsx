@@ -3,7 +3,7 @@ import { YellowButton } from '../../components/YellowButton'
 import { Link, useNavigate } from 'react-router-dom'
 import { BorderedPageLayout } from '../BorderedPageLayout'
 import { InputField } from '../../components/InputField'
-import { AvatarIcon, CheckedCircle, SearchIcon, UncheckedCircle } from '../../icons'
+import { AvatarIcon, BackIcon, CheckedCircle, SearchIcon, UncheckedCircle } from '../../icons'
 import { PatientItem } from '../../components/ListItems/PatientItem'
 import Skeleton from 'react-loading-skeleton'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
@@ -12,6 +12,7 @@ import { getSearchPatients, incrementSearchedPatientsPart, resetSearchedPatients
 import { useDeferred } from '../../hooks/useDeffered'
 import { usePagination } from '../../hooks/usePagination'
 import { clearCart } from '../../features/cart/cartSlice'
+import { BackButton } from '../../components/BackButton'
 
 export const OrderPatient = () => {
     const dispatch = useAppDispatch()
@@ -36,7 +37,7 @@ export const OrderPatient = () => {
     )
 
     const handleToMyPatients = () => {
-        alert("to home")
+        navigate("/")
     }
 
     const handleSelectPatient = (id: number) => {
@@ -75,7 +76,7 @@ export const OrderPatient = () => {
             contentClassName={"f-column-betw"}
             top={
                 <div className='f-row-betw'>
-                    <div></div>
+                    <BackButton onClick={handleToMyPatients} />
                     <h2 className="title fw-6">Назначение анализов</h2>
                     <div></div>
                 </div>

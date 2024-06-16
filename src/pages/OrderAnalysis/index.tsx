@@ -11,6 +11,7 @@ import { useDeferred } from '../../hooks/useDeffered'
 import { usePagination } from '../../hooks/usePagination'
 import { getProducts, incrementProductsPart, resetProducts } from '../../features/products/productSlice'
 import { SearchIcon } from '../../icons'
+import { BackButton } from '../../components/BackButton'
 
 export const OrderAnalysis = () => {
     const dispatch = useAppDispatch()
@@ -44,7 +45,7 @@ export const OrderAnalysis = () => {
     }
 
     const handleToSelectingCategory = () => {
-        navigate("order/category")
+        navigate("/order/category")
     }
 
     const handleOpenProductInfo = (product_id: number) => {
@@ -69,7 +70,7 @@ export const OrderAnalysis = () => {
             contentClassName={"f-column-betw"}
             top={
                 <div className='f-row-betw'>
-                    <div></div>
+                    <BackButton onClick={handleToSelectingCategory} />
                     <h2 className="title fw-6 titleTopOverflowed">{currentCategory !== undefined ? currentCategory.name.slice(0, 17) : ""} {currentCategory.name.length >= 16 ? "..." : ""}</h2>
                     <div></div>
                 </div>

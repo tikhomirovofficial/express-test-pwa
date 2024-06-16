@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { clearCart, removeProduct } from '../../features/cart/cartSlice'
 import { createOrder, setOrderBonusesTotal, setCurrentCategory, resetPatient, resetOrderErr } from '../../features/order/orderSlice'
 import { CreateOrderReq } from '../../types/api/orders.api.types'
+import { BackButton } from '../../components/BackButton'
 
 export const OrderCart = () => {
     const dispatch = useAppDispatch()
@@ -39,12 +40,11 @@ export const OrderCart = () => {
     }
 
     const handleToSelectingCategory = () => {
-        alert("to category")
+        navigate("/order/category")
     }
 
     useEffect(() => {
         if (success) {
-
             dispatch(setOrderBonusesTotal((orderTotalSum / 100) * bonuses.percent))
             navigate("/order-sent")
             handleClearCart()
@@ -62,7 +62,7 @@ export const OrderCart = () => {
             contentClassName={"f-column-betw"}
             top={
                 <div className='f-row-betw'>
-                    <div></div>
+                    <BackButton onClick={handleToSelectingCategory} />
                     <h2 className="title fw-6 titleTopOverflowed">Корзина</h2>
                     <div></div>
                 </div>

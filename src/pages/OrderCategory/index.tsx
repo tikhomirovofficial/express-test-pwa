@@ -17,6 +17,7 @@ import { getCategories, incrementCategoriesProductsPart, resetCategoriesProducts
 import { AnalysisApi } from '../../types/entities/analysis.types'
 import { CategoryApi } from '../../types/entities/categories.types'
 import { CategoryOrProductItem } from '../../components/ListItems/CategoryOrProductItem'
+import { BackButton } from '../../components/BackButton'
 
 
 export const OrderCategory = () => {
@@ -45,7 +46,7 @@ export const OrderCategory = () => {
     )
 
     const handleToSelectingPatient = () => {
-        alert("to patient")
+        navigate("/order/patient")
     }
 
     const toProducts = () => {
@@ -72,7 +73,7 @@ export const OrderCategory = () => {
             contentClassName={"f-column-betw"}
             top={
                 <div className='f-row-betw'>
-                    <div></div>
+                    <BackButton onClick={handleToSelectingPatient} />
                     <h2 className="title fw-6">{patientFullName}</h2>
                     <div></div>
                 </div>

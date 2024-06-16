@@ -27,9 +27,12 @@ export const AnalysisItem: FC<AnalysisItemProps> = ({ product, index, isInCart, 
                 <p className='c-dark fz-m fw-4'>{product.name}</p>
                 <p className='c-dark fz-m fw-7'>{product.cost} ₽</p>
             </div>
-            <div onClick={!isInCart ? addProduct : removeItem} className="f-c-col">
-                {isInCart ? <RemoveIcon /> : <AddIcon />}
+            <div onClick={e => e.stopPropagation()}>
+                <div onClick={!isInCart ? addProduct : removeItem} className="f-c-col">
+                    {isInCart ? <RemoveIcon /> : <AddIcon />}
+                </div>
             </div>
+
         </div>
     )
 }

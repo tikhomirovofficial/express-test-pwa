@@ -1,0 +1,15 @@
+.button {
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1.6rem;
+    padding: 1.8rem 1.5rem;
+}
+.buttonBlue {
+    border-radius: 6px;
+    background: linear-gradient(45deg, #12b2b3 0%, #56e0e0 100%);
+    color: white;
+    border: 1px solid transparent;
+}
+.button:disabled {
+    background: rgb(227, 227, 227);
+}

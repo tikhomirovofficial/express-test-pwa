@@ -7,10 +7,13 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { setAlreadyBeen } from '../../features/access/accessSlice'
 import { sendAuthPhone, resetLoginPhoneStatus, setCodeIsFreezed, setCodeFreezedSecs, handleLoginForm } from '../../features/login/loginSlice'
 import { extractDigits } from '../../utils/normalizePhone'
+import { useNavigation } from "react-router-dom";
+import { BackButton } from '../../components/BackButton'
 
 export const PhoneLogin = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
+
     const { auth } = useAppSelector(state => state.login)
     const disabledBtn = auth.form.phone.length < 11
 
@@ -32,7 +35,7 @@ export const PhoneLogin = () => {
             contentClassName={"f-column-betw"}
             top={
                 <div className='f-row-betw'>
-                    <div></div>
+                   
                     <h2 className="title fw-6">Вход</h2>
                     <div></div>
                 </div>

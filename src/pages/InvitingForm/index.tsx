@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { createInviting, handleCreateInvitingForm, handleCreateInvitingGender, resetCreateInvitingForm } from '../../features/inviting/invitingSlice'
 import { InvitingCreateReq } from '../../types/api/patients.api.types'
 import { extractDigits } from '../../utils/normalizePhone'
+import { BackButton } from '../../components/BackButton'
 
 export const InvitingForm = () => {
     const dispatch = useAppDispatch()
@@ -15,7 +16,7 @@ export const InvitingForm = () => {
     const { text_fields, gender, disabled, sending, success, err } = useAppSelector(state => state.inviting.form)
 
     const toBackScreen = () => {
-        alert("go back")
+        navigate("/inviting/phone")
     }
 
     const handleCreateInviting = () => {
@@ -48,7 +49,7 @@ export const InvitingForm = () => {
             contentClassName={"f-column-betw"}
             top={
                 <div className='f-row-betw'>
-                    <div></div>
+                    <BackButton onClick={toBackScreen} />
                     <h2 className="title fw-6">Приглашение пациента</h2>
                     <div></div>
                 </div>

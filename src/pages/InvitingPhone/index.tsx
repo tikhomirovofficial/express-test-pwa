@@ -6,6 +6,7 @@ import { InputField } from '../../components/InputField'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { checkPatientExists, handleCreateInvitingForm } from '../../features/inviting/invitingSlice'
 import { extractDigits } from '../../utils/normalizePhone'
+import { BackButton } from '../../components/BackButton'
 
 export const InvitingPhone = () => {
     const dispatch = useAppDispatch()
@@ -37,9 +38,7 @@ export const InvitingPhone = () => {
             contentClassName={"f-column-betw"}
             top={
                 <div className='f-row-betw'>
-                    <div>
-
-                    </div>
+                    <BackButton onClick={() => navigate("/")} />
                     <h2 className="title fw-6">Приглашение пациента</h2>
                     <div></div>
                 </div>

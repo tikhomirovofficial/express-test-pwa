@@ -19,12 +19,11 @@ import { usePagination } from '../../hooks/usePagination'
 import { handleOrderInfoModal } from '../../features/modals/modalsSlice'
 import { normalizeDate } from '../../utils/normalizeDate'
 import { resetPatient } from '../../features/order/orderSlice'
-const loading = !true
 
 export const Orders = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-  
+
     const { all_orders, loadings, can_next, part } = useAppSelector(state => state.orders)
     const profile = useAppSelector(state => state.profile)
 
@@ -46,8 +45,6 @@ export const Orders = () => {
         dispatch(resetPatient())
         navigate("/order/patient")
     }
-
-   
 
     useEffect(loadOrders, [part])
 
@@ -79,7 +76,7 @@ export const Orders = () => {
             </div>
             <div className={`f-column gap-25 ${styles.hub}`}>
                 {
-                    loading ? <Skeleton height={22} borderRadius={6} /> :
+                    loadings.all_orders ? <Skeleton height={22} borderRadius={6} /> :
                         <h2 className="title">Заказы анализов</h2>
                 }
                 {
