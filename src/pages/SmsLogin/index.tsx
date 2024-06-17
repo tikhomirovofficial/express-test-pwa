@@ -87,8 +87,6 @@ export const SmsLogin = () => {
         }
         if (auth.success.code === false) {
             dispatch(resetLoginCodeStatus())
-        } else if (auth.success.code) {
-            alert("Отправляемся в профиль")
         }
         setSended(false)
     }, [code, sended, auth.success.code])

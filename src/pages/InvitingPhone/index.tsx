@@ -14,10 +14,6 @@ export const InvitingPhone = () => {
     const { already_exists, form } = useAppSelector(state => state.inviting)
     const disabledBtn = form.text_fields.phone.includes("_") || form.text_fields.phone.length < 10
 
-    const toBackScreen = () => {
-        alert("go back")
-    }
-
     const handleCheckExistsPatient = () => {
         dispatch(checkPatientExists({ phone: extractDigits(form.text_fields.phone) }))
     }
