@@ -2,11 +2,12 @@ import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios"
 import { getTokens } from "../../utils/storeTokens"
 
 
-const currentDomain = 1
+const currentDomain = 2
 
 const domains = [
     "https://dev.advafert.ru",
-    "https://api.mobile.expresstest.ru"
+    "https://api.mobile.expresstest.ru",
+    "http://95.53.245.74:8000"
 ]
 
 export const domain = domains[currentDomain]

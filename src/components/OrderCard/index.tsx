@@ -22,8 +22,16 @@ export const OrderCard: FC<OrderAnalysisType> = ({
             statusClassName: "status-gray",
             text: status
         }
-        if (status === "Оплачен") {
+        if (status === "Закончено") {
             statusObj.statusClassName = "status-green"
+            return statusObj
+        }
+        if (status === "Действующее") {
+            statusObj.statusClassName = "status-yellow"
+            return statusObj
+        }
+        if (status === "Отказ") {
+            statusObj.statusClassName = "status-red"
             return statusObj
         }
         statusObj.statusClassName = "status-gray"

@@ -33,7 +33,7 @@ export const OrderSent = () => {
                     <TickBlueIcon />
                     <p>Пациент может сдать часть анализов по своему выбору, либо отказаться от заказа полностью</p>
                 </div>
-                <Link to={'/how-get-results'} className={`textButton`}>Как узнать результаты?</Link>
+                {/* <Link to={'/how-get-results'} className={`textButton`}>Как узнать результаты?</Link> */}
 
             </div>
             <div className="f-column gap-30 al-center">
