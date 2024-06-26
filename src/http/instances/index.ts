@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios"
 import { getTokens } from "../../utils/storeTokens"
 
 
-const currentDomain = 2
+const currentDomain = 1
 
 const domains = [
     "https://dev.advafert.ru",
